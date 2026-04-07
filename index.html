@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -6,229 +7,37 @@
 <title>DateLogix</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background: #5a3a22;
-    color: #fff8f0;
-    font-family: -apple-system, sans-serif;
-}
-
-#header {
-    background: #7a4b2a;
-    color: #fff8f0;
-    padding: 20px;
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    border-bottom: 2px solid #c9a27a;
-}
-
-#page {
-    padding: 16px;
-    max-width: 480px;
-    margin: 0 auto;
-}
-
-.box {
-    background: #6b4226;
-    border: 2px solid #d7b08a;
-    border-radius: 12px;
-    padding: 18px;
-    margin-bottom: 20px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.22);
-}
-
-.lbl {
-    display: block;
-    font-size: 12px;
-    color: #f3d7bc;
-    text-transform: uppercase;
-    margin: 12px 0 6px;
-    letter-spacing: 0.5px;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    background: #4a2e1d;
-    border: 1px solid #d7b08a;
-    border-radius: 8px;
-    color: #fff8f0;
-    font-size: 16px;
-}
-
-input::placeholder, textarea::placeholder {
-    color: #d9bfa9;
-}
-
-textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-
-input[type=file] {
-    display: none;
-}
-
-.upbtn, .btnmain, .btnsoft {
-    width: 100%;
-    padding: 16px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 10px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.upbtn {
-    background: #8b5e3c;
-    border: 3px dashed #f2c89f;
-    color: #fff8f0;
-}
-
-.btnmain {
-    background: #b76e3b;
-    color: #fff8f0;
-}
-
-.btnsoft {
-    background: #4a2e1d;
-    color: #f3d7bc;
-    border: 1px solid #d7b08a;
-}
-
-.statusmsg {
-    padding: 12px;
-    border-radius: 8px;
-    margin: 10px 0;
-    text-align: center;
-    display: none;
-}
-
-.statusmsg.load {
-    display: block;
-    background: #8b5e3c;
-    color: #fff3e8;
-}
-
-.statusmsg.ok {
-    display: block;
-    background: #2f5a32;
-    color: #d9ffd9;
-}
-
-.statusmsg.err {
-    display: block;
-    background: #6b2a2a;
-    color: #ffd8d8;
-}
-
-.smallnote {
-    font-size: 13px;
-    color: #f3d7bc;
-    margin-top: 6px;
-    line-height: 1.4;
-}
-
-.thumbrow {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    margin-top: 10px;
-    padding-bottom: 4px;
-}
-
-.thumbrow img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 2px solid #f2c89f;
-    flex: 0 0 auto;
-}
-
-hr {
-    border: none;
-    border-top: 1px solid #9b7555;
-    margin: 16px 0;
-}
-
-.pcard {
-    background: #6b4226;
-    border: 2px solid #d7b08a;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    cursor: pointer;
-    transition: transform 0.12s ease;
-}
-
-.pcard:active {
-    transform: scale(0.99);
-}
-
-.pphoto {
-    width: 100%;
-    max-height: 520px;
-    background: #2d1b10;
-    overflow: hidden;
-}
-
-.pphoto img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
-
-.pinfo {
-    padding: 16px;
-}
-
-.pname {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffe0c2;
-}
-
-#detailView {
-    display: none;
-}
-
-.detailPhoto {
-    width: 100%;
-    max-height: 520px;
-    background: #2d1b10;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 16px;
-}
-
-.detailPhoto img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
-
-.detailLabel {
-    color: #f3d7bc;
-    font-size: 12px;
-    text-transform: uppercase;
-    margin-top: 14px;
-    margin-bottom: 6px;
-}
-
-.detailValue {
-    background: #4a2e1d;
-    border: 1px solid #d7b08a;
-    border-radius: 8px;
-    padding: 12px;
-    color: #fff8f0;
-    line-height: 1.45;
-    word-break: break-word;
-}
+body { background: #e8f5f0; color: #1a3a2a; font-family: -apple-system, sans-serif; }
+#header { background: #2e7d5e; color: white; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 2px solid #1a5c42; }
+#page { padding: 16px; max-width: 480px; margin: 0 auto; }
+.box { background: #f0faf5; border: 2px solid #2e7d5e; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.box h2 { font-size: 16px; font-weight: bold; color: #1a5c42; margin-bottom: 10px; }
+.lbl { display: block; font-size: 12px; color: #2e7d5e; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
+input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #2e7d5e; border-radius: 8px; color: #1a3a2a; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+textarea { min-height: 100px; resize: vertical; }
+input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; width: 1px; height: 1px; }
+.upbtn { display: block; width: 100%; padding: 16px; margin: 10px 0; border: 3px dashed #2e7d5e; border-radius: 10px; background: #d4f0e4; color: #1a5c42; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #2e7d5e; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnsoft { display: block; width: 100%; padding: 16px; margin: 10px 0; border: 1px solid #2e7d5e; border-radius: 10px; background: white; color: #2e7d5e; font-size: 16px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btndel { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #cc3333; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
+.statusmsg.load { display: block; background: #c8eeda; color: #1a5c42; }
+.statusmsg.ok { display: block; background: #d4edda; color: #155724; }
+.statusmsg.err { display: block; background: #f8d7da; color: #721c24; }
+.smallnote { font-size: 13px; color: #2e7d5e; margin-top: 6px; line-height: 1.4; }
+.thumbrow { display: block; margin-top: 10px; }
+.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #2e7d5e; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
+hr { border: none; border-top: 1px solid #a8d8c0; margin: 16px 0; }
+.pcard { background: #f0faf5; border: 2px solid #2e7d5e; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+.pphoto { width: 100%; height: 320px; background: #c8eeda; overflow: hidden; }
+.pphoto img { width: 100%; height: 320px; display: block; object-fit: cover; object-position: 50% 15%; }
+.pphoto-empty { width: 100%; height: 260px; background: #c8eeda; text-align: center; line-height: 260px; font-size: 80px; }
+.pinfo { padding: 16px; }
+.pname { font-size: 24px; font-weight: bold; color: #1a3a2a; }
+.page { font-size: 16px; color: #2e7d5e; margin-left: 8px; }
+.ploc { color: #2e7d5e; margin: 6px 0; font-size: 14px; }
+.pbio { margin-top: 8px; color: #1a3a2a; line-height: 1.4; font-size: 14px; }
+.ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #2e7d5e; border-radius: 8px; color: #1a3a2a; font-size: 14px; min-height: 80px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
 </style>
 </head>
 <body>
@@ -236,513 +45,359 @@ hr {
 <div id="page">
 
 <div class="box">
-    <h2>API Key</h2>
-    <span class="lbl">Anthropic API Key</span>
-    <input type="password" id="sAK" placeholder="sk ant ...">
-    <button class="btnmain" onclick="saveKey()">Save or Update Key</button>
-    <div class="statusmsg" id="keyMsg"></div>
-    <div class="smallnote">If no key is saved, the scan button will still fire and show a visible message.</div>
+<h2>API Key</h2>
+<span class="lbl">Anthropic API Key</span>
+<input type="password" id="sAK" placeholder="sk-ant-...">
+<button class="btnmain" onclick="saveKey()">Save / Update Key</button>
+<div class="statusmsg" id="keyMsg"></div>
 </div>
 
 <div class="box">
-    <h2>Add New Profile</h2>
-
-    <span class="lbl">Select Screenshots</span>
-    <button class="upbtn" onclick="document.getElementById('ocrFiles').click()">Tap to select screenshots</button>
-    <input type="file" id="ocrFiles" accept="image/*" multiple onchange="handleScreenshots(this)">
-    <div class="thumbrow" id="thumbRow"></div>
-
-    <button class="btnmain" id="scanBtn" onclick="scanAll()">Scan All Screenshots</button>
-    <div class="statusmsg" id="ocrMsg"></div>
-
-    <hr>
-
-    <span class="lbl">Main Profile Photo</span>
-    <button class="upbtn" onclick="document.getElementById('pFile').click()">Choose or Replace Photo</button>
-    <input type="file" id="pFile" accept="image/*" onchange="prevPic(this)">
-    <div id="photoPreview" style="margin-top:10px;display:none;">
-        <img id="previewImg" style="width:100%;max-height:380px;border-radius:10px;object-fit:contain;">
-    </div>
-
-    <hr>
-
-    <span class="lbl">Name</span>
-    <input type="text" id="iName" placeholder="Her name">
-
-    <span class="lbl">Age</span>
-    <input type="number" id="iAge" placeholder="Age">
-
-    <span class="lbl">Location</span>
-    <input type="text" id="iLoc" placeholder="City, State">
-
-    <span class="lbl">Bio / Notes</span>
-    <textarea id="iBio" placeholder="Bio and other details..."></textarea>
-
-    <button class="btnmain" onclick="addP()">Add Profile</button>
-    <div class="statusmsg" id="addMsg"></div>
+<h2>Add New Profile</h2>
+<span class="lbl">Select Screenshots</span>
+<p class="smallnote">Tap below and select screenshots. All will be scanned and combined.</p>
+<button class="upbtn" onclick="document.getElementById('ocrFiles').click()">Tap to select screenshots</button>
+<input type="file" id="ocrFiles" accept="image/*" multiple onchange="handleScreenshots(this)">
+<div class="thumbrow" id="thumbRow"></div>
+<button class="btnmain" id="scanBtn" onclick="scanAll()">Scan All Screenshots</button>
+<div class="statusmsg" id="ocrMsg"></div>
+<hr>
+<span class="lbl">Main Profile Photo</span>
+<p class="smallnote">First screenshot is used automatically. Tap to choose a different one.</p>
+<button class="upbtn" onclick="document.getElementById('pFile').click()">Choose / Replace Photo</button>
+<input type="file" id="pFile" accept="image/*" onchange="prevPic(this)">
+<div id="photoPreview" style="margin-top:10px;display:none;">
+<img id="previewImg" style="width:100%;height:300px;border-radius:10px;object-fit:cover;object-position:50% 15%;display:block;">
+</div>
+<hr>
+<span class="lbl">Name</span>
+<input type="text" id="iName" placeholder="Her name">
+<span class="lbl">Age</span>
+<input type="number" id="iAge" placeholder="Age">
+<span class="lbl">Location</span>
+<input type="text" id="iLoc" placeholder="City, State">
+<span class="lbl">Bio / Notes</span>
+<textarea id="iBio" placeholder="Bio and other details..."></textarea>
+<button class="btnmain" onclick="addP()">Add Profile</button>
+<div class="statusmsg" id="addMsg"></div>
 </div>
 
-<div id="detailView" class="box"></div>
 <div id="profilesArea"></div>
-
 </div>
 
 <script>
-let profiles = [];
-let currentPhotoData = '';
-let screenshotFiles = [];
-let selectedProfileId = null;
+var profiles = [];
+var currentPhotoData = '';
+var screenshotFiles = [];
 
 function boot() {
-    try {
-        const savedProfiles = localStorage.getItem('dlP');
-        if (savedProfiles) {
-            profiles = JSON.parse(savedProfiles);
-            if (!Array.isArray(profiles)) profiles = [];
-        }
-    } catch (err) {
-        console.error('Failed to load profiles', err);
-        profiles = [];
-    }
-
-    const savedKey = localStorage.getItem('dlAK') || '';
-    document.getElementById('sAK').value = savedKey;
-
+    var s = localStorage.getItem('dlP');
+    if (s) { try { profiles = JSON.parse(s); if (!Array.isArray(profiles)) { profiles = []; } } catch(e) { profiles = []; } }
+    var k = localStorage.getItem('dlAK') || '';
+    document.getElementById('sAK').value = k;
     render();
-    console.log('Boot complete', { profileCount: profiles.length });
 }
 
-function saveProfiles() {
-    localStorage.setItem('dlP', JSON.stringify(profiles));
-}
+function sp() { localStorage.setItem('dlP', JSON.stringify(profiles)); }
 
 function saveKey() {
-    const key = document.getElementById('sAK').value.trim();
-    localStorage.setItem('dlAK', key);
-    showMsg('keyMsg', 'ok', key ? '✅ Key saved' : '✅ Key cleared');
-    console.log('API key saved', { hasKey: !!key });
+    var k = document.getElementById('sAK').value.trim();
+    localStorage.setItem('dlAK', k);
+    showMsg('keyMsg', 'ok', k ? 'Key saved!' : 'Key cleared.');
 }
 
 function prevPic(inp) {
-    if (!inp.files || !inp.files[0]) return;
-
-    const r = new FileReader();
-    r.onload = e => {
+    if (!inp || !inp.files || !inp.files[0]) return;
+    var r = new FileReader();
+    r.onload = function(e) {
         currentPhotoData = e.target.result;
         document.getElementById('previewImg').src = currentPhotoData;
         document.getElementById('photoPreview').style.display = 'block';
-        console.log('Main profile photo loaded');
     };
     r.readAsDataURL(inp.files[0]);
 }
 
 function handleScreenshots(inp) {
-    const row = document.getElementById('thumbRow');
+    var row = document.getElementById('thumbRow');
     row.innerHTML = '';
-
-    screenshotFiles = Array.from(inp.files || []);
-    console.log('Screenshots selected', { count: screenshotFiles.length });
-
-    screenshotFiles.forEach(file => {
-        const img = document.createElement('img');
-        const blobUrl = URL.createObjectURL(file);
-        img.src = blobUrl;
-        img.onload = () => URL.revokeObjectURL(blobUrl);
+    screenshotFiles = [];
+    if (!inp.files || !inp.files.length) return;
+    var i;
+    var count = inp.files.length;
+    for (i = 0; i < count; i++) {
+        screenshotFiles.push(inp.files[i]);
+        var img = document.createElement('img');
+        img.className = 'thumb';
+        var r = new FileReader();
+        r.onload = (function(imgEl, isFirst) {
+            return function(e) {
+                imgEl.src = e.target.result;
+                if (isFirst && !currentPhotoData) {
+                    currentPhotoData = e.target.result;
+                    document.getElementById('previewImg').src = currentPhotoData;
+                    document.getElementById('photoPreview').style.display = 'block';
+                }
+            };
+        })(img, i === 0);
+        r.readAsDataURL(inp.files[i]);
         row.appendChild(img);
-    });
+    }
+    showMsg('ocrMsg', 'ok', count + ' screenshot(s) ready. Tap Scan All Screenshots.');
+}
 
-    if (screenshotFiles.length > 0) {
-        showMsg('ocrMsg', 'ok', `✅ ${screenshotFiles.length} screenshot${screenshotFiles.length > 1 ? 's' : ''} ready to scan`);
-    } else {
-        clearMsg('ocrMsg');
+function scanAll() {
+    var key = (localStorage.getItem('dlAK') || '').trim();
+    if (!screenshotFiles.length) { showMsg('ocrMsg', 'err', 'Please select at least one screenshot first.'); return; }
+    if (!key) { showMsg('ocrMsg', 'err', 'Please save your Anthropic API key first.'); return; }
+
+    var btn = document.getElementById('scanBtn');
+    btn.disabled = true;
+    showMsg('ocrMsg', 'load', 'Scanning ' + screenshotFiles.length + ' screenshot(s)...');
+
+    var imageBlocks = [];
+    var loaded = 0;
+    var total = screenshotFiles.length;
+
+    function trySubmit() {
+        if (loaded < total) return;
+        var promptText = 'You are extracting dating profile information from app screenshots. Look across all screenshots and return ONLY valid JSON in this exact structure, no markdown, no explanation: {"name":"","age":"","location":"","bio":"","photoIndex":0}. Fill in the best value for each field. photoIndex is the zero-based index of the screenshot with the main profile photo.';
+
+        var body = JSON.stringify({
+            model: 'claude-opus-4-5',
+            max_tokens: 500,
+            messages: [{
+                role: 'user',
+                content: imageBlocks.concat([{ type: 'text', text: promptText }])
+            }]
+        });
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://api.anthropic.com/v1/messages', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('x-api-key', key);
+        xhr.setRequestHeader('anthropic-version', '2023-06-01');
+        xhr.setRequestHeader('anthropic-dangerous-direct-browser-access', 'true');
+
+        xhr.onload = function() {
+            btn.disabled = false;
+            if (xhr.status !== 200) {
+                showMsg('ocrMsg', 'err', 'API error ' + xhr.status + ': ' + xhr.responseText.substring(0, 120));
+                return;
+            }
+            var data;
+            try { data = JSON.parse(xhr.responseText); } catch(e) { showMsg('ocrMsg', 'err', 'Could not parse API response.'); return; }
+            if (!data.content || !data.content[0] || !data.content[0].text) { showMsg('ocrMsg', 'err', 'Unexpected response format.'); return; }
+            var text = data.content[0].text.trim();
+            var parsed = null;
+            try { parsed = JSON.parse(text); } catch(e) {
+                var match = text.match(/\{[\s\S]*\}/);
+                if (match) { try { parsed = JSON.parse(match[0]); } catch(e2) {} }
+            }
+            if (!parsed) { showMsg('ocrMsg', 'err', 'Could not read scan results. Try again.'); return; }
+
+            var nameEl = document.getElementById('iName');
+            var ageEl = document.getElementById('iAge');
+            var locEl = document.getElementById('iLoc');
+            var bioEl = document.getElementById('iBio');
+            if (parsed.name && !nameEl.value.trim()) nameEl.value = parsed.name;
+            if (parsed.age && !ageEl.value.trim()) ageEl.value = String(parsed.age);
+            if (parsed.location && !locEl.value.trim()) locEl.value = parsed.location;
+            if (parsed.bio) { bioEl.value = bioEl.value.trim() ? bioEl.value.trim() + '\n\n' + parsed.bio : parsed.bio; }
+
+            var photoIdx = (parsed.photoIndex !== null && parsed.photoIndex !== undefined) ? parseInt(parsed.photoIndex) : 0;
+            if (screenshotFiles[photoIdx] && !currentPhotoData) {
+                var pr = new FileReader();
+                pr.onload = function(e) {
+                    currentPhotoData = e.target.result;
+                    document.getElementById('previewImg').src = currentPhotoData;
+                    document.getElementById('photoPreview').style.display = 'block';
+                };
+                pr.readAsDataURL(screenshotFiles[photoIdx]);
+            }
+            showMsg('ocrMsg', 'ok', 'Scan complete! Review fields then tap Add Profile.');
+        };
+
+        xhr.onerror = function() {
+            btn.disabled = false;
+            showMsg('ocrMsg', 'err', 'Network error. Check your connection and try again.');
+        };
+
+        xhr.send(body);
+    }
+
+    var i;
+    for (i = 0; i < total; i++) {
+        (function(file) {
+            var r = new FileReader();
+            r.onload = function(e) {
+                var parts = e.target.result.split(',');
+                var mime = file.type || 'image/jpeg';
+                var b64 = parts[1] || '';
+                imageBlocks.push({ type: 'image', source: { type: 'base64', media_type: mime, data: b64 } });
+                loaded++;
+                trySubmit();
+            };
+            r.readAsDataURL(file);
+        })(screenshotFiles[i]);
     }
 }
 
 function addP() {
-    const name = document.getElementById('iName').value.trim();
-    const age = document.getElementById('iAge').value.trim();
-    const location = document.getElementById('iLoc').value.trim();
-    const bio = document.getElementById('iBio').value.trim();
-
-    if (!name) {
-        showMsg('addMsg', 'err', 'Name is required');
-        return;
-    }
-
-    const newProfile = {
-        id: Date.now(),
-        name,
-        age,
-        location,
-        bio,
+    var name = document.getElementById('iName').value.trim();
+    if (!name) { showMsg('addMsg', 'err', 'Name is required.'); return; }
+    var newId = Date.now();
+    profiles.unshift({
+        id: newId,
+        name: name,
+        age: document.getElementById('iAge').value.trim() || '',
+        location: document.getElementById('iLoc').value.trim() || '',
+        bio: document.getElementById('iBio').value.trim() || '',
         photo: currentPhotoData || '',
-        createdAt: new Date().toISOString()
-    };
-
-    profiles.unshift(newProfile);
-    saveProfiles();
-    resetForm();
-    showMsg('addMsg', 'ok', '✅ Profile added');
-    render();
-    openProfile(newProfile.id);
-}
-
-function resetForm() {
+        notes: ''
+    });
+    sp();
     document.getElementById('iName').value = '';
     document.getElementById('iAge').value = '';
     document.getElementById('iLoc').value = '';
     document.getElementById('iBio').value = '';
-    document.getElementById('photoPreview').style.display = 'none';
-    document.getElementById('previewImg').src = '';
-    document.getElementById('thumbRow').innerHTML = '';
-    document.getElementById('ocrFiles').value = '';
     document.getElementById('pFile').value = '';
-    currentPhotoData = '';
+    document.getElementById('ocrFiles').value = '';
+    document.getElementById('thumbRow').innerHTML = '';
+    document.getElementById('photoPreview').style.display = 'none';
     screenshotFiles = [];
+    currentPhotoData = '';
+    showMsg('addMsg', 'ok', 'Profile added!');
+    render();
+}
+
+function saveN(pid) {
+    var el = document.getElementById('nt' + pid);
+    if (!el) return;
+    var i;
+    for (i = 0; i < profiles.length; i++) {
+        if (String(profiles[i].id) === String(pid)) { profiles[i].notes = el.value; break; }
+    }
+    sp();
+    alert('Notes saved!');
+}
+
+function delP(pid) {
+    if (!confirm('Delete this profile?')) return;
+    var out = [];
+    var i;
+    for (i = 0; i < profiles.length; i++) {
+        if (String(profiles[i].id) !== String(pid)) { out.push(profiles[i]); }
+    }
+    profiles = out;
+    sp();
+    render();
 }
 
 function render() {
-    renderProfiles();
-    renderDetail();
-}
-
-function renderProfiles() {
-    const area = document.getElementById('profilesArea');
+    var area = document.getElementById('profilesArea');
     area.innerHTML = '';
-
-    if (profiles.length === 0) {
-        area.innerHTML = '<div class="box" style="text-align:center;color:#f3d7bc;padding:30px;">No profiles yet</div>';
+    if (!profiles.length) {
+        var empty = document.createElement('div');
+        empty.className = 'box';
+        empty.style.textAlign = 'center';
+        empty.style.color = '#2e7d5e';
+        empty.style.padding = '30px';
+        empty.innerHTML = 'No profiles yet. Add your first one above.';
+        area.appendChild(empty);
         return;
     }
-
-    profiles.forEach(p => {
-        const card = document.createElement('div');
+    var i;
+    for (i = 0; i < profiles.length; i++) {
+        var p = profiles[i];
+        var pid = p.id;
+        var card = document.createElement('div');
         card.className = 'pcard';
-        card.onclick = () => openProfile(p.id);
 
-        const safeName = escapeHtml(p.name || '');
-        const safeAge = escapeHtml(p.age || '');
-        const safeLocation = escapeHtml(p.location || '');
-        const safeBio = escapeHtml(p.bio || '');
-
-        card.innerHTML = `
-            <div class="pphoto">
-                ${p.photo ? `<img src="${p.photo}" alt="${safeName}">` : '<div style="height:260px;background:#3d281a;text-align:center;line-height:260px;font-size:80px;">👤</div>'}
-            </div>
-            <div class="pinfo">
-                <div class="pname">${safeName}${safeAge ? ' ' + safeAge : ''}</div>
-                ${safeLocation ? `<div style="color:#f3d7bc;margin:6px 0;">${safeLocation}</div>` : ''}
-                ${safeBio ? `<div style="margin-top:8px;color:#fff0e4;line-height:1.4;">${truncateText(safeBio, 140)}</div>` : ''}
-            </div>
-        `;
-        area.appendChild(card);
-    });
-}
-
-function openProfile(profileId) {
-    selectedProfileId = profileId;
-    renderDetail();
-
-    const detail = document.getElementById('detailView');
-    detail.style.display = 'block';
-    detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    console.log('Opened profile', { profileId });
-}
-
-function renderDetail() {
-    const detail = document.getElementById('detailView');
-
-    if (!selectedProfileId) {
-        detail.style.display = 'none';
-        detail.innerHTML = '';
-        return;
-    }
-
-    const profile = profiles.find(p => p.id === selectedProfileId);
-    if (!profile) {
-        detail.style.display = 'none';
-        detail.innerHTML = '';
-        return;
-    }
-
-    const safeName = escapeHtml(profile.name || '');
-    const safeAge = escapeHtml(profile.age || '');
-    const safeLocation = escapeHtml(profile.location || '');
-    const safeBio = escapeHtml(profile.bio || '');
-
-    detail.style.display = 'block';
-    detail.innerHTML = `
-        <h2 style="margin-bottom:14px;">Profile Detail</h2>
-        <div class="detailPhoto">
-            ${profile.photo ? `<img src="${profile.photo}" alt="${safeName}">` : '<div style="height:280px;background:#3d281a;text-align:center;line-height:280px;font-size:80px;">👤</div>'}
-        </div>
-
-        <div class="detailLabel">Name</div>
-        <div class="detailValue">${safeName || 'Not set'}</div>
-
-        <div class="detailLabel">Age</div>
-        <div class="detailValue">${safeAge || 'Not set'}</div>
-
-        <div class="detailLabel">Location</div>
-        <div class="detailValue">${safeLocation || 'Not set'}</div>
-
-        <div class="detailLabel">Bio / Notes</div>
-        <div class="detailValue">${safeBio || 'No notes yet'}</div>
-
-        <button class="btnsoft" onclick="closeProfileDetail()">Close Profile</button>
-    `;
-}
-
-function closeProfileDetail() {
-    selectedProfileId = null;
-    renderDetail();
-}
-
-async function scanAll() {
-    console.log('Scan button pressed');
-
-    const btn = document.getElementById('scanBtn');
-    const key = (localStorage.getItem('dlAK') || '').trim();
-
-    if (!screenshotFiles.length) {
-        showMsg('ocrMsg', 'err', 'Please select at least one screenshot first');
-        console.warn('No screenshots selected');
-        return;
-    }
-
-    try {
-        btn.disabled = true;
-        btn.style.opacity = '0.7';
-        showMsg('ocrMsg', 'load', `Scanning ${screenshotFiles.length} screenshot${screenshotFiles.length > 1 ? 's' : ''}...`);
-        console.log('Scan started', {
-            screenshotCount: screenshotFiles.length,
-            hasApiKey: !!key
-        });
-
-        if (!key) {
-            await wait(300);
-            showMsg('ocrMsg', 'err', 'Scan started, but no Anthropic API key is saved yet');
-            return;
-        }
-
-        const result = await scanScreenshotsWithAnthropic(screenshotFiles, key);
-        console.log('Parsed result', result);
-
-        applyParsedProfileData(result);
-
-        if (result.photoIndex !== null && result.photoIndex !== undefined && screenshotFiles[result.photoIndex]) {
-            await setMainPhotoFromScreenshot(screenshotFiles[result.photoIndex]);
-        } else if (!currentPhotoData && screenshotFiles[0]) {
-            await setMainPhotoFromScreenshot(screenshotFiles[0]);
-        }
-
-        showMsg('ocrMsg', 'ok', '✅ Scan complete and fields updated');
-    } catch (err) {
-        console.error('Scan failed', err);
-        showMsg('ocrMsg', 'err', `Scan failed: ${escapeHtml(err.message || 'Unknown error')}`);
-    } finally {
-        btn.disabled = false;
-        btn.style.opacity = '1';
-    }
-}
-
-async function scanScreenshotsWithAnthropic(files, apiKey) {
-    const imageBlocks = [];
-
-    for (const file of files) {
-        const payload = await fileToBase64Payload(file);
-        imageBlocks.push({
-            type: 'image',
-            source: {
-                type: 'base64',
-                media_type: payload.mediaType,
-                data: payload.data
-            }
-        });
-    }
-
-    const promptText = `
-You are extracting dating profile information from app screenshots.
-
-Look across all screenshots and return only valid JSON in this exact structure:
-{
-  "name": "",
-  "age": "",
-  "location": "",
-  "bio": "",
-  "photoIndex": 0
-}
-
-Rules:
-Fill in the best inferred value for each field if visible.
-Use empty strings if unknown.
-photoIndex should be the zero based index of the screenshot most likely to contain the main profile image.
-Do not include markdown.
-Do not include explanation.
-`;
-
-    const payload = {
-        model: "claude-3-5-sonnet-latest",
-        max_tokens: 500,
-        messages: [
-            {
-                role: "user",
-                content: [
-                    ...imageBlocks,
-                    { type: "text", text: promptText }
-                ]
-            }
-        ]
-    };
-
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'x-api-key': apiKey,
-            'anthropic-version': '2023-06-01'
-        },
-        body: JSON.stringify(payload)
-    });
-
-    if (!res.ok) {
-        const errText = await res.text();
-        throw new Error(`Anthropic request failed with ${res.status}: ${errText}`);
-    }
-
-    const data = await res.json();
-    console.log('Anthropic raw response', data);
-
-    const text = extractTextFromAnthropicResponse(data);
-    const parsed = safeJsonParse(text);
-
-    if (!parsed || typeof parsed !== 'object') {
-        throw new Error('Could not parse JSON from scan response');
-    }
-
-    return {
-        name: (parsed.name || '').toString().trim(),
-        age: (parsed.age || '').toString().trim(),
-        location: (parsed.location || '').toString().trim(),
-        bio: (parsed.bio || '').toString().trim(),
-        photoIndex: Number.isInteger(parsed.photoIndex) ? parsed.photoIndex : 0
-    };
-}
-
-function extractTextFromAnthropicResponse(data) {
-    if (!data || !Array.isArray(data.content)) {
-        throw new Error('Unexpected Anthropic response format');
-    }
-
-    const textBlock = data.content.find(block => block.type === 'text');
-    if (!textBlock || !textBlock.text) {
-        throw new Error('No text found in Anthropic response');
-    }
-
-    return textBlock.text.trim();
-}
-
-function safeJsonParse(text) {
-    try {
-        return JSON.parse(text);
-    } catch (err) {
-        const match = text.match(/\{[\s\S]*\}/);
-        if (match) {
-            try {
-                return JSON.parse(match[0]);
-            } catch (err2) {
-                return null;
-            }
-        }
-        return null;
-    }
-}
-
-function applyParsedProfileData(result) {
-    const nameEl = document.getElementById('iName');
-    const ageEl = document.getElementById('iAge');
-    const locEl = document.getElementById('iLoc');
-    const bioEl = document.getElementById('iBio');
-
-    if (result.name && !nameEl.value.trim()) nameEl.value = result.name;
-    if (result.age && !ageEl.value.trim()) ageEl.value = result.age;
-    if (result.location && !locEl.value.trim()) locEl.value = result.location;
-
-    if (result.bio) {
-        if (bioEl.value.trim()) {
-            bioEl.value = bioEl.value.trim() + '\n\n' + result.bio;
+        var photoDiv = document.createElement('div');
+        if (p.photo) {
+            photoDiv.className = 'pphoto';
+            var img = document.createElement('img');
+            img.src = p.photo;
+            photoDiv.appendChild(img);
         } else {
-            bioEl.value = result.bio;
+            photoDiv.className = 'pphoto-empty';
+            photoDiv.innerHTML = p.name ? p.name.charAt(0) : '?';
         }
+        card.appendChild(photoDiv);
+
+        var info = document.createElement('div');
+        info.className = 'pinfo';
+
+        var topLine = document.createElement('div');
+        var nameEl = document.createElement('span');
+        nameEl.className = 'pname';
+        nameEl.innerHTML = esc(p.name);
+        topLine.appendChild(nameEl);
+        if (p.age) {
+            var ageEl = document.createElement('span');
+            ageEl.className = 'page';
+            ageEl.innerHTML = esc(p.age);
+            topLine.appendChild(ageEl);
+        }
+        info.appendChild(topLine);
+
+        if (p.location) {
+            var locEl = document.createElement('div');
+            locEl.className = 'ploc';
+            locEl.innerHTML = esc(p.location);
+            info.appendChild(locEl);
+        }
+
+        if (p.bio) {
+            var bioEl = document.createElement('div');
+            bioEl.className = 'pbio';
+            bioEl.innerHTML = esc(p.bio).substring(0, 200) + (p.bio.length > 200 ? '...' : '');
+            info.appendChild(bioEl);
+        }
+
+        var nlbl = document.createElement('div');
+        nlbl.style.cssText = 'font-size:11px;color:#2e7d5e;text-transform:uppercase;margin:12px 0 4px;';
+        nlbl.innerHTML = 'Notes';
+        info.appendChild(nlbl);
+
+        var ta = document.createElement('textarea');
+        ta.className = 'ntarea';
+        ta.id = 'nt' + pid;
+        ta.placeholder = 'Private notes...';
+        ta.value = p.notes || '';
+        info.appendChild(ta);
+
+        var saveBtn = document.createElement('button');
+        saveBtn.className = 'btnmain';
+        saveBtn.innerHTML = 'Save Notes';
+        saveBtn.onclick = (function(id) { return function() { saveN(id); }; })(pid);
+        info.appendChild(saveBtn);
+
+        var delBtn = document.createElement('button');
+        delBtn.className = 'btndel';
+        delBtn.innerHTML = 'Delete Profile';
+        delBtn.onclick = (function(id) { return function() { delP(id); }; })(pid);
+        info.appendChild(delBtn);
+
+        card.appendChild(info);
+        area.appendChild(card);
     }
-}
-
-async function setMainPhotoFromScreenshot(file) {
-    const dataUrl = await fileToDataUrl(file);
-    currentPhotoData = dataUrl;
-    document.getElementById('previewImg').src = currentPhotoData;
-    document.getElementById('photoPreview').style.display = 'block';
-    console.log('Main photo set from screenshot');
-}
-
-function fileToDataUrl(file) {
-    return new Promise((resolve, reject) => {
-        const r = new FileReader();
-        r.onload = e => resolve(e.target.result);
-        r.onerror = reject;
-        r.readAsDataURL(file);
-    });
-}
-
-async function fileToBase64Payload(file) {
-    const dataUrl = await fileToDataUrl(file);
-    const parts = dataUrl.split(',');
-    const header = parts[0] || '';
-    const data = parts[1] || '';
-
-    let mediaType = file.type || 'image/jpeg';
-    const match = header.match(/data:(.*?);base64/);
-    if (match && match[1]) mediaType = match[1];
-
-    return { mediaType, data };
-}
-
-function escapeHtml(str) {
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-}
-
-function truncateText(str, maxLen) {
-    if (!str) return '';
-    return str.length > maxLen ? str.slice(0, maxLen).trim() + '…' : str;
-}
-
-function clearMsg(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.className = 'statusmsg';
-    el.innerHTML = '';
-    el.style.display = 'none';
 }
 
 function showMsg(id, cls, msg) {
-    const el = document.getElementById(id);
+    var el = document.getElementById(id);
     if (!el) return;
-    el.className = `statusmsg ${cls}`;
+    el.className = 'statusmsg ' + cls;
     el.innerHTML = msg;
-    el.style.display = 'block';
 }
 
-function wait(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+function esc(s) {
+    if (!s) return '';
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 boot();
 </script>
+
 </body>
-</html>
+</html
