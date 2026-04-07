@@ -20,32 +20,33 @@ input[type=text], input[type=number], input[type=password], textarea {
     -webkit-appearance: none; font-family: sans-serif;
 }
 textarea { min-height: 80px; }
-input[type=file] { display: none; }
+input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; width: 1px; height: 1px; }
 .upbtn {
     display: block; width: 100%; padding: 16px;
     border: 2px dashed #8B0000; border-radius: 8px;
     background: #1a0000; color: #aaa; font-size: 14px;
     text-align: center; cursor: pointer; margin: 10px 0;
     -webkit-appearance: none; font-family: sans-serif;
+    border-style: dashed;
 }
 .btnred {
     display: block; width: 100%; padding: 13px; margin-top: 12px;
     background: #8B0000; color: white; border: none; border-radius: 8px;
     font-size: 15px; font-weight: bold; cursor: pointer;
-    -webkit-appearance: none;
+    -webkit-appearance: none; font-family: sans-serif;
 }
 .btndanger {
     display: block; width: 100%; padding: 13px; margin-top: 8px;
     background: transparent; color: #ff4444; border: 1px solid #ff4444;
     border-radius: 8px; font-size: 14px; cursor: pointer;
-    -webkit-appearance: none;
+    -webkit-appearance: none; font-family: sans-serif;
 }
 .statusmsg { padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 13px; text-align: center; display: none; }
 .statusmsg.load { display: block; background: #2a1a00; color: orange; }
 .statusmsg.ok   { display: block; background: #003300; color: #4caf50; }
 .statusmsg.err  { display: block; background: #330000; color: #ff5555; }
 .pcard { background: #1e1e1e; border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
-.pphoto { width: 100%; height: 240px; background: #2a2a2a; overflow: hidden; text-align: center; line-height: 240px; font-size: 48px; color: #555; }
+.pphoto { width: 100%; height: 220px; background: #2a2a2a; overflow: hidden; text-align: center; line-height: 220px; font-size: 60px; color: #555; }
 .pphoto img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .pinfo { padding: 14px; }
 .pname { font-size: 22px; font-weight: bold; }
@@ -53,9 +54,11 @@ input[type=file] { display: none; }
 .ploc  { color: #777; font-size: 13px; margin: 6px 0; }
 .pbio  { color: #bbb; font-size: 13px; line-height: 1.5; margin-bottom: 10px; }
 .ntarea { display: block; width: 100%; padding: 10px; background: #141414; border: 1px solid #333; border-radius: 8px; color: white; font-size: 13px; min-height: 70px; margin: 8px 0; box-sizing: border-box; font-family: sans-serif; }
-.picprev { width: 100%; height: 120px; background: #141414; border-radius: 8px; overflow: hidden; text-align: center; line-height: 120px; color: #555; font-size: 13px; margin-bottom: 8px; }
+.picprev { width: 100%; height: 120px; background: #141414; border-radius: 8px; overflow: hidden; text-align: center; line-height: 120px; color: #555; font-size: 13px; margin: 8px 0; }
 .picprev img { width: 100%; height: 100%; object-fit: cover; display: block; }
 hr { border: none; border-top: 1px solid #333; margin: 14px 0; }
+.dummy-badge { display: inline-block; background: #333; color: #888; font-size: 10px; border-radius: 4px; padding: 2px 6px; margin-left: 8px; vertical-align: middle; }
+.next-slot { border: 2px dashed #333; border-radius: 10px; padding: 30px 16px; text-align: center; color: #444; font-size: 14px; margin-bottom: 16px; }
 </style>
 </head>
 <body>
@@ -63,6 +66,8 @@ hr { border: none; border-top: 1px solid #333; margin: 14px 0; }
 <div id="header">DATELOGIX</div>
 
 <div id="page">
+
+  <!-- API KEY -->
 
   <div class="box">
     <h2>API Key</h2>
@@ -72,40 +77,44 @@ hr { border: none; border-top: 1px solid #333; margin: 14px 0; }
     <div class="statusmsg" id="keyMsg"></div>
   </div>
 
+  <!-- ADD PROFILE -->
+
   <div class="box">
     <h2>Add Profile</h2>
 
 ```
-<span class="lbl">Scan Tinder Screenshot</span>
-<button class="upbtn" onclick="document.getElementById('ocrFile').click()">Tap to upload Tinder screenshot</button>
+<span class="lbl">Step 1 — Scan Tinder Screenshot</span>
+<button class="upbtn" onclick="triggerFile('ocrFile')">📷 Tap to upload Tinder screenshot</button>
 <input type="file" id="ocrFile" accept="image/*" onchange="doOcr(this)">
 <div class="statusmsg" id="ocrMsg"></div>
 
 <hr>
 
-<span class="lbl">Photo</span>
-<button class="upbtn" onclick="document.getElementById('pFile').click()">Tap to choose photo (optional)</button>
+<span class="lbl">Step 2 — Choose Photo (optional)</span>
+<button class="upbtn" onclick="triggerFile('pFile')">🖼 Tap to choose photo</button>
 <input type="file" id="pFile" accept="image/*" onchange="prevPic(this)">
-<div class="picprev" id="picPrev">No photo</div>
+<div class="picprev" id="picPrev">No photo selected</div>
 
+<span class="lbl">Step 3 — Review &amp; Edit Details</span>
 <span class="lbl">Name</span>
 <input type="text" id="iName" placeholder="Her name">
-
 <span class="lbl">Age</span>
 <input type="number" id="iAge" placeholder="Age">
-
 <span class="lbl">Location</span>
 <input type="text" id="iLoc" placeholder="City, State">
-
 <span class="lbl">Bio</span>
 <textarea id="iBio" placeholder="What you know about her..."></textarea>
 
 <button class="btnred" onclick="addP()">Add Profile</button>
+<div class="statusmsg" id="addMsg"></div>
 ```
 
   </div>
 
+  <!-- PROFILES -->
+
   <div id="profilesArea"></div>
+  <div class="next-slot" id="nextSlot" style="display:none;">+ Next profile will appear here</div>
 
 </div>
 
@@ -122,15 +131,21 @@ function boot() {
 
 function sp() { localStorage.setItem('dlP', JSON.stringify(profiles)); }
 
+function triggerFile(id) {
+    var el = document.getElementById(id);
+    if (el) { el.click(); }
+}
+
 function saveKey() {
     var k = document.getElementById('sAK').value.trim();
-    if (!k) { showMsg('keyMsg', 'err', 'Please enter your API key.'); return; }
+    if (!k) { showMsg('keyMsg', 'err', 'Please enter your API key first.'); return; }
     localStorage.setItem('dlAK', k);
-    showMsg('keyMsg', 'ok', 'Key saved!');
+    showMsg('keyMsg', 'ok', '✓ Key saved successfully!');
 }
 
 function prevPic(inp) {
-    if (!inp.files || !inp.files[0]) return;
+    if (!inp || !inp.files || !inp.files[0]) return;
+    showMsg('addMsg', 'ok', '✓ Photo selected: ' + inp.files[0].name);
     var r = new FileReader();
     r.onload = function(e) {
         var box = document.getElementById('picPrev');
@@ -140,24 +155,28 @@ function prevPic(inp) {
 }
 
 function doOcr(inp) {
-    if (!inp.files || !inp.files[0]) return;
+    if (!inp || !inp.files || !inp.files[0]) return;
+    showMsg('ocrMsg', 'ok', '✓ File accepted: ' + inp.files[0].name);
     var key = localStorage.getItem('dlAK') || '';
-    if (!key) { showMsg('ocrMsg', 'err', 'Save your Anthropic API key above first.'); return; }
-    showMsg('ocrMsg', 'load', 'Reading screenshot...');
+    if (!key) {
+        showMsg('ocrMsg', 'err', '✗ Save your Anthropic API key above first.');
+        return;
+    }
+    showMsg('ocrMsg', 'load', '⏳ Reading screenshot — please wait...');
     var r = new FileReader();
     r.onload = function(e) {
         var b64 = e.target.result.split(',')[1];
         var mime = inp.files[0].type || 'image/jpeg';
         var prompt = 'This is a Tinder profile screenshot. Return ONLY raw JSON, no markdown: {"name":"","age":"","location":"","bio":""}';
         callAI(key, b64, mime, prompt, function(res) {
-            if (res.err) { showMsg('ocrMsg', 'err', 'Error: ' + res.err); return; }
+            if (res.err) { showMsg('ocrMsg', 'err', '✗ Error: ' + res.err); return; }
             var d = {};
             try { d = JSON.parse(res.txt.replace(/```json/g,'').replace(/```/g,'').trim()); } catch(e) {}
             if (d.name) document.getElementById('iName').value = d.name;
             if (d.age) document.getElementById('iAge').value = d.age;
             if (d.location) document.getElementById('iLoc').value = d.location;
             if (d.bio) document.getElementById('iBio').value = d.bio;
-            showMsg('ocrMsg', 'ok', 'Done! Review fields then tap Add Profile.');
+            showMsg('ocrMsg', 'ok', '✓ Profile scanned! Review details below then tap Add Profile.');
         });
     };
     r.readAsDataURL(inp.files[0]);
@@ -194,7 +213,7 @@ function callAI(key, b64, mime, prompt, cb) {
 
 function addP() {
     var name = document.getElementById('iName').value.trim();
-    if (!name) { alert('Name is required.'); return; }
+    if (!name) { showMsg('addMsg', 'err', '✗ Name is required.'); return; }
     var pf = document.getElementById('pFile').files[0];
     function fin(photo) {
         profiles.push({
@@ -204,7 +223,8 @@ function addP() {
             location: document.getElementById('iLoc').value.trim() || '',
             bio: document.getElementById('iBio').value.trim() || '',
             photo: photo || '',
-            notes: ''
+            notes: '',
+            dummy: false
         });
         sp();
         document.getElementById('iName').value = '';
@@ -213,10 +233,10 @@ function addP() {
         document.getElementById('iBio').value = '';
         document.getElementById('pFile').value = '';
         document.getElementById('ocrFile').value = '';
-        document.getElementById('picPrev').innerHTML = 'No photo';
-        showMsg('ocrMsg', 'ok', '');
+        document.getElementById('picPrev').innerHTML = 'No photo selected';
+        showMsg('ocrMsg', 'load', '');
+        showMsg('addMsg', 'ok', '✓ Profile added successfully!');
         render();
-        alert('Profile added!');
     }
     if (pf) {
         var rd = new FileReader();
@@ -252,24 +272,51 @@ function delP(pid) {
 
 function render() {
     var area = document.getElementById('profilesArea');
+    var slot = document.getElementById('nextSlot');
     area.innerHTML = '';
-    if (!profiles.length) return;
+
+    // Always show dummy first if no real profiles yet
+    var hasReal = false;
     var i;
     for (i = 0; i < profiles.length; i++) {
-        var p = profiles[i];
-        var d = document.createElement('div');
-        d.className = 'pcard';
-        var photo = p.photo ? '<img src="' + p.photo + '">' : (p.name ? p.name.charAt(0) : '?');
-        d.innerHTML = '<div class="pphoto">' + photo + '</div>'
+        if (!profiles[i].dummy) { hasReal = true; break; }
+    }
+
+    if (!hasReal) {
+        var dummy = document.createElement('div');
+        dummy.className = 'pcard';
+        dummy.innerHTML = '<div class="pphoto">👩</div>'
             + '<div class="pinfo">'
-            + '<span class="pname">' + esc(p.name) + '</span>'
-            + (p.age ? '<span class="page">' + esc(p.age) + '</span>' : '')
-            + (p.location ? '<div class="ploc">' + esc(p.location) + '</div>' : '')
-            + (p.bio ? '<div class="pbio">' + esc(p.bio) + '</div>' : '')
+            + '<span class="pname">Jessica</span>'
+            + '<span class="dummy-badge">DEMO</span>'
+            + '<span class="page">28</span>'
+            + '<div class="ploc">📍 Austin, TX</div>'
+            + '<div class="pbio">Coffee lover, hiking enthusiast, working in tech. Looking for something real.</div>'
             + '<div style="font-size:11px;color:#777;text-transform:uppercase;margin:10px 0 4px;">Notes</div>'
-            + '<textarea class="ntarea" id="nt' + p.id + '" placeholder="Private notes...">' + esc(p.notes || '') + '</textarea>'
+            + '<textarea class="ntarea" placeholder="Private notes..." readonly>Met on Tinder. Has a dog named Biscuit. Loves Thai food.</textarea>'
 
 ```
+        + '<button class="btnred" style="opacity:0.5;" onclick="alert(\'This is a demo profile.\')">Demo Profile</button>'
+        + '</div>';
+    area.appendChild(dummy);
+    slot.style.display = 'block';
+    return;
+}
+
+slot.style.display = 'block';
+for (i = 0; i < profiles.length; i++) {
+    var p = profiles[i];
+    var d = document.createElement('div');
+    d.className = 'pcard';
+    var photo = p.photo ? '<img src="' + p.photo + '">' : (p.name ? p.name.charAt(0) : '?');
+    d.innerHTML = '<div class="pphoto">' + photo + '</div>'
+        + '<div class="pinfo">'
+        + '<span class="pname">' + esc(p.name) + '</span>'
+        + (p.age ? '<span class="page">' + esc(p.age) + '</span>' : '')
+        + (p.location ? '<div class="ploc">📍 ' + esc(p.location) + '</div>' : '')
+        + (p.bio ? '<div class="pbio">' + esc(p.bio) + '</div>' : '')
+        + '<div style="font-size:11px;color:#777;text-transform:uppercase;margin:10px 0 4px;">Notes</div>'
+        + '<textarea class="ntarea" id="nt' + p.id + '" placeholder="Private notes...">' + esc(p.notes || '') + '</textarea>'
         + '<button class="btnred" onclick="saveN(' + p.id + ')">Save Notes</button>'
         + '<button class="btndanger" onclick="delP(' + p.id + ')">Delete Profile</button>'
         + '</div>';
@@ -282,6 +329,7 @@ function render() {
 function showMsg(id, cls, msg) {
 var el = document.getElementById(id);
 if (!el) return;
+if (!msg) { el.className = ‘statusmsg’; el.innerHTML = ‘’; return; }
 el.className = ’statusmsg ’ + cls;
 el.innerHTML = msg;
 }
