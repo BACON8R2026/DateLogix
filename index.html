@@ -55,7 +55,7 @@ input[type=file] { display: none; }
 
 <div class="box">
     <h2>API Key (Anthropic)</h2>
-    <span class="lbl">Your new key (starts with sk-ant-)</span>
+    <span class="lbl">Paste your new key here</span>
     <input type="password" id="sAK" placeholder="sk-ant-...">
     <button class="btnred" onclick="saveKey()">Save / Update Key</button>
     <div class="statusmsg" id="keyMsg"></div>
@@ -63,7 +63,7 @@ input[type=file] { display: none; }
 
 <div class="box">
     <h2>Add New Profile</h2>
-    <span class="lbl">Select Screenshots (Profile + Messages OK)</span>
+    <span class="lbl">Tinder Profile + Chat Screenshots (multiple OK)</span>
     <button class="upbtn" onclick="document.getElementById('ocrFiles').click()">Tap to select screenshots</button>
     <input type="file" id="ocrFiles" accept="image/*" multiple onchange="handleScreenshots(this)">
     <div class="thumbrow" id="thumbRow"></div>
@@ -110,20 +110,17 @@ function boot() {
 
 function saveKey() {
     const key = document.getElementById('sAK').value.trim();
-    if (!key.startsWith('sk-ant-')) {
-        return showMsg('keyMsg', 'err', 'Key must start with sk-ant-');
-    }
+    if (!key.startsWith('sk-ant-')) return showMsg('keyMsg', 'err', 'Key must start with sk-ant-');
     localStorage.setItem('dlAK', key);
-    showMsg('keyMsg', 'ok', '✅ Key saved');
+    showMsg('keyMsg', 'ok', '✅ Key saved successfully');
 }
 
 async function scanAll() {
     const key = localStorage.getItem('dlAK') || '';
     if (!key) return showMsg('ocrMsg', 'err', 'Save your API key first');
-
     if (!selectedFiles.length) return showMsg('ocrMsg', 'err', 'Select screenshots first');
 
-    showMsg('ocrMsg', 'load', `Scanning ${selectedFiles.length} image(s)... This may take 10-20 seconds`);
+    showMsg('ocrMsg', 'load', `Scanning ${selectedFiles.length} screenshot(s)...`);
 
     const results = [];
     for (let file of selectedFiles) {
@@ -134,11 +131,8 @@ async function scanAll() {
 
             const res = await callAI(key, b64, mime);
             if (res.txt) results.push(res.txt);
-        } catch(e) {
-            console.error(e);
-        }
+        } catch(e) { console.error(e); }
     }
-
     mergeResults(results);
 }
 
@@ -159,7 +153,7 @@ async function callAI(key, b64, mime) {
                 'Content-Type': 'application/json',
                 'x-api-key': key,
                 'anthropic-version': '2023-06-01',
-                'anthropic-dangerous-direct-browser-access': 'true'   // ← This is critical for Safari/iPad
+                'anthropic-dangerous-direct-browser-access': 'true'
             },
             body: JSON.stringify({
                 model: "claude-3-5-sonnet-20240620",
@@ -168,35 +162,26 @@ async function callAI(key, b64, mime) {
                     role: "user",
                     content: [
                         { type: "image", source: { type: "base64", media_type: mime, data: b64 } },
-                        { type: "text", text: "This is a Tinder profile or text message screenshot. Extract as JSON: name, age, location, bio, conversation (if chat messages visible)." }
+                        { type: "text", text: "Extract from this Tinder or chat screenshot as JSON: name, age, location, bio, conversation" }
                     ]
                 }]
             })
         });
 
         const data = await resp.json();
-
         if (data.error) {
-            console.error(data.error);
-            let msg = data.error.message;
-            if (msg.includes("credit") || msg.includes("balance")) {
-                msg = "Credits not available yet. Wait 10-30 minutes after adding funds and try again.";
-            }
-            showMsg('ocrMsg', 'err', msg);
+            showMsg('ocrMsg', 'err', data.error.message);
             return {};
         }
-
         return { txt: data.content?.[0]?.text || '' };
     } catch(e) {
-        showMsg('ocrMsg', 'err', 'Connection error. Check internet connection.');
+        showMsg('ocrMsg', 'err', 'Connection error');
         return {};
     }
 }
 
 function mergeResults(results) {
-    if (!results.length) {
-        return showMsg('ocrMsg', 'err', 'Could not extract text. Try one clear screenshot first.');
-    }
+    if (!results.length) return showMsg('ocrMsg', 'err', 'Could not extract text. Try one clear screenshot.');
 
     let name = '', age = '', location = '', bio = '', convo = '';
 
@@ -216,10 +201,9 @@ function mergeResults(results) {
     if (age) document.getElementById('iAge').value = age;
     if (location) document.getElementById('iLoc').value = location;
     if (bio) document.getElementById('iBio').value = bio.trim();
-
     window.tempConvo = convo.trim();
 
-    showMsg('ocrMsg', 'ok', '✅ Scan successful! Check the fields and tap "Add Profile"');
+    showMsg('ocrMsg', 'ok', '✅ Scan successful! Review fields then tap "Add Profile"');
 }
 
 function prevPic(inp) {
@@ -234,7 +218,7 @@ function prevPic(inp) {
 }
 
 function handleScreenshots(inp) {
-    selectedFiles = Array.from(inp.files).slice(0, 6);
+    selectedFiles = Array.from(inp.files).slice(0, 8);
     const row = document.getElementById('thumbRow');
     row.innerHTML = '';
     selectedFiles.forEach(file => {
@@ -262,7 +246,7 @@ function addP() {
 
     localStorage.setItem('dlP', JSON.stringify(profiles));
     resetForm();
-    showMsg('addMsg', 'ok', 'Profile added!');
+    showMsg('addMsg', 'ok', 'Profile added successfully!');
     render();
 }
 
@@ -295,13 +279,60 @@ function saveNotes(id) {
 
 function render() {
     const area = document.getElementById('profilesArea');
-    area.innerHTML = profiles.length === 0 ? `<div class="box"><p style="text-align:center;color:#777;">No profiles yet</p></div>` : '';
+    area.innerHTML = '';
+
+    if (profiles.length === 0) {
+        area.innerHTML = `<div class="box"><p style="text-align:center; color:#777; padding:20px;">No profiles yet.<br>Add one above.</p></div>`;
+        return;
+    }
 
     profiles.forEach(p => {
-        // (same render code as before - abbreviated for space)
         const card = document.createElement('div');
         card.className = 'pcard';
-        // ... photo and info ...
+
+        const photoDiv = document.createElement('div');
+        photoDiv.className = 'pphoto';
+        if (p.photo) {
+            const img = document.createElement('img');
+            img.src = p.photo;
+            photoDiv.appendChild(img);
+        }
+        card.appendChild(photoDiv);
+
+        const info = document.createElement('div');
+        info.className = 'pinfo';
+        info.innerHTML = `
+            <span class="pname">${p.name}</span>${p.age ? `<span class="page">${p.age}</span>` : ''}
+            ${p.location ? `<div class="ploc">${p.location}</div>` : ''}
+            ${p.bio ? `<div class="pbio">${p.bio}</div>` : ''}
+        `;
+
+        if (p.conversations) {
+            const convoDiv = document.createElement('div');
+            convoDiv.className = 'convo-summary';
+            convoDiv.innerHTML = `<strong>Chat Summary:</strong><br>${p.conversations.substring(0,220)}${p.conversations.length > 220 ? '...' : ''}`;
+            info.appendChild(convoDiv);
+        }
+
+        const ta = document.createElement('textarea');
+        ta.className = 'ntarea';
+        ta.id = 'nt' + p.id;
+        ta.value = p.notes || '';
+        info.appendChild(ta);
+
+        const saveBtn = document.createElement('button');
+        saveBtn.className = 'btnred';
+        saveBtn.textContent = 'Save Notes';
+        saveBtn.onclick = () => saveNotes(p.id);
+        info.appendChild(saveBtn);
+
+        const delBtn = document.createElement('button');
+        delBtn.className = 'btndel';
+        delBtn.textContent = 'Delete Profile';
+        delBtn.onclick = () => deleteProfile(p.id);
+        info.appendChild(delBtn);
+
+        card.appendChild(info);
         area.appendChild(card);
     });
 }
