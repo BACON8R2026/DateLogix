@@ -7,57 +7,70 @@
 <title>DateLogix</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #d6eaf8; color: #1a2a3a; font-family: -apple-system, sans-serif; }
-#header { background: #2471a3; color: white; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 2px solid #1a5276; }
+body { background: #2d1b4e; color: #f0e8ff; font-family: -apple-system, sans-serif; }
+#header { background: #6a0dad; color: white; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 2px solid #4a0080; }
 #page { padding: 16px; max-width: 480px; margin: 0 auto; }
-.box { background: #eaf4fb; border: 2px solid #2471a3; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.box h2 { font-size: 16px; font-weight: bold; color: #1a5276; margin-bottom: 10px; }
-.lbl { display: block; font-size: 12px; color: #2471a3; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
-input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #2471a3; border-radius: 8px; color: #1a2a3a; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.box { background: #3d2460; border: 2px solid #9b59b6; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+.box h2 { font-size: 16px; font-weight: bold; color: #e8b4ff; margin-bottom: 10px; }
+.lbl { display: block; font-size: 12px; color: #c39bd3; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
+input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: #1e0d33; border: 1px solid #9b59b6; border-radius: 8px; color: #f0e8ff; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 textarea { min-height: 100px; resize: vertical; }
 input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; width: 1px; height: 1px; }
-.upbtn { display: block; width: 100%; padding: 16px; margin: 10px 0; border: 3px dashed #2471a3; border-radius: 10px; background: #d6eaf8; color: #1a5276; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #2471a3; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnsoft { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #2471a3; border-radius: 10px; background: white; color: #2471a3; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+
+/* ICON UPLOAD BUTTONS */
+.icon-row { display: block; margin: 16px 0; text-align: center; }
+.icon-btn { display: inline-block; width: 30%; margin: 0 1%; padding: 14px 4px; background: #4a0080; border: 2px solid #9b59b6; border-radius: 12px; color: #e8b4ff; font-size: 13px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; vertical-align: top; }
+.icon-btn .icon-emoji { display: block; font-size: 28px; margin-bottom: 4px; }
+.icon-btn.active { background: #6a0dad; border-color: #e8b4ff; color: white; }
+
+/* SECTION PANELS */
+.upload-panel { display: none; background: #2d1b4e; border: 1px solid #9b59b6; border-radius: 10px; padding: 14px; margin-top: 10px; }
+.upload-panel.active { display: block; }
+
+.upbtn { display: block; width: 100%; padding: 16px; margin: 10px 0; border: 3px dashed #9b59b6; border-radius: 10px; background: #1e0d33; color: #c39bd3; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #6a0dad; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnsoft { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #9b59b6; border-radius: 10px; background: #1e0d33; color: #c39bd3; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 .btndel { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #cc3333; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnmic { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #1a8a4a; color: white; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnmic { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #1a6b3a; color: white; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnpurple { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #4a0080; color: #e8b4ff; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+
 .statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
-.statusmsg.load { display: block; background: #aed6f1; color: #1a5276; }
-.statusmsg.ok { display: block; background: #d4edda; color: #155724; }
-.statusmsg.err { display: block; background: #f8d7da; color: #721c24; }
-.smallnote { font-size: 13px; color: #2471a3; margin-top: 6px; line-height: 1.4; }
+.statusmsg.load { display: block; background: #4a0080; color: #e8b4ff; }
+.statusmsg.ok { display: block; background: #1a4a1a; color: #90ee90; }
+.statusmsg.err { display: block; background: #4a1a1a; color: #ffaaaa; }
+.smallnote { font-size: 13px; color: #c39bd3; margin-top: 6px; line-height: 1.4; }
 .thumbrow { display: block; margin-top: 10px; }
-.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #2471a3; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
-hr { border: none; border-top: 1px solid #aed6f1; margin: 16px 0; }
+.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #9b59b6; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
+hr { border: none; border-top: 1px solid #4a0080; margin: 16px 0; }
 
 /* PROFILE CARDS */
-.pcard { background: #eaf4fb; border: 2px solid #2471a3; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
-.pcard-header { width: 100%; height: 300px; background: #aed6f1; overflow: hidden; cursor: pointer; }
-.pcard-header img { width: 100%; height: 300px; display: block; object-fit: cover; object-position: 50% 15%; }
-.pcard-header-empty { width: 100%; height: 200px; background: #aed6f1; text-align: center; line-height: 200px; font-size: 80px; cursor: pointer; }
+.pcard { background: #3d2460; border: 2px solid #9b59b6; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+.pcard-photo { width: 100%; height: 300px; background: #1e0d33; overflow: hidden; }
+.pcard-photo img { width: 100%; height: 300px; display: block; object-fit: cover; object-position: 50% 15%; cursor: pointer; }
+.pcard-photo-empty { width: 100%; height: 200px; background: #4a0080; text-align: center; line-height: 200px; font-size: 80px; }
+.pcard-body { padding: 16px; }
+.pname { font-size: 24px; font-weight: bold; color: #e8b4ff; }
+.page { font-size: 16px; color: #c39bd3; margin-left: 8px; }
+.ploc { color: #c39bd3; margin: 6px 0; font-size: 14px; }
+.pbio { color: #f0e8ff; font-size: 14px; line-height: 1.5; margin: 8px 0; }
 
-/* SECTION HEADERS */
-.section-header { display: block; width: 100%; padding: 14px 16px; background: #2471a3; color: white; font-size: 17px; font-weight: bold; border: none; text-align: left; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+/* SECTION HEADERS IN CARDS */
+.card-section-hdr { background: #6a0dad; color: white; padding: 12px 16px; font-size: 17px; font-weight: bold; margin: 16px -16px 12px -16px; }
 
-.pinfo { padding: 16px; }
-.pname { font-size: 24px; font-weight: bold; color: #1a2a3a; }
-.page { font-size: 16px; color: #2471a3; margin-left: 8px; }
-.ploc { color: #2471a3; margin: 6px 0; font-size: 14px; }
-.pcomm { color: #1a2a3a; font-size: 14px; line-height: 1.5; margin: 8px 0; background: white; border: 1px solid #aed6f1; border-radius: 8px; padding: 10px; }
-.pbio { color: #1a2a3a; font-size: 14px; line-height: 1.5; margin: 8px 0; }
-.ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #2471a3; border-radius: 8px; color: #1a2a3a; font-size: 14px; min-height: 80px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
-
-/* PHOTO GRID */
+.ntarea { display: block; width: 100%; padding: 12px; background: #1e0d33; border: 1px solid #9b59b6; border-radius: 8px; color: #f0e8ff; font-size: 14px; min-height: 80px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
 .photogrid { display: block; margin: 10px 0; }
-.pgrid-img { width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid #2471a3; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
-
-/* COMM SCREENSHOTS */
-.comm-thumb { width: 100%; border-radius: 8px; border: 1px solid #aed6f1; display: block; margin: 8px 0; cursor: pointer; }
+.pgrid-img { width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid #9b59b6; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
+.comm-thumb { width: 100%; border-radius: 8px; border: 1px solid #9b59b6; display: block; margin: 8px 0; cursor: pointer; }
 
 /* LIGHTBOX */
-#lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999; text-align: center; }
-#lightbox img { max-width: 100%; max-height: 90%; margin-top: 5%; object-fit: contain; display: inline-block; }
-#lightbox-close { position: fixed; top: 16px; right: 20px; color: white; font-size: 36px; cursor: pointer; z-index: 1000; background: none; border: none; font-family: -apple-system, sans-serif; }
+#lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 999; text-align: center; }
+#lightbox img { max-width: 100%; max-height: 88%; margin-top: 6%; object-fit: contain; display: inline-block; }
+#lightbox-close { position: fixed; top: 16px; right: 20px; color: white; font-size: 40px; cursor: pointer; z-index: 1000; background: none; border: none; font-family: -apple-system, sans-serif; line-height: 1; }
+
+/* EDIT MODAL */
+#editModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 998; overflow-y: auto; }
+#editModalInner { background: #3d2460; border: 2px solid #9b59b6; border-radius: 12px; margin: 20px 16px; padding: 20px; }
+#editModal h2 { color: #e8b4ff; margin-bottom: 16px; }
 </style>
 
 </head>
@@ -68,6 +81,24 @@ hr { border: none; border-top: 1px solid #aed6f1; margin: 16px 0; }
 <div id="lightbox" onclick="closeLightbox()">
 <button id="lightbox-close" onclick="closeLightbox()">x</button>
 <img id="lightbox-img" src="">
+</div>
+
+<!-- EDIT MODAL -->
+
+<div id="editModal">
+<div id="editModalInner">
+<h2>Edit Profile</h2>
+<span class="lbl">Name</span>
+<input type="text" id="editName" placeholder="Her name">
+<span class="lbl">Age</span>
+<input type="number" id="editAge" placeholder="Age">
+<span class="lbl">Location</span>
+<input type="text" id="editLoc" placeholder="City, State">
+<span class="lbl">Bio / Notes</span>
+<textarea id="editBio" placeholder="Bio and details..."></textarea>
+<button class="btnmain" onclick="saveEdit()">Save Changes</button>
+<button class="btnsoft" onclick="closeEdit()">Cancel</button>
+</div>
 </div>
 
 <div id="header">DATELOGIX</div>
@@ -88,44 +119,64 @@ hr { border: none; border-top: 1px solid #aed6f1; margin: 16px 0; }
 <div class="box">
 <h2>Add New Profile</h2>
 
-<span class="lbl">Select Screenshots (Profile + any extras)</span>
+<!-- THREE ICON BUTTONS -->
 
-<p class="smallnote">Select 1 or more screenshots. All scanned and combined into one profile.</p>
+<div class="icon-row">
+<button class="icon-btn active" id="iconInfo" onclick="showPanel('info')">
+<span class="icon-emoji">👤</span>Profile Info
+</button>
+<button class="icon-btn" id="iconPhotos" onclick="showPanel('photos')">
+<span class="icon-emoji">📷</span>Photos
+</button>
+<button class="icon-btn" id="iconComms" onclick="showPanel('comms')">
+<span class="icon-emoji">💬</span>Messages
+</button>
+</div>
+
+<!-- PROFILE INFO PANEL -->
+
+<div class="upload-panel active" id="panelInfo">
+<p class="smallnote">Upload Tinder screenshots to auto-fill. All will be scanned and combined.</p>
 <button class="upbtn" onclick="document.getElementById('ocrFiles').click()">Tap to select screenshots</button>
 <input type="file" id="ocrFiles" accept="image/*" multiple onchange="handleScreenshots(this)">
 <div class="thumbrow" id="thumbRow"></div>
 <button class="btnmain" id="scanBtn" onclick="scanAll()">Scan All Screenshots</button>
 <div class="statusmsg" id="ocrMsg"></div>
-
 <hr>
-
-<span class="lbl">Main Profile Photo</span>
-
-<p class="smallnote">First screenshot set automatically. Tap to choose different.</p>
-<button class="upbtn" onclick="document.getElementById('pFile').click()">Choose / Replace Main Photo</button>
-<input type="file" id="pFile" accept="image/*" onchange="prevPic(this)">
-<div id="photoPreview" style="margin-top:10px;display:none;">
-<img id="previewImg" style="width:100%;height:300px;border-radius:10px;object-fit:cover;object-position:50% 15%;display:block;">
-</div>
-
-<hr>
-
 <span class="lbl">Name</span>
 <input type="text" id="iName" placeholder="Her name">
 <span class="lbl">Age</span>
 <input type="number" id="iAge" placeholder="Age">
 <span class="lbl">Location</span>
 <input type="text" id="iLoc" placeholder="City, State">
-<span class="lbl">Communications Summary</span>
-
-<textarea id="iComm" placeholder="Summary of text conversations..."></textarea>
-
 <span class="lbl">Bio / Notes</span>
-
 <textarea id="iBio" placeholder="Bio and other details..."></textarea>
+</div>
 
+<!-- PHOTOS PANEL -->
+
+<div class="upload-panel" id="panelPhotos">
+<p class="smallnote">Upload photos for this profile. First one becomes the main profile photo.</p>
+<button class="upbtn" onclick="document.getElementById('pFile').click()">Tap to add photo</button>
+<input type="file" id="pFile" accept="image/*" onchange="prevPic(this)">
+<div id="photoPreview" style="margin-top:10px;display:none;">
+<img id="previewImg" style="width:100%;height:280px;border-radius:10px;object-fit:cover;object-position:50% 15%;display:block;">
+</div>
+</div>
+
+<!-- COMMS PANEL -->
+
+<div class="upload-panel" id="panelComms">
+<p class="smallnote">Upload text message screenshots. They will be stored in the Communications section of her profile.</p>
+<button class="upbtn" onclick="document.getElementById('commFile').click()">Tap to add message screenshot</button>
+<input type="file" id="commFile" accept="image/*" multiple onchange="handleCommFiles(this)">
+<div class="thumbrow" id="commThumbRow"></div>
+<span class="lbl">Communications Summary</span>
+<textarea id="iComm" placeholder="Summary of your conversations..."></textarea>
+</div>
+
+<hr>
 <button class="btnmain" onclick="addP()">Add Profile</button>
-
 <div class="statusmsg" id="addMsg"></div>
 </div>
 
@@ -136,6 +187,8 @@ hr { border: none; border-top: 1px solid #aed6f1; margin: 16px 0; }
 var profiles = [];
 var currentPhotoData = '';
 var screenshotFiles = [];
+var pendingCommFiles = [];
+var editingId = null;
 
 function boot() {
     var s = localStorage.getItem('dlP');
@@ -152,6 +205,20 @@ function saveKey() {
     localStorage.setItem('dlAK', k);
     showMsg('keyMsg', 'ok', k ? 'Key saved!' : 'Key cleared.');
 }
+
+function showPanel(name) {
+    var panels = ['info', 'photos', 'comms'];
+    var icons = ['iconInfo', 'iconPhotos', 'iconComms'];
+    var i;
+    for (i = 0; i < panels.length; i++) {
+        document.getElementById('panel' + capitalize(panels[i])).className = 'upload-panel';
+        document.getElementById(icons[i]).className = 'icon-btn';
+    }
+    document.getElementById('panel' + capitalize(name)).className = 'upload-panel active';
+    document.getElementById('icon' + capitalize(name)).className = 'icon-btn active';
+}
+
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
 function prevPic(inp) {
     if (!inp || !inp.files || !inp.files[0]) return;
@@ -170,8 +237,7 @@ function handleScreenshots(inp) {
     screenshotFiles = [];
     if (!inp.files || !inp.files.length) return;
     var i;
-    var count = inp.files.length;
-    for (i = 0; i < count; i++) {
+    for (i = 0; i < inp.files.length; i++) {
         screenshotFiles.push(inp.files[i]);
         var img = document.createElement('img');
         img.className = 'thumb';
@@ -189,7 +255,24 @@ function handleScreenshots(inp) {
         r.readAsDataURL(inp.files[i]);
         row.appendChild(img);
     }
-    showMsg('ocrMsg', 'ok', count + ' screenshot(s) ready. Tap Scan All Screenshots.');
+    showMsg('ocrMsg', 'ok', inp.files.length + ' screenshot(s) ready. Tap Scan All Screenshots.');
+}
+
+function handleCommFiles(inp) {
+    var row = document.getElementById('commThumbRow');
+    row.innerHTML = '';
+    pendingCommFiles = [];
+    if (!inp.files || !inp.files.length) return;
+    var i;
+    for (i = 0; i < inp.files.length; i++) {
+        pendingCommFiles.push(inp.files[i]);
+        var img = document.createElement('img');
+        img.className = 'thumb';
+        var r = new FileReader();
+        r.onload = (function(imgEl) { return function(e) { imgEl.src = e.target.result; }; })(img);
+        r.readAsDataURL(inp.files[i]);
+        row.appendChild(img);
+    }
 }
 
 function scanAll() {
@@ -226,10 +309,7 @@ function scanAll() {
 
         xhr.onload = function() {
             btn.disabled = false;
-            if (xhr.status !== 200) {
-                showMsg('ocrMsg', 'err', 'API error ' + xhr.status + '. Check your key.');
-                return;
-            }
+            if (xhr.status !== 200) { showMsg('ocrMsg', 'err', 'API error ' + xhr.status + '. Check your key.'); return; }
             var data;
             try { data = JSON.parse(xhr.responseText); } catch(e) { showMsg('ocrMsg', 'err', 'Could not parse response.'); return; }
             if (!data.content || !data.content[0] || !data.content[0].text) { showMsg('ocrMsg', 'err', 'Unexpected response format.'); return; }
@@ -259,12 +339,7 @@ function scanAll() {
             }
             showMsg('ocrMsg', 'ok', 'Scan complete! Review fields then tap Add Profile.');
         };
-
-        xhr.onerror = function() {
-            btn.disabled = false;
-            showMsg('ocrMsg', 'err', 'Network error. Check your connection.');
-        };
-
+        xhr.onerror = function() { btn.disabled = false; showMsg('ocrMsg', 'err', 'Network error. Check your connection.'); };
         xhr.send(body);
     }
 
@@ -275,8 +350,7 @@ function scanAll() {
             r.onload = function(e) {
                 var parts = e.target.result.split(',');
                 var mime = file.type || 'image/jpeg';
-                var b64 = parts[1] || '';
-                imageBlocks.push({ type: 'image', source: { type: 'base64', media_type: mime, data: b64 } });
+                imageBlocks.push({ type: 'image', source: { type: 'base64', media_type: mime, data: parts[1] || '' } });
                 loaded++;
                 trySubmit();
             };
@@ -288,33 +362,95 @@ function scanAll() {
 function addP() {
     var name = document.getElementById('iName').value.trim();
     if (!name) { showMsg('addMsg', 'err', 'Name is required.'); return; }
-    var newId = Date.now();
-    profiles.unshift({
-        id: newId,
-        name: name,
-        age: document.getElementById('iAge').value.trim() || '',
-        location: document.getElementById('iLoc').value.trim() || '',
-        comm: document.getElementById('iComm').value.trim() || '',
-        bio: document.getElementById('iBio').value.trim() || '',
-        photo: currentPhotoData || '',
-        photos: currentPhotoData ? [currentPhotoData] : [],
-        commScreenshots: [],
-        notes: ''
-    });
+
+    var commScreenshots = [];
+    var loaded = 0;
+    var total = pendingCommFiles.length;
+
+    function finalize() {
+        var newId = Date.now();
+        profiles.unshift({
+            id: newId,
+            name: name,
+            age: document.getElementById('iAge').value.trim() || '',
+            location: document.getElementById('iLoc').value.trim() || '',
+            comm: document.getElementById('iComm').value.trim() || '',
+            bio: document.getElementById('iBio').value.trim() || '',
+            photo: currentPhotoData || '',
+            photos: currentPhotoData ? [currentPhotoData] : [],
+            commScreenshots: commScreenshots,
+            notes: ''
+        });
+        sp();
+        document.getElementById('iName').value = '';
+        document.getElementById('iAge').value = '';
+        document.getElementById('iLoc').value = '';
+        document.getElementById('iComm').value = '';
+        document.getElementById('iBio').value = '';
+        document.getElementById('pFile').value = '';
+        document.getElementById('ocrFiles').value = '';
+        document.getElementById('commFile').value = '';
+        document.getElementById('thumbRow').innerHTML = '';
+        document.getElementById('commThumbRow').innerHTML = '';
+        document.getElementById('photoPreview').style.display = 'none';
+        screenshotFiles = [];
+        pendingCommFiles = [];
+        currentPhotoData = '';
+        showMsg('addMsg', 'ok', 'Profile added!');
+        render();
+    }
+
+    if (!total) { finalize(); return; }
+
+    var i;
+    for (i = 0; i < total; i++) {
+        (function(file) {
+            var r = new FileReader();
+            r.onload = function(e) {
+                commScreenshots.push(e.target.result);
+                loaded++;
+                if (loaded === total) { finalize(); }
+            };
+            r.readAsDataURL(file);
+        })(pendingCommFiles[i]);
+    }
+}
+
+function openEdit(pid) {
+    var i;
+    var p = null;
+    for (i = 0; i < profiles.length; i++) {
+        if (String(profiles[i].id) === String(pid)) { p = profiles[i]; break; }
+    }
+    if (!p) return;
+    editingId = pid;
+    document.getElementById('editName').value = p.name || '';
+    document.getElementById('editAge').value = p.age || '';
+    document.getElementById('editLoc').value = p.location || '';
+    document.getElementById('editBio').value = p.bio || '';
+    document.getElementById('editModal').style.display = 'block';
+}
+
+function saveEdit() {
+    if (!editingId) return;
+    var i;
+    for (i = 0; i < profiles.length; i++) {
+        if (String(profiles[i].id) === String(editingId)) {
+            profiles[i].name = document.getElementById('editName').value.trim();
+            profiles[i].age = document.getElementById('editAge').value.trim();
+            profiles[i].location = document.getElementById('editLoc').value.trim();
+            profiles[i].bio = document.getElementById('editBio').value.trim();
+            break;
+        }
+    }
     sp();
-    document.getElementById('iName').value = '';
-    document.getElementById('iAge').value = '';
-    document.getElementById('iLoc').value = '';
-    document.getElementById('iComm').value = '';
-    document.getElementById('iBio').value = '';
-    document.getElementById('pFile').value = '';
-    document.getElementById('ocrFiles').value = '';
-    document.getElementById('thumbRow').innerHTML = '';
-    document.getElementById('photoPreview').style.display = 'none';
-    screenshotFiles = [];
-    currentPhotoData = '';
-    showMsg('addMsg', 'ok', 'Profile added!');
+    closeEdit();
     render();
+}
+
+function closeEdit() {
+    editingId = null;
+    document.getElementById('editModal').style.display = 'none';
 }
 
 function saveN(pid) {
@@ -339,7 +475,7 @@ function saveComm(pid) {
     alert('Communications saved!');
 }
 
-function addPhoto(pid) {
+function addPhotoToProfile(pid) {
     var inp = document.getElementById('addphoto' + pid);
     if (!inp || !inp.files || !inp.files[0]) return;
     var r = new FileReader();
@@ -349,6 +485,7 @@ function addPhoto(pid) {
             if (String(profiles[i].id) === String(pid)) {
                 if (!profiles[i].photos) { profiles[i].photos = []; }
                 profiles[i].photos.push(e.target.result);
+                if (!profiles[i].photo) { profiles[i].photo = e.target.result; }
                 break;
             }
         }
@@ -358,19 +495,16 @@ function addPhoto(pid) {
     r.readAsDataURL(inp.files[0]);
 }
 
-function setMainPhoto(pid, photoData) {
+function setMainPhoto(pid, src) {
     var i;
     for (i = 0; i < profiles.length; i++) {
-        if (String(profiles[i].id) === String(pid)) {
-            profiles[i].photo = photoData;
-            break;
-        }
+        if (String(profiles[i].id) === String(pid)) { profiles[i].photo = src; break; }
     }
     sp();
     render();
 }
 
-function addCommScreenshot(pid) {
+function addCommToProfile(pid) {
     var inp = document.getElementById('addcomm' + pid);
     if (!inp || !inp.files || !inp.files[0]) return;
     var r = new FileReader();
@@ -387,6 +521,21 @@ function addCommScreenshot(pid) {
         render();
     };
     r.readAsDataURL(inp.files[0]);
+}
+
+function startVoice(pid) {
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { alert('Voice input not supported on this browser.'); return; }
+    var rec = new SR();
+    rec.lang = 'en-US';
+    rec.interimResults = false;
+    rec.onresult = function(e) {
+        var transcript = e.results[0][0].transcript;
+        var el = document.getElementById('nt' + pid);
+        if (el) { el.value = el.value ? el.value + ' ' + transcript : transcript; }
+    };
+    rec.onerror = function() { alert('Voice input failed. Try again.'); };
+    rec.start();
 }
 
 function delP(pid) {
@@ -411,24 +560,6 @@ function closeLightbox() {
     document.getElementById('lightbox-img').src = '';
 }
 
-function startVoice(pid) {
-    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
-        alert('Voice input not supported on this browser.');
-        return;
-    }
-    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    var rec = new SR();
-    rec.lang = 'en-US';
-    rec.interimResults = false;
-    rec.onresult = function(e) {
-        var transcript = e.results[0][0].transcript;
-        var el = document.getElementById('nt' + pid);
-        if (el) { el.value = el.value ? el.value + ' ' + transcript : transcript; }
-    };
-    rec.onerror = function() { alert('Voice input failed. Try again.'); };
-    rec.start();
-}
-
 function render() {
     var area = document.getElementById('profilesArea');
     area.innerHTML = '';
@@ -436,7 +567,7 @@ function render() {
         var empty = document.createElement('div');
         empty.className = 'box';
         empty.style.textAlign = 'center';
-        empty.style.color = '#2471a3';
+        empty.style.color = '#c39bd3';
         empty.style.padding = '30px';
         empty.innerHTML = 'No profiles yet. Add your first one above.';
         area.appendChild(empty);
@@ -451,25 +582,25 @@ function render() {
         card.className = 'pcard';
 
         // MAIN PHOTO
-        var photoHeader = document.createElement('div');
+        var photoDiv = document.createElement('div');
         if (p.photo) {
-            photoHeader.className = 'pcard-header';
+            photoDiv.className = 'pcard-photo';
             var mainImg = document.createElement('img');
             mainImg.src = p.photo;
             mainImg.onclick = (function(src) { return function() { openLightbox(src); }; })(p.photo);
-            photoHeader.appendChild(mainImg);
+            photoDiv.appendChild(mainImg);
         } else {
-            photoHeader.className = 'pcard-header-empty';
-            photoHeader.innerHTML = p.name ? p.name.charAt(0) : '?';
+            photoDiv.className = 'pcard-photo-empty';
+            photoDiv.innerHTML = p.name ? p.name.charAt(0) : '?';
         }
-        card.appendChild(photoHeader);
+        card.appendChild(photoDiv);
 
         var body = document.createElement('div');
-        body.className = 'pinfo';
+        body.className = 'pcard-body';
 
-        // NAME + AGE
+        // NAME + AGE + EDIT
         var topLine = document.createElement('div');
-        topLine.style.marginBottom = '4px';
+        topLine.style.cssText = 'display:block;margin-bottom:4px;';
         var nameEl = document.createElement('span');
         nameEl.className = 'pname';
         nameEl.innerHTML = esc(p.name);
@@ -482,6 +613,13 @@ function render() {
         }
         body.appendChild(topLine);
 
+        // EDIT BUTTON
+        var editBtn = document.createElement('button');
+        editBtn.className = 'btnpurple';
+        editBtn.innerHTML = '✏️  Edit Profile Info';
+        editBtn.onclick = (function(id) { return function() { openEdit(id); }; })(pid);
+        body.appendChild(editBtn);
+
         if (p.location) {
             var locEl = document.createElement('div');
             locEl.className = 'ploc';
@@ -491,7 +629,7 @@ function render() {
 
         // ---- SECTION: PROFILE INFO ----
         var s1 = document.createElement('div');
-        s1.style.cssText = 'background:#2471a3;color:white;padding:12px 16px;font-size:17px;font-weight:bold;margin:16px -16px 10px -16px;';
+        s1.className = 'card-section-hdr';
         s1.innerHTML = '👤  Profile Info';
         body.appendChild(s1);
 
@@ -503,8 +641,8 @@ function render() {
         }
 
         var nlbl = document.createElement('div');
-        nlbl.style.cssText = 'font-size:11px;color:#2471a3;text-transform:uppercase;margin:12px 0 4px;';
-        nlbl.innerHTML = 'Notes';
+        nlbl.style.cssText = 'font-size:11px;color:#c39bd3;text-transform:uppercase;margin:12px 0 4px;';
+        nlbl.innerHTML = 'Private Notes';
         body.appendChild(nlbl);
 
         var ta = document.createElement('textarea');
@@ -528,7 +666,7 @@ function render() {
 
         // ---- SECTION: PHOTOS ----
         var s2 = document.createElement('div');
-        s2.style.cssText = 'background:#2471a3;color:white;padding:12px 16px;font-size:17px;font-weight:bold;margin:16px -16px 10px -16px;';
+        s2.className = 'card-section-hdr';
         s2.innerHTML = '📷  Photos';
         body.appendChild(s2);
 
@@ -542,7 +680,7 @@ function render() {
             gi.src = photos[j];
             gi.onclick = (function(src, id) {
                 return function() {
-                    if (confirm('Set this as main profile photo?')) { setMainPhoto(id, src); }
+                    if (confirm('Set as main profile photo?')) { setMainPhoto(id, src); }
                     else { openLightbox(src); }
                 };
             })(photos[j], pid);
@@ -555,7 +693,7 @@ function render() {
         addPhotoInp.accept = 'image/*';
         addPhotoInp.id = 'addphoto' + pid;
         addPhotoInp.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;width:1px;height:1px;';
-        addPhotoInp.onchange = (function(id) { return function() { addPhoto(id); }; })(pid);
+        addPhotoInp.onchange = (function(id) { return function() { addPhotoToProfile(id); }; })(pid);
         body.appendChild(addPhotoInp);
 
         var addPhotoBtn = document.createElement('button');
@@ -566,12 +704,12 @@ function render() {
 
         // ---- SECTION: COMMUNICATIONS ----
         var s3 = document.createElement('div');
-        s3.style.cssText = 'background:#2471a3;color:white;padding:12px 16px;font-size:17px;font-weight:bold;margin:16px -16px 10px -16px;';
+        s3.className = 'card-section-hdr';
         s3.innerHTML = '💬  Communications';
         body.appendChild(s3);
 
         var clbl = document.createElement('div');
-        clbl.style.cssText = 'font-size:11px;color:#2471a3;text-transform:uppercase;margin:8px 0 4px;';
+        clbl.style.cssText = 'font-size:11px;color:#c39bd3;text-transform:uppercase;margin:8px 0 4px;';
         clbl.innerHTML = 'Summary';
         body.appendChild(clbl);
 
@@ -589,7 +727,7 @@ function render() {
         body.appendChild(saveCommBtn);
 
         var cslbl = document.createElement('div');
-        cslbl.style.cssText = 'font-size:11px;color:#2471a3;text-transform:uppercase;margin:12px 0 4px;';
+        cslbl.style.cssText = 'font-size:11px;color:#c39bd3;text-transform:uppercase;margin:12px 0 4px;';
         cslbl.innerHTML = 'Message Screenshots';
         body.appendChild(cslbl);
 
@@ -608,7 +746,7 @@ function render() {
         addCommInp.accept = 'image/*';
         addCommInp.id = 'addcomm' + pid;
         addCommInp.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;width:1px;height:1px;';
-        addCommInp.onchange = (function(id) { return function() { addCommScreenshot(id); }; })(pid);
+        addCommInp.onchange = (function(id) { return function() { addCommToProfile(id); }; })(pid);
         body.appendChild(addCommInp);
 
         var addCommBtn = document.createElement('button');
