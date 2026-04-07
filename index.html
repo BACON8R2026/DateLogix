@@ -7,42 +7,73 @@
 <title>DateLogix</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #e8f5f0; color: #1a3a2a; font-family: -apple-system, sans-serif; }
-#header { background: #2e7d5e; color: white; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 2px solid #1a5c42; }
+body { background: #d6eaf8; color: #1a2a3a; font-family: -apple-system, sans-serif; }
+#header { background: #2471a3; color: white; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 2px solid #1a5276; }
 #page { padding: 16px; max-width: 480px; margin: 0 auto; }
-.box { background: #f0faf5; border: 2px solid #2e7d5e; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.box h2 { font-size: 16px; font-weight: bold; color: #1a5c42; margin-bottom: 10px; }
-.lbl { display: block; font-size: 12px; color: #2e7d5e; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
-input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #2e7d5e; border-radius: 8px; color: #1a3a2a; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.box { background: #eaf4fb; border: 2px solid #2471a3; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.box h2 { font-size: 16px; font-weight: bold; color: #1a5276; margin-bottom: 10px; }
+.lbl { display: block; font-size: 12px; color: #2471a3; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
+input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #2471a3; border-radius: 8px; color: #1a2a3a; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 textarea { min-height: 100px; resize: vertical; }
 input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; width: 1px; height: 1px; }
-.upbtn { display: block; width: 100%; padding: 16px; margin: 10px 0; border: 3px dashed #2e7d5e; border-radius: 10px; background: #d4f0e4; color: #1a5c42; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #2e7d5e; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnsoft { display: block; width: 100%; padding: 16px; margin: 10px 0; border: 1px solid #2e7d5e; border-radius: 10px; background: white; color: #2e7d5e; font-size: 16px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.upbtn { display: block; width: 100%; padding: 16px; margin: 10px 0; border: 3px dashed #2471a3; border-radius: 10px; background: #d6eaf8; color: #1a5276; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #2471a3; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnsoft { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #2471a3; border-radius: 10px; background: white; color: #2471a3; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 .btndel { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #cc3333; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnmic { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #1a8a4a; color: white; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 .statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
-.statusmsg.load { display: block; background: #c8eeda; color: #1a5c42; }
+.statusmsg.load { display: block; background: #aed6f1; color: #1a5276; }
 .statusmsg.ok { display: block; background: #d4edda; color: #155724; }
 .statusmsg.err { display: block; background: #f8d7da; color: #721c24; }
-.smallnote { font-size: 13px; color: #2e7d5e; margin-top: 6px; line-height: 1.4; }
+.smallnote { font-size: 13px; color: #2471a3; margin-top: 6px; line-height: 1.4; }
 .thumbrow { display: block; margin-top: 10px; }
-.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #2e7d5e; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
-hr { border: none; border-top: 1px solid #a8d8c0; margin: 16px 0; }
-.pcard { background: #f0faf5; border: 2px solid #2e7d5e; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
-.pphoto { width: 100%; height: 320px; background: #c8eeda; overflow: hidden; }
-.pphoto img { width: 100%; height: 320px; display: block; object-fit: cover; object-position: 50% 15%; }
-.pphoto-empty { width: 100%; height: 260px; background: #c8eeda; text-align: center; line-height: 260px; font-size: 80px; }
+.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #2471a3; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
+hr { border: none; border-top: 1px solid #aed6f1; margin: 16px 0; }
+
+/* PROFILE CARDS */
+.pcard { background: #eaf4fb; border: 2px solid #2471a3; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+.pcard-header { width: 100%; height: 300px; background: #aed6f1; overflow: hidden; cursor: pointer; }
+.pcard-header img { width: 100%; height: 300px; display: block; object-fit: cover; object-position: 50% 15%; }
+.pcard-header-empty { width: 100%; height: 200px; background: #aed6f1; text-align: center; line-height: 200px; font-size: 80px; cursor: pointer; }
+
+/* SECTION HEADERS */
+.section-header { display: block; width: 100%; padding: 14px 16px; background: #2471a3; color: white; font-size: 17px; font-weight: bold; border: none; text-align: left; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+
 .pinfo { padding: 16px; }
-.pname { font-size: 24px; font-weight: bold; color: #1a3a2a; }
-.page { font-size: 16px; color: #2e7d5e; margin-left: 8px; }
-.ploc { color: #2e7d5e; margin: 6px 0; font-size: 14px; }
-.pbio { margin-top: 8px; color: #1a3a2a; line-height: 1.4; font-size: 14px; }
-.ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #2e7d5e; border-radius: 8px; color: #1a3a2a; font-size: 14px; min-height: 80px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+.pname { font-size: 24px; font-weight: bold; color: #1a2a3a; }
+.page { font-size: 16px; color: #2471a3; margin-left: 8px; }
+.ploc { color: #2471a3; margin: 6px 0; font-size: 14px; }
+.pcomm { color: #1a2a3a; font-size: 14px; line-height: 1.5; margin: 8px 0; background: white; border: 1px solid #aed6f1; border-radius: 8px; padding: 10px; }
+.pbio { color: #1a2a3a; font-size: 14px; line-height: 1.5; margin: 8px 0; }
+.ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #2471a3; border-radius: 8px; color: #1a2a3a; font-size: 14px; min-height: 80px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+
+/* PHOTO GRID */
+.photogrid { display: block; margin: 10px 0; }
+.pgrid-img { width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid #2471a3; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
+
+/* COMM SCREENSHOTS */
+.comm-thumb { width: 100%; border-radius: 8px; border: 1px solid #aed6f1; display: block; margin: 8px 0; cursor: pointer; }
+
+/* LIGHTBOX */
+#lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999; text-align: center; }
+#lightbox img { max-width: 100%; max-height: 90%; margin-top: 5%; object-fit: contain; display: inline-block; }
+#lightbox-close { position: fixed; top: 16px; right: 20px; color: white; font-size: 36px; cursor: pointer; z-index: 1000; background: none; border: none; font-family: -apple-system, sans-serif; }
 </style>
+
 </head>
 <body>
+
+<!-- LIGHTBOX -->
+
+<div id="lightbox" onclick="closeLightbox()">
+<button id="lightbox-close" onclick="closeLightbox()">x</button>
+<img id="lightbox-img" src="">
+</div>
+
 <div id="header">DATELOGIX</div>
 <div id="page">
+
+<!-- API KEY -->
 
 <div class="box">
 <h2>API Key</h2>
@@ -52,33 +83,49 @@ hr { border: none; border-top: 1px solid #a8d8c0; margin: 16px 0; }
 <div class="statusmsg" id="keyMsg"></div>
 </div>
 
+<!-- ADD PROFILE -->
+
 <div class="box">
 <h2>Add New Profile</h2>
-<span class="lbl">Select Screenshots</span>
-<p class="smallnote">Tap below and select screenshots. All will be scanned and combined.</p>
+
+<span class="lbl">Select Screenshots (Profile + any extras)</span>
+
+<p class="smallnote">Select 1 or more screenshots. All scanned and combined into one profile.</p>
 <button class="upbtn" onclick="document.getElementById('ocrFiles').click()">Tap to select screenshots</button>
 <input type="file" id="ocrFiles" accept="image/*" multiple onchange="handleScreenshots(this)">
 <div class="thumbrow" id="thumbRow"></div>
 <button class="btnmain" id="scanBtn" onclick="scanAll()">Scan All Screenshots</button>
 <div class="statusmsg" id="ocrMsg"></div>
+
 <hr>
+
 <span class="lbl">Main Profile Photo</span>
-<p class="smallnote">First screenshot is used automatically. Tap to choose a different one.</p>
-<button class="upbtn" onclick="document.getElementById('pFile').click()">Choose / Replace Photo</button>
+
+<p class="smallnote">First screenshot set automatically. Tap to choose different.</p>
+<button class="upbtn" onclick="document.getElementById('pFile').click()">Choose / Replace Main Photo</button>
 <input type="file" id="pFile" accept="image/*" onchange="prevPic(this)">
 <div id="photoPreview" style="margin-top:10px;display:none;">
 <img id="previewImg" style="width:100%;height:300px;border-radius:10px;object-fit:cover;object-position:50% 15%;display:block;">
 </div>
+
 <hr>
+
 <span class="lbl">Name</span>
 <input type="text" id="iName" placeholder="Her name">
 <span class="lbl">Age</span>
 <input type="number" id="iAge" placeholder="Age">
 <span class="lbl">Location</span>
 <input type="text" id="iLoc" placeholder="City, State">
+<span class="lbl">Communications Summary</span>
+
+<textarea id="iComm" placeholder="Summary of text conversations..."></textarea>
+
 <span class="lbl">Bio / Notes</span>
+
 <textarea id="iBio" placeholder="Bio and other details..."></textarea>
+
 <button class="btnmain" onclick="addP()">Add Profile</button>
+
 <div class="statusmsg" id="addMsg"></div>
 </div>
 
@@ -160,11 +207,10 @@ function scanAll() {
 
     function trySubmit() {
         if (loaded < total) return;
-        var promptText = 'You are extracting dating profile information from app screenshots. Look across all screenshots and return ONLY valid JSON in this exact structure, no markdown, no explanation: {"name":"","age":"","location":"","bio":"","photoIndex":0}. Fill in the best value for each field. photoIndex is the zero-based index of the screenshot with the main profile photo.';
-
+        var promptText = 'You are extracting dating profile information from app screenshots. Look across all screenshots and return ONLY valid JSON, no markdown, no explanation: {"name":"","age":"","location":"","bio":"","photoIndex":0}. Fill in the best value for each field. photoIndex is the zero-based index of the screenshot with the main profile photo.';
         var body = JSON.stringify({
             model: 'claude-opus-4-5',
-            max_tokens: 500,
+            max_tokens: 800,
             messages: [{
                 role: 'user',
                 content: imageBlocks.concat([{ type: 'text', text: promptText }])
@@ -181,11 +227,11 @@ function scanAll() {
         xhr.onload = function() {
             btn.disabled = false;
             if (xhr.status !== 200) {
-                showMsg('ocrMsg', 'err', 'API error ' + xhr.status + ': ' + xhr.responseText.substring(0, 120));
+                showMsg('ocrMsg', 'err', 'API error ' + xhr.status + '. Check your key.');
                 return;
             }
             var data;
-            try { data = JSON.parse(xhr.responseText); } catch(e) { showMsg('ocrMsg', 'err', 'Could not parse API response.'); return; }
+            try { data = JSON.parse(xhr.responseText); } catch(e) { showMsg('ocrMsg', 'err', 'Could not parse response.'); return; }
             if (!data.content || !data.content[0] || !data.content[0].text) { showMsg('ocrMsg', 'err', 'Unexpected response format.'); return; }
             var text = data.content[0].text.trim();
             var parsed = null;
@@ -194,16 +240,13 @@ function scanAll() {
                 if (match) { try { parsed = JSON.parse(match[0]); } catch(e2) {} }
             }
             if (!parsed) { showMsg('ocrMsg', 'err', 'Could not read scan results. Try again.'); return; }
-
-            var nameEl = document.getElementById('iName');
-            var ageEl = document.getElementById('iAge');
-            var locEl = document.getElementById('iLoc');
-            var bioEl = document.getElementById('iBio');
-            if (parsed.name && !nameEl.value.trim()) nameEl.value = parsed.name;
-            if (parsed.age && !ageEl.value.trim()) ageEl.value = String(parsed.age);
-            if (parsed.location && !locEl.value.trim()) locEl.value = parsed.location;
-            if (parsed.bio) { bioEl.value = bioEl.value.trim() ? bioEl.value.trim() + '\n\n' + parsed.bio : parsed.bio; }
-
+            if (parsed.name) document.getElementById('iName').value = parsed.name;
+            if (parsed.age) document.getElementById('iAge').value = String(parsed.age);
+            if (parsed.location) document.getElementById('iLoc').value = parsed.location;
+            if (parsed.bio) {
+                var bioEl = document.getElementById('iBio');
+                bioEl.value = bioEl.value.trim() ? bioEl.value.trim() + '\n\n' + parsed.bio : parsed.bio;
+            }
             var photoIdx = (parsed.photoIndex !== null && parsed.photoIndex !== undefined) ? parseInt(parsed.photoIndex) : 0;
             if (screenshotFiles[photoIdx] && !currentPhotoData) {
                 var pr = new FileReader();
@@ -219,7 +262,7 @@ function scanAll() {
 
         xhr.onerror = function() {
             btn.disabled = false;
-            showMsg('ocrMsg', 'err', 'Network error. Check your connection and try again.');
+            showMsg('ocrMsg', 'err', 'Network error. Check your connection.');
         };
 
         xhr.send(body);
@@ -251,14 +294,18 @@ function addP() {
         name: name,
         age: document.getElementById('iAge').value.trim() || '',
         location: document.getElementById('iLoc').value.trim() || '',
+        comm: document.getElementById('iComm').value.trim() || '',
         bio: document.getElementById('iBio').value.trim() || '',
         photo: currentPhotoData || '',
+        photos: currentPhotoData ? [currentPhotoData] : [],
+        commScreenshots: [],
         notes: ''
     });
     sp();
     document.getElementById('iName').value = '';
     document.getElementById('iAge').value = '';
     document.getElementById('iLoc').value = '';
+    document.getElementById('iComm').value = '';
     document.getElementById('iBio').value = '';
     document.getElementById('pFile').value = '';
     document.getElementById('ocrFiles').value = '';
@@ -281,6 +328,67 @@ function saveN(pid) {
     alert('Notes saved!');
 }
 
+function saveComm(pid) {
+    var el = document.getElementById('comm' + pid);
+    if (!el) return;
+    var i;
+    for (i = 0; i < profiles.length; i++) {
+        if (String(profiles[i].id) === String(pid)) { profiles[i].comm = el.value; break; }
+    }
+    sp();
+    alert('Communications saved!');
+}
+
+function addPhoto(pid) {
+    var inp = document.getElementById('addphoto' + pid);
+    if (!inp || !inp.files || !inp.files[0]) return;
+    var r = new FileReader();
+    r.onload = function(e) {
+        var i;
+        for (i = 0; i < profiles.length; i++) {
+            if (String(profiles[i].id) === String(pid)) {
+                if (!profiles[i].photos) { profiles[i].photos = []; }
+                profiles[i].photos.push(e.target.result);
+                break;
+            }
+        }
+        sp();
+        render();
+    };
+    r.readAsDataURL(inp.files[0]);
+}
+
+function setMainPhoto(pid, photoData) {
+    var i;
+    for (i = 0; i < profiles.length; i++) {
+        if (String(profiles[i].id) === String(pid)) {
+            profiles[i].photo = photoData;
+            break;
+        }
+    }
+    sp();
+    render();
+}
+
+function addCommScreenshot(pid) {
+    var inp = document.getElementById('addcomm' + pid);
+    if (!inp || !inp.files || !inp.files[0]) return;
+    var r = new FileReader();
+    r.onload = function(e) {
+        var i;
+        for (i = 0; i < profiles.length; i++) {
+            if (String(profiles[i].id) === String(pid)) {
+                if (!profiles[i].commScreenshots) { profiles[i].commScreenshots = []; }
+                profiles[i].commScreenshots.push(e.target.result);
+                break;
+            }
+        }
+        sp();
+        render();
+    };
+    r.readAsDataURL(inp.files[0]);
+}
+
 function delP(pid) {
     if (!confirm('Delete this profile?')) return;
     var out = [];
@@ -293,6 +401,34 @@ function delP(pid) {
     render();
 }
 
+function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'block';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.getElementById('lightbox-img').src = '';
+}
+
+function startVoice(pid) {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+        alert('Voice input not supported on this browser.');
+        return;
+    }
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var rec = new SR();
+    rec.lang = 'en-US';
+    rec.interimResults = false;
+    rec.onresult = function(e) {
+        var transcript = e.results[0][0].transcript;
+        var el = document.getElementById('nt' + pid);
+        if (el) { el.value = el.value ? el.value + ' ' + transcript : transcript; }
+    };
+    rec.onerror = function() { alert('Voice input failed. Try again.'); };
+    rec.start();
+}
+
 function render() {
     var area = document.getElementById('profilesArea');
     area.innerHTML = '';
@@ -300,12 +436,13 @@ function render() {
         var empty = document.createElement('div');
         empty.className = 'box';
         empty.style.textAlign = 'center';
-        empty.style.color = '#2e7d5e';
+        empty.style.color = '#2471a3';
         empty.style.padding = '30px';
         empty.innerHTML = 'No profiles yet. Add your first one above.';
         area.appendChild(empty);
         return;
     }
+
     var i;
     for (i = 0; i < profiles.length; i++) {
         var p = profiles[i];
@@ -313,22 +450,26 @@ function render() {
         var card = document.createElement('div');
         card.className = 'pcard';
 
-        var photoDiv = document.createElement('div');
+        // MAIN PHOTO
+        var photoHeader = document.createElement('div');
         if (p.photo) {
-            photoDiv.className = 'pphoto';
-            var img = document.createElement('img');
-            img.src = p.photo;
-            photoDiv.appendChild(img);
+            photoHeader.className = 'pcard-header';
+            var mainImg = document.createElement('img');
+            mainImg.src = p.photo;
+            mainImg.onclick = (function(src) { return function() { openLightbox(src); }; })(p.photo);
+            photoHeader.appendChild(mainImg);
         } else {
-            photoDiv.className = 'pphoto-empty';
-            photoDiv.innerHTML = p.name ? p.name.charAt(0) : '?';
+            photoHeader.className = 'pcard-header-empty';
+            photoHeader.innerHTML = p.name ? p.name.charAt(0) : '?';
         }
-        card.appendChild(photoDiv);
+        card.appendChild(photoHeader);
 
-        var info = document.createElement('div');
-        info.className = 'pinfo';
+        var body = document.createElement('div');
+        body.className = 'pinfo';
 
+        // NAME + AGE
         var topLine = document.createElement('div');
+        topLine.style.marginBottom = '4px';
         var nameEl = document.createElement('span');
         nameEl.className = 'pname';
         nameEl.innerHTML = esc(p.name);
@@ -339,47 +480,151 @@ function render() {
             ageEl.innerHTML = esc(p.age);
             topLine.appendChild(ageEl);
         }
-        info.appendChild(topLine);
+        body.appendChild(topLine);
 
         if (p.location) {
             var locEl = document.createElement('div');
             locEl.className = 'ploc';
-            locEl.innerHTML = esc(p.location);
-            info.appendChild(locEl);
+            locEl.innerHTML = '📍 ' + esc(p.location);
+            body.appendChild(locEl);
         }
+
+        // ---- SECTION: PROFILE INFO ----
+        var s1 = document.createElement('div');
+        s1.style.cssText = 'background:#2471a3;color:white;padding:12px 16px;font-size:17px;font-weight:bold;margin:16px -16px 10px -16px;';
+        s1.innerHTML = '👤  Profile Info';
+        body.appendChild(s1);
 
         if (p.bio) {
             var bioEl = document.createElement('div');
             bioEl.className = 'pbio';
-            bioEl.innerHTML = esc(p.bio).substring(0, 200) + (p.bio.length > 200 ? '...' : '');
-            info.appendChild(bioEl);
+            bioEl.innerHTML = esc(p.bio);
+            body.appendChild(bioEl);
         }
 
         var nlbl = document.createElement('div');
-        nlbl.style.cssText = 'font-size:11px;color:#2e7d5e;text-transform:uppercase;margin:12px 0 4px;';
+        nlbl.style.cssText = 'font-size:11px;color:#2471a3;text-transform:uppercase;margin:12px 0 4px;';
         nlbl.innerHTML = 'Notes';
-        info.appendChild(nlbl);
+        body.appendChild(nlbl);
 
         var ta = document.createElement('textarea');
         ta.className = 'ntarea';
         ta.id = 'nt' + pid;
         ta.placeholder = 'Private notes...';
         ta.value = p.notes || '';
-        info.appendChild(ta);
+        body.appendChild(ta);
 
-        var saveBtn = document.createElement('button');
-        saveBtn.className = 'btnmain';
-        saveBtn.innerHTML = 'Save Notes';
-        saveBtn.onclick = (function(id) { return function() { saveN(id); }; })(pid);
-        info.appendChild(saveBtn);
+        var micBtn = document.createElement('button');
+        micBtn.className = 'btnmic';
+        micBtn.innerHTML = '🎤  Speak to Add Notes';
+        micBtn.onclick = (function(id) { return function() { startVoice(id); }; })(pid);
+        body.appendChild(micBtn);
 
+        var saveNBtn = document.createElement('button');
+        saveNBtn.className = 'btnsoft';
+        saveNBtn.innerHTML = 'Save Notes';
+        saveNBtn.onclick = (function(id) { return function() { saveN(id); }; })(pid);
+        body.appendChild(saveNBtn);
+
+        // ---- SECTION: PHOTOS ----
+        var s2 = document.createElement('div');
+        s2.style.cssText = 'background:#2471a3;color:white;padding:12px 16px;font-size:17px;font-weight:bold;margin:16px -16px 10px -16px;';
+        s2.innerHTML = '📷  Photos';
+        body.appendChild(s2);
+
+        var photoGrid = document.createElement('div');
+        photoGrid.className = 'photogrid';
+        var photos = p.photos || (p.photo ? [p.photo] : []);
+        var j;
+        for (j = 0; j < photos.length; j++) {
+            var gi = document.createElement('img');
+            gi.className = 'pgrid-img';
+            gi.src = photos[j];
+            gi.onclick = (function(src, id) {
+                return function() {
+                    if (confirm('Set this as main profile photo?')) { setMainPhoto(id, src); }
+                    else { openLightbox(src); }
+                };
+            })(photos[j], pid);
+            photoGrid.appendChild(gi);
+        }
+        body.appendChild(photoGrid);
+
+        var addPhotoInp = document.createElement('input');
+        addPhotoInp.type = 'file';
+        addPhotoInp.accept = 'image/*';
+        addPhotoInp.id = 'addphoto' + pid;
+        addPhotoInp.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;width:1px;height:1px;';
+        addPhotoInp.onchange = (function(id) { return function() { addPhoto(id); }; })(pid);
+        body.appendChild(addPhotoInp);
+
+        var addPhotoBtn = document.createElement('button');
+        addPhotoBtn.className = 'upbtn';
+        addPhotoBtn.innerHTML = '+ Add Photo';
+        addPhotoBtn.onclick = (function(id) { return function() { document.getElementById('addphoto' + id).click(); }; })(pid);
+        body.appendChild(addPhotoBtn);
+
+        // ---- SECTION: COMMUNICATIONS ----
+        var s3 = document.createElement('div');
+        s3.style.cssText = 'background:#2471a3;color:white;padding:12px 16px;font-size:17px;font-weight:bold;margin:16px -16px 10px -16px;';
+        s3.innerHTML = '💬  Communications';
+        body.appendChild(s3);
+
+        var clbl = document.createElement('div');
+        clbl.style.cssText = 'font-size:11px;color:#2471a3;text-transform:uppercase;margin:8px 0 4px;';
+        clbl.innerHTML = 'Summary';
+        body.appendChild(clbl);
+
+        var commTa = document.createElement('textarea');
+        commTa.className = 'ntarea';
+        commTa.id = 'comm' + pid;
+        commTa.placeholder = 'Summary of your conversations...';
+        commTa.value = p.comm || '';
+        body.appendChild(commTa);
+
+        var saveCommBtn = document.createElement('button');
+        saveCommBtn.className = 'btnsoft';
+        saveCommBtn.innerHTML = 'Save Summary';
+        saveCommBtn.onclick = (function(id) { return function() { saveComm(id); }; })(pid);
+        body.appendChild(saveCommBtn);
+
+        var cslbl = document.createElement('div');
+        cslbl.style.cssText = 'font-size:11px;color:#2471a3;text-transform:uppercase;margin:12px 0 4px;';
+        cslbl.innerHTML = 'Message Screenshots';
+        body.appendChild(cslbl);
+
+        var commScreens = p.commScreenshots || [];
+        var k;
+        for (k = 0; k < commScreens.length; k++) {
+            var cimg = document.createElement('img');
+            cimg.className = 'comm-thumb';
+            cimg.src = commScreens[k];
+            cimg.onclick = (function(src) { return function() { openLightbox(src); }; })(commScreens[k]);
+            body.appendChild(cimg);
+        }
+
+        var addCommInp = document.createElement('input');
+        addCommInp.type = 'file';
+        addCommInp.accept = 'image/*';
+        addCommInp.id = 'addcomm' + pid;
+        addCommInp.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;width:1px;height:1px;';
+        addCommInp.onchange = (function(id) { return function() { addCommScreenshot(id); }; })(pid);
+        body.appendChild(addCommInp);
+
+        var addCommBtn = document.createElement('button');
+        addCommBtn.className = 'upbtn';
+        addCommBtn.innerHTML = '+ Add Message Screenshot';
+        addCommBtn.onclick = (function(id) { return function() { document.getElementById('addcomm' + id).click(); }; })(pid);
+        body.appendChild(addCommBtn);
+
+        // DELETE
         var delBtn = document.createElement('button');
         delBtn.className = 'btndel';
         delBtn.innerHTML = 'Delete Profile';
         delBtn.onclick = (function(id) { return function() { delP(id); }; })(pid);
-        info.appendChild(delBtn);
+        body.appendChild(delBtn);
 
-        card.appendChild(info);
+        card.appendChild(body);
         area.appendChild(card);
     }
 }
@@ -400,4 +645,4 @@ boot();
 </script>
 
 </body>
-</html
+</html>
