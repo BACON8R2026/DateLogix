@@ -6,25 +6,48 @@
 <title>DateLogix</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #111; color: white; }
-#header { background: #8B0000; padding: 16px; text-align: center; font-size: 24px; font-weight: bold; }
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+    background: #2b1a00;          /* Dark orange background */
+    color: white; 
+}
+#header { 
+    background: #ff6200;          /* Bright orange header */
+    padding: 16px; 
+    text-align: center; 
+    font-size: 24px; 
+    font-weight: bold; 
+    color: white;
+}
 #page { padding: 16px; max-width: 480px; margin: 0 auto; }
-.box { background: #1e1e1e; border-radius: 12px; padding: 16px; margin-bottom: 20px; }
-.lbl { display: block; font-size: 12px; color: #aaa; text-transform: uppercase; margin: 12px 0 6px; }
+.box { 
+    background: #1e1e1e; 
+    border-radius: 12px; 
+    padding: 16px; 
+    margin-bottom: 20px; 
+    border: 1px solid #ff6200; 
+}
+.lbl { 
+    display: block; 
+    font-size: 12px; 
+    color: #ffaa66; 
+    text-transform: uppercase; 
+    margin: 12px 0 6px; 
+}
 input[type=text], input[type=number], input[type=password], textarea { 
-    width: 100%; padding: 12px; background: #141414; border: 1px solid #444; 
+    width: 100%; padding: 12px; background: #141414; border: 1px solid #ff6200; 
     border-radius: 8px; color: white; font-size: 16px; 
 }
 textarea { min-height: 90px; resize: vertical; }
 input[type=file] { display: none; }
 .upbtn { 
     display: block; width: 100%; padding: 16px; margin: 8px 0; 
-    border: 2px dashed #8B0000; background: #1a0000; color: #ccc; 
+    border: 2px dashed #ff6200; background: #3a2200; color: #ffcc99; 
     border-radius: 10px; text-align: center; font-size: 15px; cursor: pointer;
 }
 .btnred { 
     display: block; width: 100%; padding: 14px; margin-top: 12px; 
-    background: #8B0000; color: white; border: none; border-radius: 10px; 
+    background: #ff6200; color: white; border: none; border-radius: 10px; 
     font-size: 16px; font-weight: bold; cursor: pointer;
 }
 .btndel { 
@@ -33,20 +56,20 @@ input[type=file] { display: none; }
     font-size: 16px; font-weight: bold; cursor: pointer;
 }
 .statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
-.statusmsg.load { display: block; background: #2a1a00; color: orange; }
+.statusmsg.load { display: block; background: #3a2200; color: #ffcc66; }
 .statusmsg.ok { display: block; background: #003300; color: #4caf50; }
 .statusmsg.err { display: block; background: #330000; color: #ff6666; }
-.pcard { background: #1e1e1e; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+.pcard { background: #1e1e1e; border-radius: 12px; overflow: hidden; margin-bottom: 20px; border: 1px solid #ff6200; }
 .pphoto { width: 100%; max-height: 460px; overflow: hidden; background: #000; }
 .pphoto img { width: 100%; height: auto; display: block; object-fit: contain; }
 .pinfo { padding: 16px; }
-.pname { font-size: 23px; font-weight: bold; }
-.page { font-size: 15px; color: #aaa; margin-left: 8px; }
-.ploc, .pbio { color: #bbb; margin: 6px 0; line-height: 1.4; }
-.convo-summary { background: #252525; padding: 12px; border-radius: 8px; margin: 10px 0; font-size: 14px; white-space: pre-wrap; }
-.ntarea { width: 100%; padding: 12px; background: #141414; border: 1px solid #333; border-radius: 8px; color: white; min-height: 110px; margin: 8px 0; }
+.pname { font-size: 23px; font-weight: bold; color: #ffcc99; }
+.page { font-size: 15px; color: #ffaa66; margin-left: 8px; }
+.ploc, .pbio { color: #ddd; margin: 6px 0; line-height: 1.4; }
+.convo-summary { background: #3a2200; padding: 12px; border-radius: 8px; margin: 10px 0; font-size: 14px; white-space: pre-wrap; }
+.ntarea { width: 100%; padding: 12px; background: #141414; border: 1px solid #ff6200; border-radius: 8px; color: white; min-height: 110px; margin: 8px 0; }
 .thumbrow { margin: 10px 0; overflow-x: auto; white-space: nowrap; padding-bottom: 6px; }
-.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; margin-right: 8px; border: 2px solid #555; }
+.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; margin-right: 8px; border: 2px solid #ff6200; }
 </style>
 </head>
 <body>
@@ -282,7 +305,7 @@ function render() {
     area.innerHTML = '';
 
     if (profiles.length === 0) {
-        area.innerHTML = `<div class="box"><p style="text-align:center; color:#777; padding:20px;">No profiles yet.<br>Add one above.</p></div>`;
+        area.innerHTML = `<div class="box"><p style="text-align:center; color:#ffaa66; padding:20px;">No profiles yet.<br>Add one above.</p></div>`;
         return;
     }
 
