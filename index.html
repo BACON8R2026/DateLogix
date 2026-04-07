@@ -7,60 +7,56 @@
 <title>DateLogix</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #2d1b4e; color: #f0e8ff; font-family: -apple-system, sans-serif; }
-#header { background: #6a0dad; color: white; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 2px solid #4a0080; }
+body { background: #fff9c4; color: #1a1a1a; font-family: -apple-system, sans-serif; }
+#header { background: #f9a825; color: #1a1a1a; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 2px solid #f57f17; }
 #page { padding: 16px; max-width: 480px; margin: 0 auto; }
-.box { background: #3d2460; border: 2px solid #9b59b6; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-.box h2 { font-size: 16px; font-weight: bold; color: #e8b4ff; margin-bottom: 10px; }
-.lbl { display: block; font-size: 12px; color: #c39bd3; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
-input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: #1e0d33; border: 1px solid #9b59b6; border-radius: 8px; color: #f0e8ff; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.box { background: #fffde7; border: 2px solid #f9a825; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.box h2 { font-size: 16px; font-weight: bold; color: #e65100; margin-bottom: 10px; }
+.lbl { display: block; font-size: 12px; color: #e65100; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
+input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #f9a825; border-radius: 8px; color: #1a1a1a; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 textarea { min-height: 100px; resize: vertical; }
 input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; width: 1px; height: 1px; }
+.upbtn { display: block; width: 100%; padding: 16px; margin: 10px 0; border: 3px dashed #f9a825; border-radius: 10px; background: #fff9c4; color: #e65100; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #f9a825; color: #1a1a1a; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnsoft { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #f9a825; border-radius: 10px; background: white; color: #e65100; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btndel { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #cc3333; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnmic { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #2e7d32; color: white; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnedit { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #1565c0; color: white; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
+.statusmsg.load { display: block; background: #ffe082; color: #e65100; }
+.statusmsg.ok { display: block; background: #c8e6c9; color: #1b5e20; }
+.statusmsg.err { display: block; background: #ffcdd2; color: #b71c1c; }
+.smallnote { font-size: 13px; color: #795548; margin-top: 6px; line-height: 1.4; }
+.thumbrow { display: block; margin-top: 10px; }
+.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #f9a825; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
+hr { border: none; border-top: 1px solid #ffe082; margin: 16px 0; }
 
-/* ICON UPLOAD BUTTONS */
-.icon-row { display: block; margin: 16px 0; text-align: center; }
-.icon-btn { display: inline-block; width: 30%; margin: 0 1%; padding: 14px 4px; background: #4a0080; border: 2px solid #9b59b6; border-radius: 12px; color: #e8b4ff; font-size: 13px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; vertical-align: top; }
-.icon-btn .icon-emoji { display: block; font-size: 28px; margin-bottom: 4px; }
-.icon-btn.active { background: #6a0dad; border-color: #e8b4ff; color: white; }
-
-/* SECTION PANELS */
-.upload-panel { display: none; background: #2d1b4e; border: 1px solid #9b59b6; border-radius: 10px; padding: 14px; margin-top: 10px; }
+/* ICON ROW */
+.icon-row { display: block; margin: 12px 0; text-align: center; }
+.icon-btn { display: inline-block; width: 30%; margin: 0 1%; padding: 12px 4px; background: #fff9c4; border: 2px solid #f9a825; border-radius: 12px; color: #e65100; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; vertical-align: top; }
+.icon-btn .icon-emoji { display: block; font-size: 26px; margin-bottom: 4px; }
+.icon-btn.active { background: #f9a825; color: #1a1a1a; border-color: #e65100; }
+.upload-panel { display: none; background: #fffde7; border: 1px solid #ffe082; border-radius: 10px; padding: 14px; margin-top: 10px; }
 .upload-panel.active { display: block; }
 
-.upbtn { display: block; width: 100%; padding: 16px; margin: 10px 0; border: 3px dashed #9b59b6; border-radius: 10px; background: #1e0d33; color: #c39bd3; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #6a0dad; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnsoft { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #9b59b6; border-radius: 10px; background: #1e0d33; color: #c39bd3; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btndel { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #cc3333; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnmic { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #1a6b3a; color: white; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnpurple { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #4a0080; color: #e8b4ff; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-
-.statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
-.statusmsg.load { display: block; background: #4a0080; color: #e8b4ff; }
-.statusmsg.ok { display: block; background: #1a4a1a; color: #90ee90; }
-.statusmsg.err { display: block; background: #4a1a1a; color: #ffaaaa; }
-.smallnote { font-size: 13px; color: #c39bd3; margin-top: 6px; line-height: 1.4; }
-.thumbrow { display: block; margin-top: 10px; }
-.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #9b59b6; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
-hr { border: none; border-top: 1px solid #4a0080; margin: 16px 0; }
+/* FIELDS ALWAYS VISIBLE */
+.fields-section { margin-top: 16px; }
 
 /* PROFILE CARDS */
-.pcard { background: #3d2460; border: 2px solid #9b59b6; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
-.pcard-photo { width: 100%; height: 300px; background: #1e0d33; overflow: hidden; }
+.pcard { background: #fffde7; border: 2px solid #f9a825; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+.pcard-photo { width: 100%; height: 300px; background: #ffe082; overflow: hidden; }
 .pcard-photo img { width: 100%; height: 300px; display: block; object-fit: cover; object-position: 50% 15%; cursor: pointer; }
-.pcard-photo-empty { width: 100%; height: 200px; background: #4a0080; text-align: center; line-height: 200px; font-size: 80px; }
+.pcard-photo-empty { width: 100%; height: 200px; background: #ffe082; text-align: center; line-height: 200px; font-size: 80px; }
 .pcard-body { padding: 16px; }
-.pname { font-size: 24px; font-weight: bold; color: #e8b4ff; }
-.page { font-size: 16px; color: #c39bd3; margin-left: 8px; }
-.ploc { color: #c39bd3; margin: 6px 0; font-size: 14px; }
-.pbio { color: #f0e8ff; font-size: 14px; line-height: 1.5; margin: 8px 0; }
-
-/* SECTION HEADERS IN CARDS */
-.card-section-hdr { background: #6a0dad; color: white; padding: 12px 16px; font-size: 17px; font-weight: bold; margin: 16px -16px 12px -16px; }
-
-.ntarea { display: block; width: 100%; padding: 12px; background: #1e0d33; border: 1px solid #9b59b6; border-radius: 8px; color: #f0e8ff; font-size: 14px; min-height: 80px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+.pname { font-size: 24px; font-weight: bold; color: #e65100; }
+.page { font-size: 16px; color: #795548; margin-left: 8px; }
+.ploc { color: #795548; margin: 6px 0; font-size: 14px; }
+.pbio { color: #1a1a1a; font-size: 14px; line-height: 1.5; margin: 8px 0; }
+.card-section-hdr { background: #f9a825; color: #1a1a1a; padding: 12px 16px; font-size: 17px; font-weight: bold; margin: 16px -16px 12px -16px; }
+.ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #f9a825; border-radius: 8px; color: #1a1a1a; font-size: 14px; min-height: 80px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
 .photogrid { display: block; margin: 10px 0; }
-.pgrid-img { width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid #9b59b6; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
-.comm-thumb { width: 100%; border-radius: 8px; border: 1px solid #9b59b6; display: block; margin: 8px 0; cursor: pointer; }
+.pgrid-img { width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid #f9a825; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
+.comm-thumb { width: 100%; border-radius: 8px; border: 1px solid #ffe082; display: block; margin: 8px 0; cursor: pointer; }
 
 /* LIGHTBOX */
 #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 999; text-align: center; }
@@ -69,21 +65,17 @@ hr { border: none; border-top: 1px solid #4a0080; margin: 16px 0; }
 
 /* EDIT MODAL */
 #editModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 998; overflow-y: auto; }
-#editModalInner { background: #3d2460; border: 2px solid #9b59b6; border-radius: 12px; margin: 20px 16px; padding: 20px; }
-#editModal h2 { color: #e8b4ff; margin-bottom: 16px; }
+#editModalInner { background: #fffde7; border: 2px solid #f9a825; border-radius: 12px; margin: 20px 16px; padding: 20px; }
+#editModal h2 { color: #e65100; margin-bottom: 16px; }
 </style>
 
 </head>
 <body>
 
-<!-- LIGHTBOX -->
-
 <div id="lightbox" onclick="closeLightbox()">
 <button id="lightbox-close" onclick="closeLightbox()">x</button>
 <img id="lightbox-img" src="">
 </div>
-
-<!-- EDIT MODAL -->
 
 <div id="editModal">
 <div id="editModalInner">
@@ -104,8 +96,6 @@ hr { border: none; border-top: 1px solid #4a0080; margin: 16px 0; }
 <div id="header">DATELOGIX</div>
 <div id="page">
 
-<!-- API KEY -->
-
 <div class="box">
 <h2>API Key</h2>
 <span class="lbl">Anthropic API Key</span>
@@ -114,21 +104,17 @@ hr { border: none; border-top: 1px solid #4a0080; margin: 16px 0; }
 <div class="statusmsg" id="keyMsg"></div>
 </div>
 
-<!-- ADD PROFILE -->
-
 <div class="box">
 <h2>Add New Profile</h2>
 
-<!-- THREE ICON BUTTONS -->
-
 <div class="icon-row">
-<button class="icon-btn active" id="iconInfo" onclick="showPanel('info')">
+<button class="icon-btn active" id="iconInfo" onclick="showPanel('Info')">
 <span class="icon-emoji">👤</span>Profile Info
 </button>
-<button class="icon-btn" id="iconPhotos" onclick="showPanel('photos')">
+<button class="icon-btn" id="iconPhotos" onclick="showPanel('Photos')">
 <span class="icon-emoji">📷</span>Photos
 </button>
-<button class="icon-btn" id="iconComms" onclick="showPanel('comms')">
+<button class="icon-btn" id="iconComms" onclick="showPanel('Comms')">
 <span class="icon-emoji">💬</span>Messages
 </button>
 </div>
@@ -136,21 +122,12 @@ hr { border: none; border-top: 1px solid #4a0080; margin: 16px 0; }
 <!-- PROFILE INFO PANEL -->
 
 <div class="upload-panel active" id="panelInfo">
-<p class="smallnote">Upload Tinder screenshots to auto-fill. All will be scanned and combined.</p>
-<button class="upbtn" onclick="document.getElementById('ocrFiles').click()">Tap to select screenshots</button>
+<p class="smallnote">Upload Tinder screenshots. Hit Scan to auto-fill the fields below.</p>
+<button class="upbtn" onclick="document.getElementById('ocrFiles').click()">Tap to select profile screenshots</button>
 <input type="file" id="ocrFiles" accept="image/*" multiple onchange="handleScreenshots(this)">
 <div class="thumbrow" id="thumbRow"></div>
-<button class="btnmain" id="scanBtn" onclick="scanAll()">Scan All Screenshots</button>
+<button class="btnmain" id="scanBtn" onclick="scanProfileScreenshots()">Scan Profile Screenshots</button>
 <div class="statusmsg" id="ocrMsg"></div>
-<hr>
-<span class="lbl">Name</span>
-<input type="text" id="iName" placeholder="Her name">
-<span class="lbl">Age</span>
-<input type="number" id="iAge" placeholder="Age">
-<span class="lbl">Location</span>
-<input type="text" id="iLoc" placeholder="City, State">
-<span class="lbl">Bio / Notes</span>
-<textarea id="iBio" placeholder="Bio and other details..."></textarea>
 </div>
 
 <!-- PHOTOS PANEL -->
@@ -167,17 +144,31 @@ hr { border: none; border-top: 1px solid #4a0080; margin: 16px 0; }
 <!-- COMMS PANEL -->
 
 <div class="upload-panel" id="panelComms">
-<p class="smallnote">Upload text message screenshots. They will be stored in the Communications section of her profile.</p>
-<button class="upbtn" onclick="document.getElementById('commFile').click()">Tap to add message screenshot</button>
+<p class="smallnote">Upload text message screenshots. Hit Scan to generate a summary.</p>
+<button class="upbtn" onclick="document.getElementById('commFile').click()">Tap to select message screenshots</button>
 <input type="file" id="commFile" accept="image/*" multiple onchange="handleCommFiles(this)">
 <div class="thumbrow" id="commThumbRow"></div>
-<span class="lbl">Communications Summary</span>
-<textarea id="iComm" placeholder="Summary of your conversations..."></textarea>
+<button class="btnmain" id="scanCommBtn" onclick="scanCommScreenshots()">Scan Message Screenshots</button>
+<div class="statusmsg" id="commScanMsg"></div>
 </div>
 
+<!-- FIELDS ALWAYS VISIBLE -->
+
+<div class="fields-section">
 <hr>
+<span class="lbl">Name</span>
+<input type="text" id="iName" placeholder="Her name">
+<span class="lbl">Age</span>
+<input type="number" id="iAge" placeholder="Age">
+<span class="lbl">Location</span>
+<input type="text" id="iLoc" placeholder="City, State">
+<span class="lbl">Communications Summary</span>
+<textarea id="iComm" placeholder="Summary of text conversations (auto-filled when you scan messages)..."></textarea>
+<span class="lbl">Bio / Notes</span>
+<textarea id="iBio" placeholder="Bio and other details (auto-filled when you scan profile)..."></textarea>
 <button class="btnmain" onclick="addP()">Add Profile</button>
 <div class="statusmsg" id="addMsg"></div>
+</div>
 </div>
 
 <div id="profilesArea"></div>
@@ -207,18 +198,15 @@ function saveKey() {
 }
 
 function showPanel(name) {
-    var panels = ['info', 'photos', 'comms'];
-    var icons = ['iconInfo', 'iconPhotos', 'iconComms'];
+    var names = ['Info', 'Photos', 'Comms'];
     var i;
-    for (i = 0; i < panels.length; i++) {
-        document.getElementById('panel' + capitalize(panels[i])).className = 'upload-panel';
-        document.getElementById(icons[i]).className = 'icon-btn';
+    for (i = 0; i < names.length; i++) {
+        document.getElementById('panel' + names[i]).className = 'upload-panel';
+        document.getElementById('icon' + names[i]).className = 'icon-btn';
     }
-    document.getElementById('panel' + capitalize(name)).className = 'upload-panel active';
-    document.getElementById('icon' + capitalize(name)).className = 'icon-btn active';
+    document.getElementById('panel' + name).className = 'upload-panel active';
+    document.getElementById('icon' + name).className = 'icon-btn active';
 }
-
-function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
 function prevPic(inp) {
     if (!inp || !inp.files || !inp.files[0]) return;
@@ -255,7 +243,7 @@ function handleScreenshots(inp) {
         r.readAsDataURL(inp.files[i]);
         row.appendChild(img);
     }
-    showMsg('ocrMsg', 'ok', inp.files.length + ' screenshot(s) ready. Tap Scan All Screenshots.');
+    showMsg('ocrMsg', 'ok', inp.files.length + ' screenshot(s) selected. Tap Scan.');
 }
 
 function handleCommFiles(inp) {
@@ -273,90 +261,108 @@ function handleCommFiles(inp) {
         r.readAsDataURL(inp.files[i]);
         row.appendChild(img);
     }
+    showMsg('commScanMsg', 'ok', inp.files.length + ' message screenshot(s) selected. Tap Scan.');
 }
 
-function scanAll() {
-    var key = (localStorage.getItem('dlAK') || '').trim();
-    if (!screenshotFiles.length) { showMsg('ocrMsg', 'err', 'Please select at least one screenshot first.'); return; }
-    if (!key) { showMsg('ocrMsg', 'err', 'Please save your Anthropic API key first.'); return; }
+function callAnthropicXHR(key, imageBlocks, promptText, onSuccess, onError) {
+    var body = JSON.stringify({
+        model: 'claude-opus-4-5',
+        max_tokens: 1000,
+        messages: [{
+            role: 'user',
+            content: imageBlocks.concat([{ type: 'text', text: promptText }])
+        }]
+    });
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://api.anthropic.com/v1/messages', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('x-api-key', key);
+    xhr.setRequestHeader('anthropic-version', '2023-06-01');
+    xhr.setRequestHeader('anthropic-dangerous-direct-browser-access', 'true');
+    xhr.onload = function() {
+        if (xhr.status !== 200) { onError('API error ' + xhr.status + '. Check your key.'); return; }
+        var data;
+        try { data = JSON.parse(xhr.responseText); } catch(e) { onError('Could not parse response.'); return; }
+        if (!data.content || !data.content[0] || !data.content[0].text) { onError('Unexpected response format.'); return; }
+        onSuccess(data.content[0].text.trim());
+    };
+    xhr.onerror = function() { onError('Network error. Check connection.'); };
+    xhr.send(body);
+}
 
+function loadFilesToBlocks(files, onDone) {
+    var blocks = [];
+    var loaded = 0;
+    var i;
+    for (i = 0; i < files.length; i++) {
+        (function(file) {
+            var r = new FileReader();
+            r.onload = function(e) {
+                var parts = e.target.result.split(',');
+                blocks.push({ type: 'image', source: { type: 'base64', media_type: file.type || 'image/jpeg', data: parts[1] || '' } });
+                loaded++;
+                if (loaded === files.length) { onDone(blocks); }
+            };
+            r.readAsDataURL(file);
+        })(files[i]);
+    }
+}
+
+function scanProfileScreenshots() {
+    var key = (localStorage.getItem('dlAK') || '').trim();
+    if (!screenshotFiles.length) { showMsg('ocrMsg', 'err', 'Select screenshots first.'); return; }
+    if (!key) { showMsg('ocrMsg', 'err', 'Save your API key first.'); return; }
     var btn = document.getElementById('scanBtn');
     btn.disabled = true;
     showMsg('ocrMsg', 'load', 'Scanning ' + screenshotFiles.length + ' screenshot(s)...');
-
-    var imageBlocks = [];
-    var loaded = 0;
-    var total = screenshotFiles.length;
-
-    function trySubmit() {
-        if (loaded < total) return;
-        var promptText = 'You are extracting dating profile information from app screenshots. Look across all screenshots and return ONLY valid JSON, no markdown, no explanation: {"name":"","age":"","location":"","bio":"","photoIndex":0}. Fill in the best value for each field. photoIndex is the zero-based index of the screenshot with the main profile photo.';
-        var body = JSON.stringify({
-            model: 'claude-opus-4-5',
-            max_tokens: 800,
-            messages: [{
-                role: 'user',
-                content: imageBlocks.concat([{ type: 'text', text: promptText }])
-            }]
-        });
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://api.anthropic.com/v1/messages', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.setRequestHeader('x-api-key', key);
-        xhr.setRequestHeader('anthropic-version', '2023-06-01');
-        xhr.setRequestHeader('anthropic-dangerous-direct-browser-access', 'true');
-
-        xhr.onload = function() {
+    loadFilesToBlocks(screenshotFiles, function(blocks) {
+        var prompt = 'These are dating app profile screenshots. Return ONLY valid JSON, no markdown: {"name":"","age":"","location":"","bio":"","photoIndex":0}. photoIndex is the zero-based index of the screenshot showing the main profile photo.';
+        callAnthropicXHR(key, blocks, prompt, function(text) {
             btn.disabled = false;
-            if (xhr.status !== 200) { showMsg('ocrMsg', 'err', 'API error ' + xhr.status + '. Check your key.'); return; }
-            var data;
-            try { data = JSON.parse(xhr.responseText); } catch(e) { showMsg('ocrMsg', 'err', 'Could not parse response.'); return; }
-            if (!data.content || !data.content[0] || !data.content[0].text) { showMsg('ocrMsg', 'err', 'Unexpected response format.'); return; }
-            var text = data.content[0].text.trim();
             var parsed = null;
             try { parsed = JSON.parse(text); } catch(e) {
-                var match = text.match(/\{[\s\S]*\}/);
-                if (match) { try { parsed = JSON.parse(match[0]); } catch(e2) {} }
+                var m = text.match(/\{[\s\S]*\}/);
+                if (m) { try { parsed = JSON.parse(m[0]); } catch(e2) {} }
             }
-            if (!parsed) { showMsg('ocrMsg', 'err', 'Could not read scan results. Try again.'); return; }
+            if (!parsed) { showMsg('ocrMsg', 'err', 'Could not read results. Try again.'); return; }
             if (parsed.name) document.getElementById('iName').value = parsed.name;
             if (parsed.age) document.getElementById('iAge').value = String(parsed.age);
             if (parsed.location) document.getElementById('iLoc').value = parsed.location;
             if (parsed.bio) {
-                var bioEl = document.getElementById('iBio');
-                bioEl.value = bioEl.value.trim() ? bioEl.value.trim() + '\n\n' + parsed.bio : parsed.bio;
+                var b = document.getElementById('iBio');
+                b.value = b.value.trim() ? b.value.trim() + '\n\n' + parsed.bio : parsed.bio;
             }
-            var photoIdx = (parsed.photoIndex !== null && parsed.photoIndex !== undefined) ? parseInt(parsed.photoIndex) : 0;
-            if (screenshotFiles[photoIdx] && !currentPhotoData) {
+            var idx = (parsed.photoIndex !== null && parsed.photoIndex !== undefined) ? parseInt(parsed.photoIndex) : 0;
+            if (screenshotFiles[idx] && !currentPhotoData) {
                 var pr = new FileReader();
                 pr.onload = function(e) {
                     currentPhotoData = e.target.result;
                     document.getElementById('previewImg').src = currentPhotoData;
                     document.getElementById('photoPreview').style.display = 'block';
                 };
-                pr.readAsDataURL(screenshotFiles[photoIdx]);
+                pr.readAsDataURL(screenshotFiles[idx]);
             }
-            showMsg('ocrMsg', 'ok', 'Scan complete! Review fields then tap Add Profile.');
-        };
-        xhr.onerror = function() { btn.disabled = false; showMsg('ocrMsg', 'err', 'Network error. Check your connection.'); };
-        xhr.send(body);
-    }
+            showMsg('ocrMsg', 'ok', 'Done! Fields filled. Review then tap Add Profile.');
+        }, function(err) { btn.disabled = false; showMsg('ocrMsg', 'err', err); });
+    });
+}
 
-    var i;
-    for (i = 0; i < total; i++) {
-        (function(file) {
-            var r = new FileReader();
-            r.onload = function(e) {
-                var parts = e.target.result.split(',');
-                var mime = file.type || 'image/jpeg';
-                imageBlocks.push({ type: 'image', source: { type: 'base64', media_type: mime, data: parts[1] || '' } });
-                loaded++;
-                trySubmit();
-            };
-            r.readAsDataURL(file);
-        })(screenshotFiles[i]);
-    }
+function scanCommScreenshots() {
+    var key = (localStorage.getItem('dlAK') || '').trim();
+    if (!pendingCommFiles.length) { showMsg('commScanMsg', 'err', 'Select message screenshots first.'); return; }
+    if (!key) { showMsg('commScanMsg', 'err', 'Save your API key first.'); return; }
+    var btn = document.getElementById('scanCommBtn');
+    btn.disabled = true;
+    showMsg('commScanMsg', 'load', 'Reading ' + pendingCommFiles.length + ' message screenshot(s)...');
+    loadFilesToBlocks(pendingCommFiles, function(blocks) {
+        var prompt = 'These are text message conversation screenshots. Read all messages and write a concise summary of what was discussed — topics, plans, tone, anything notable. Return only the summary text, no JSON, no labels.';
+        callAnthropicXHR(key, blocks, prompt, function(text) {
+            btn.disabled = false;
+            var commEl = document.getElementById('iComm');
+            commEl.value = commEl.value.trim() ? commEl.value.trim() + '\n\n' + text : text;
+            showMsg('commScanMsg', 'ok', 'Summary added to Communications field below.');
+        }, function(err) { btn.disabled = false; showMsg('commScanMsg', 'err', err); });
+    });
 }
 
 function addP() {
@@ -401,7 +407,6 @@ function addP() {
     }
 
     if (!total) { finalize(); return; }
-
     var i;
     for (i = 0; i < total; i++) {
         (function(file) {
@@ -419,9 +424,7 @@ function addP() {
 function openEdit(pid) {
     var i;
     var p = null;
-    for (i = 0; i < profiles.length; i++) {
-        if (String(profiles[i].id) === String(pid)) { p = profiles[i]; break; }
-    }
+    for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) === String(pid)) { p = profiles[i]; break; } }
     if (!p) return;
     editingId = pid;
     document.getElementById('editName').value = p.name || '';
@@ -443,36 +446,25 @@ function saveEdit() {
             break;
         }
     }
-    sp();
-    closeEdit();
-    render();
+    sp(); closeEdit(); render();
 }
 
-function closeEdit() {
-    editingId = null;
-    document.getElementById('editModal').style.display = 'none';
-}
+function closeEdit() { editingId = null; document.getElementById('editModal').style.display = 'none'; }
 
 function saveN(pid) {
     var el = document.getElementById('nt' + pid);
     if (!el) return;
     var i;
-    for (i = 0; i < profiles.length; i++) {
-        if (String(profiles[i].id) === String(pid)) { profiles[i].notes = el.value; break; }
-    }
-    sp();
-    alert('Notes saved!');
+    for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) === String(pid)) { profiles[i].notes = el.value; break; } }
+    sp(); alert('Notes saved!');
 }
 
 function saveComm(pid) {
     var el = document.getElementById('comm' + pid);
     if (!el) return;
     var i;
-    for (i = 0; i < profiles.length; i++) {
-        if (String(profiles[i].id) === String(pid)) { profiles[i].comm = el.value; break; }
-    }
-    sp();
-    alert('Communications saved!');
+    for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) === String(pid)) { profiles[i].comm = el.value; break; } }
+    sp(); alert('Communications saved!');
 }
 
 function addPhotoToProfile(pid) {
@@ -489,19 +481,15 @@ function addPhotoToProfile(pid) {
                 break;
             }
         }
-        sp();
-        render();
+        sp(); render();
     };
     r.readAsDataURL(inp.files[0]);
 }
 
 function setMainPhoto(pid, src) {
     var i;
-    for (i = 0; i < profiles.length; i++) {
-        if (String(profiles[i].id) === String(pid)) { profiles[i].photo = src; break; }
-    }
-    sp();
-    render();
+    for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) === String(pid)) { profiles[i].photo = src; break; } }
+    sp(); render();
 }
 
 function addCommToProfile(pid) {
@@ -517,8 +505,7 @@ function addCommToProfile(pid) {
                 break;
             }
         }
-        sp();
-        render();
+        sp(); render();
     };
     r.readAsDataURL(inp.files[0]);
 }
@@ -530,9 +517,9 @@ function startVoice(pid) {
     rec.lang = 'en-US';
     rec.interimResults = false;
     rec.onresult = function(e) {
-        var transcript = e.results[0][0].transcript;
+        var t = e.results[0][0].transcript;
         var el = document.getElementById('nt' + pid);
-        if (el) { el.value = el.value ? el.value + ' ' + transcript : transcript; }
+        if (el) { el.value = el.value ? el.value + ' ' + t : t; }
     };
     rec.onerror = function() { alert('Voice input failed. Try again.'); };
     rec.start();
@@ -542,12 +529,8 @@ function delP(pid) {
     if (!confirm('Delete this profile?')) return;
     var out = [];
     var i;
-    for (i = 0; i < profiles.length; i++) {
-        if (String(profiles[i].id) !== String(pid)) { out.push(profiles[i]); }
-    }
-    profiles = out;
-    sp();
-    render();
+    for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) !== String(pid)) { out.push(profiles[i]); } }
+    profiles = out; sp(); render();
 }
 
 function openLightbox(src) {
@@ -567,13 +550,12 @@ function render() {
         var empty = document.createElement('div');
         empty.className = 'box';
         empty.style.textAlign = 'center';
-        empty.style.color = '#c39bd3';
+        empty.style.color = '#e65100';
         empty.style.padding = '30px';
         empty.innerHTML = 'No profiles yet. Add your first one above.';
         area.appendChild(empty);
         return;
     }
-
     var i;
     for (i = 0; i < profiles.length; i++) {
         var p = profiles[i];
@@ -581,7 +563,6 @@ function render() {
         var card = document.createElement('div');
         card.className = 'pcard';
 
-        // MAIN PHOTO
         var photoDiv = document.createElement('div');
         if (p.photo) {
             photoDiv.className = 'pcard-photo';
@@ -598,9 +579,7 @@ function render() {
         var body = document.createElement('div');
         body.className = 'pcard-body';
 
-        // NAME + AGE + EDIT
         var topLine = document.createElement('div');
-        topLine.style.cssText = 'display:block;margin-bottom:4px;';
         var nameEl = document.createElement('span');
         nameEl.className = 'pname';
         nameEl.innerHTML = esc(p.name);
@@ -613,13 +592,6 @@ function render() {
         }
         body.appendChild(topLine);
 
-        // EDIT BUTTON
-        var editBtn = document.createElement('button');
-        editBtn.className = 'btnpurple';
-        editBtn.innerHTML = '✏️  Edit Profile Info';
-        editBtn.onclick = (function(id) { return function() { openEdit(id); }; })(pid);
-        body.appendChild(editBtn);
-
         if (p.location) {
             var locEl = document.createElement('div');
             locEl.className = 'ploc';
@@ -627,7 +599,13 @@ function render() {
             body.appendChild(locEl);
         }
 
-        // ---- SECTION: PROFILE INFO ----
+        var editBtn = document.createElement('button');
+        editBtn.className = 'btnedit';
+        editBtn.innerHTML = '✏️  Edit Profile Info';
+        editBtn.onclick = (function(id) { return function() { openEdit(id); }; })(pid);
+        body.appendChild(editBtn);
+
+        // PROFILE INFO SECTION
         var s1 = document.createElement('div');
         s1.className = 'card-section-hdr';
         s1.innerHTML = '👤  Profile Info';
@@ -641,7 +619,7 @@ function render() {
         }
 
         var nlbl = document.createElement('div');
-        nlbl.style.cssText = 'font-size:11px;color:#c39bd3;text-transform:uppercase;margin:12px 0 4px;';
+        nlbl.style.cssText = 'font-size:11px;color:#e65100;text-transform:uppercase;margin:12px 0 4px;';
         nlbl.innerHTML = 'Private Notes';
         body.appendChild(nlbl);
 
@@ -664,7 +642,7 @@ function render() {
         saveNBtn.onclick = (function(id) { return function() { saveN(id); }; })(pid);
         body.appendChild(saveNBtn);
 
-        // ---- SECTION: PHOTOS ----
+        // PHOTOS SECTION
         var s2 = document.createElement('div');
         s2.className = 'card-section-hdr';
         s2.innerHTML = '📷  Photos';
@@ -702,21 +680,21 @@ function render() {
         addPhotoBtn.onclick = (function(id) { return function() { document.getElementById('addphoto' + id).click(); }; })(pid);
         body.appendChild(addPhotoBtn);
 
-        // ---- SECTION: COMMUNICATIONS ----
+        // COMMUNICATIONS SECTION
         var s3 = document.createElement('div');
         s3.className = 'card-section-hdr';
         s3.innerHTML = '💬  Communications';
         body.appendChild(s3);
 
         var clbl = document.createElement('div');
-        clbl.style.cssText = 'font-size:11px;color:#c39bd3;text-transform:uppercase;margin:8px 0 4px;';
+        clbl.style.cssText = 'font-size:11px;color:#e65100;text-transform:uppercase;margin:8px 0 4px;';
         clbl.innerHTML = 'Summary';
         body.appendChild(clbl);
 
         var commTa = document.createElement('textarea');
         commTa.className = 'ntarea';
         commTa.id = 'comm' + pid;
-        commTa.placeholder = 'Summary of your conversations...';
+        commTa.placeholder = 'Summary of conversations...';
         commTa.value = p.comm || '';
         body.appendChild(commTa);
 
@@ -727,7 +705,7 @@ function render() {
         body.appendChild(saveCommBtn);
 
         var cslbl = document.createElement('div');
-        cslbl.style.cssText = 'font-size:11px;color:#c39bd3;text-transform:uppercase;margin:12px 0 4px;';
+        cslbl.style.cssText = 'font-size:11px;color:#e65100;text-transform:uppercase;margin:12px 0 4px;';
         cslbl.innerHTML = 'Message Screenshots';
         body.appendChild(cslbl);
 
@@ -755,7 +733,6 @@ function render() {
         addCommBtn.onclick = (function(id) { return function() { document.getElementById('addcomm' + id).click(); }; })(pid);
         body.appendChild(addCommBtn);
 
-        // DELETE
         var delBtn = document.createElement('button');
         delBtn.className = 'btndel';
         delBtn.innerHTML = 'Delete Profile';
