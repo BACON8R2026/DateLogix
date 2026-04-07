@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DateLogix</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+    background: #2b1a00;          /* Dark orange background */
+    color: white; 
+}
+#header { 
+    background: #ff6200;          /* Bright orange header */
+    padding: 16px; 
+    text-align: center; 
+    font-size: 24px; 
+    font-weight: bold; 
+    color: white;
+}
+#page { padding: 16px; max-width: 480px; margin: 0 auto; }
+.box { 
+    background: #1e1e1e; 
+    border-radius: 12px; 
+    padding: 16px; 
+    margin-bottom: 20px; 
+    border: 1px solid #ff6200; 
+}
+.lbl { 
+    display: block; 
+    font-size: 12px; 
+    color: #ffaa66; 
+    text-transform: uppercase; 
+    margin: 12px 0 6px; 
+}
+input[type=text], input[type=number], input[type=password], textarea { 
+    width: 100%; padding: 12px; background: #141414; border: 1px solid #ff6200; 
+    border-radius: 8px; color: white; font-size: 16px; 
+}
+textarea { min-height: 90px; resize: vertical; }
+input[type=file] { display: none; }
+.upbtn { 
+    display: block; width: 100%; padding: 16px; margin: 8px 0; 
+    border: 2px dashed #ff6200; background: #3a2200; color: #ffcc99; 
+    border-radius: 10px; text-align: center; font-size: 15px; cursor: pointer;
+}
+.btnred { 
+    display: block; width: 100%; padding: 14px; margin-top: 12px; 
+    background: #ff6200; color: white; border: none; border-radius: 10px; 
+    font-size: 16px; font-weight: bold; cursor: pointer;
+}
+.btndel { 
+    display: block; width: 100%; padding: 14px; margin-top: 8px; 
+    background: #ff4444; color: white; border: none; border-radius: 10px; 
+    font-size: 16px; font-weight: bold; cursor: pointer;
+}
+.statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
+.statusmsg.load { display: block; background: #3a2200; color: #ffcc66; }
+.statusmsg.ok { display: block; background: #003300; color: #4caf50; }
+.statusmsg.err { display: block; background: #330000; color: #ff6666; }
+.pcard { background: #1e1e1e; border-radius: 12px; overflow: hidden; margin-bottom: 20px; border: 1px solid #ff6200; }
+.pphoto { width: 100%; max-height: 460px; overflow: hidden; background: #000; }
+.pphoto img { width: 100%; height: auto; display: block; object-fit: contain; }
+.pinfo { padding: 16px; }
+.pname { font-size: 23px; font-weight: bold; color: #ffcc99; }
+.page { font-size: 15px; color: #ffaa66; margin-left: 8px; }
+.ploc, .pbio { color: #ddd; margin: 6px 0; line-height: 1.4; }
+.convo-summary { background: #3a2200; padding: 12px; border-radius: 8px; margin: 10px 0; font-size: 14px; white-space: pre-wrap; }
+.ntarea { width: 100%; padding: 12px; background: #141414; border: 1px solid #ff6200; border-radius: 8px; color: white; min-height: 110px; margin: 8px 0; }
+.thumbrow { margin: 10px 0; overflow-x: auto; white-space: nowrap; padding-bottom: 6px; }
+.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; margin-right: 8px; border: 2px solid #ff6200; }
+</style>
+</head>
+<body>
+<div id="header">DATELOGIX</div>
+<div id="page">
+
+<div class="box">
+    <h2>API Key (Anthropic)</h2>
+    <span class="lbl">Paste your new key here</span>
+    <input type="password" id="sAK" placeholder="sk-ant-...">
+    <button class="btnred" onclick="saveKey()">Save / Update Key</button>
+    <div class="statusmsg" id="keyMsg"></div>
+</div>
+
+<div class="box">
+    <h2>Add New Profile</h2>
+    <span class="lbl">Tinder Profile + Chat Screenshots (multiple OK)</span>
+    <button class="upbtn" onclick="document.getElementById('ocrFiles').click()">Tap to select screenshots</button>
+    <input type="file" id="ocrFiles" accept="image/*" multiple onchange="handleScreenshots(this)">
+    <div class="thumbrow" id="thumbRow"></div>
+    
+    <button class="btnred" onclick="scanAll()">Scan All Screenshots</button>
+    <div class="statusmsg" id="ocrMsg"></div>
+    <hr>
+
+    <span class="lbl">Main Profile Photo</span>
+    <button class="upbtn" onclick="document.getElementById('pFile').click()">Choose / Replace Photo</button>
+    <input type="file" id="pFile" accept="image/*" onchange="prevPic(this)">
+    <div id="photoPreview" style="margin-top:10px; display:none;">
+        <img id="previewImg" style="width:100%; max-height:320px; border-radius:10px; object-fit:contain;">
+    </div>
+    <hr>
+
+    <span class="lbl">Name</span>
+    <input type="text" id="iName" placeholder="Her name">
+    <span class="lbl">Age</span>
+    <input type="number" id="iAge" placeholder="Age">
+    <span class="lbl">Location</span>
+    <input type="text" id="iLoc" placeholder="City, State">
+    <span class="lbl">Bio / Notes</span>
+    <textarea id="iBio" placeholder="Bio and any other info..."></textarea>
+
+    <button class="btnred" onclick="addP()">Add Profile</button>
+    <div class="statusmsg" id="addMsg"></div>
+</div>
+
+<div id="profilesArea"></div>
+</div>
+
+<script>
+let profiles = [];
+let currentPhotoData = '';
+let selectedFiles = [];
+
+function boot() {
+    const saved = localStorage.getItem('dlP');
+    if (saved) profiles = JSON.parse(saved);
+    document.getElementById('sAK').value = localStorage.getItem('dlAK') || '';
+    render();
+}
+
+function saveKey() {
+    const key = document.getElementById('sAK').value.trim();
+    if (!key.startsWith('sk-ant-')) return showMsg('keyMsg', 'err', 'Key must start with sk-ant-');
+    localStorage.setItem('dlAK', key);
+    showMsg('keyMsg', 'ok', '✅ Key saved successfully');
+}
+
+async function scanAll() {
+    const key = localStorage.getItem('dlAK') || '';
+    if (!key) return showMsg('ocrMsg', 'err', 'Save your API key first');
+    if (!selectedFiles.length) return showMsg('ocrMsg', 'err', 'Select screenshots first');
+
+    showMsg('ocrMsg', 'load', `Scanning ${selectedFiles.length} screenshot(s)...`);
+
+    const results = [];
+    for (let file of selectedFiles) {
+        try {
+            const base64 = await fileToBase64(file);
+            const b64 = base64.split(',')[1];
+            const mime = file.type || 'image/jpeg';
+
+            const res = await callAI(key, b64, mime);
+            if (res.txt) results.push(res.txt);
+        } catch(e) { console.error(e); }
+    }
+    mergeResults(results);
+}
+
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
+
+async function callAI(key, b64, mime) {
+    try {
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': key,
+                'anthropic-version': '2023-06-01',
+                'anthropic-dangerous-direct-browser-access': 'true'
+            },
+            body: JSON.stringify({
+                model: "claude-3-5-sonnet-20240620",
+                max_tokens: 1500,
+                messages: [{
+                    role: "user",
+                    content: [
+                        { type: "image", source: { type: "base64", media_type: mime, data: b64 } },
+                        { type: "text", text: "Extract from this Tinder or chat screenshot as JSON: name, age, location, bio, conversation" }
+                    ]
+                }]
+            })
+        });
+
+        const data = await resp.json();
+        if (data.error) {
+            showMsg('ocrMsg', 'err', data.error.message);
+            return {};
+        }
+        return { txt: data.content?.[0]?.text || '' };
+    } catch(e) {
+        showMsg('ocrMsg', 'err', 'Connection error');
+        return {};
+    }
+}
+
+function mergeResults(results) {
+    if (!results.length) return showMsg('ocrMsg', 'err', 'Could not extract text. Try one clear screenshot.');
+
+    let name = '', age = '', location = '', bio = '', convo = '';
+
+    results.forEach(text => {
+        try {
+            const clean = text.replace(/```json/g, '').replace(/```/g, '').trim();
+            const d = JSON.parse(clean);
+            if (d.name) name = d.name;
+            if (d.age) age = d.age;
+            if (d.location) location = d.location;
+            if (d.bio) bio += ' ' + d.bio;
+            if (d.conversation) convo += '\n\n' + d.conversation;
+        } catch(e) {}
+    });
+
+    if (name) document.getElementById('iName').value = name;
+    if (age) document.getElementById('iAge').value = age;
+    if (location) document.getElementById('iLoc').value = location;
+    if (bio) document.getElementById('iBio').value = bio.trim();
+    window.tempConvo = convo.trim();
+
+    showMsg('ocrMsg', 'ok', '✅ Scan successful! Review fields then tap "Add Profile"');
+}
+
+function prevPic(inp) {
+    if (!inp.files[0]) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        currentPhotoData = e.target.result;
+        document.getElementById('previewImg').src = currentPhotoData;
+        document.getElementById('photoPreview').style.display = 'block';
+    };
+    reader.readAsDataURL(inp.files[0]);
+}
+
+function handleScreenshots(inp) {
+    selectedFiles = Array.from(inp.files).slice(0, 8);
+    const row = document.getElementById('thumbRow');
+    row.innerHTML = '';
+    selectedFiles.forEach(file => {
+        const img = document.createElement('img');
+        img.className = 'thumb';
+        img.src = URL.createObjectURL(file);
+        row.appendChild(img);
+    });
+}
+
+function addP() {
+    const name = document.getElementById('iName').value.trim();
+    if (!name) return showMsg('addMsg', 'err', 'Name is required');
+
+    profiles.unshift({
+        id: Date.now(),
+        name: name,
+        age: document.getElementById('iAge').value || '',
+        location: document.getElementById('iLoc').value || '',
+        bio: document.getElementById('iBio').value || '',
+        photo: currentPhotoData || '',
+        notes: '',
+        conversations: window.tempConvo || ''
+    });
+
+    localStorage.setItem('dlP', JSON.stringify(profiles));
+    resetForm();
+    showMsg('addMsg', 'ok', 'Profile added successfully!');
+    render();
+}
+
+function resetForm() {
+    document.getElementById('iName').value = '';
+    document.getElementById('iAge').value = '';
+    document.getElementById('iLoc').value = '';
+    document.getElementById('iBio').value = '';
+    document.getElementById('photoPreview').style.display = 'none';
+    document.getElementById('thumbRow').innerHTML = '';
+    selectedFiles = [];
+    currentPhotoData = '';
+    window.tempConvo = '';
+}
+
+function deleteProfile(id) {
+    if (!confirm('Delete this profile?')) return;
+    profiles = profiles.filter(p => p.id !== id);
+    localStorage.setItem('dlP', JSON.stringify(profiles));
+    render();
+}
+
+function saveNotes(id) {
+    const notes = document.getElementById('nt'+id).value;
+    const p = profiles.find(x => x.id === id);
+    if (p) p.notes = notes;
+    localStorage.setItem('dlP', JSON.stringify(profiles));
+    showMsg('addMsg', 'ok', 'Notes saved');
+}
+
+function render() {
+    const area = document.getElementById('profilesArea');
+    area.innerHTML = '';
+
+    if (profiles.length === 0) {
+        area.innerHTML = `<div class="box"><p style="text-align:center; color:#ffaa66; padding:20px;">No profiles yet.<br>Add one above.</p></div>`;
+        return;
+    }
+
+    profiles.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'pcard';
+
+        const photoDiv = document.createElement('div');
+        photoDiv.className = 'pphoto';
+        if (p.photo) {
+            const img = document.createElement('img');
+            img.src = p.photo;
+            photoDiv.appendChild(img);
+        }
+        card.appendChild(photoDiv);
+
+        const info = document.createElement('div');
+        info.className = 'pinfo';
+        info.innerHTML = `
+            <span class="pname">${p.name}</span>${p.age ? `<span class="page">${p.age}</span>` : ''}
+            ${p.location ? `<div class="ploc">${p.location}</div>` : ''}
+            ${p.bio ? `<div class="pbio">${p.bio}</div>` : ''}
+        `;
+
+        if (p.conversations) {
+            const convoDiv = document.createElement('div');
+            convoDiv.className = 'convo-summary';
+            convoDiv.innerHTML = `<strong>Chat Summary:</strong><br>${p.conversations.substring(0,220)}${p.conversations.length > 220 ? '...' : ''}`;
+            info.appendChild(convoDiv);
+        }
+
+        const ta = document.createElement('textarea');
+        ta.className = 'ntarea';
+        ta.id = 'nt' + p.id;
+        ta.value = p.notes || '';
+        info.appendChild(ta);
+
+        const saveBtn = document.createElement('button');
+        saveBtn.className = 'btnred';
+        saveBtn.textContent = 'Save Notes';
+        saveBtn.onclick = () => saveNotes(p.id);
+        info.appendChild(saveBtn);
+
+        const delBtn = document.createElement('button');
+        delBtn.className = 'btndel';
+        delBtn.textContent = 'Delete Profile';
+        delBtn.onclick = () => deleteProfile(p.id);
+        info.appendChild(delBtn);
+
+        card.appendChild(info);
+        area.appendChild(card);
+    });
+}
+
+function showMsg(id, cls, msg) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.className = `statusmsg ${cls}`;
+        el.innerHTML = msg;
+    }
+}
+
+boot();
+</script>
+</body>
+</html>
