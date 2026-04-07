@@ -6,45 +6,71 @@
 <title>DateLogix</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-    background: #2b001f;
-    color: white;
+    background: #5a3a22;
+    color: #fff8f0;
     font-family: -apple-system, sans-serif;
 }
+
 #header {
-    background: #ff00aa;
+    background: #7a4b2a;
+    color: #fff8f0;
     padding: 20px;
     text-align: center;
     font-size: 28px;
     font-weight: bold;
+    border-bottom: 2px solid #c9a27a;
 }
-#page { padding: 16px; max-width: 480px; margin: 0 auto; }
+
+#page {
+    padding: 16px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
 .box {
-    background: #1e1e1e;
-    border: 2px solid #ff00aa;
+    background: #6b4226;
+    border: 2px solid #d7b08a;
     border-radius: 12px;
     padding: 18px;
     margin-bottom: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.22);
 }
+
 .lbl {
     display: block;
     font-size: 12px;
-    color: #ff99dd;
+    color: #f3d7bc;
     text-transform: uppercase;
     margin: 12px 0 6px;
+    letter-spacing: 0.5px;
 }
+
 input, textarea {
     width: 100%;
     padding: 12px;
-    background: #141414;
-    border: 1px solid #ff00aa;
+    background: #4a2e1d;
+    border: 1px solid #d7b08a;
     border-radius: 8px;
-    color: white;
+    color: #fff8f0;
     font-size: 16px;
 }
-textarea { min-height: 100px; }
-input[type=file] { display: none; }
-.upbtn, .btnred, .btnghost {
+
+input::placeholder, textarea::placeholder {
+    color: #d9bfa9;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input[type=file] {
+    display: none;
+}
+
+.upbtn, .btnmain, .btnsoft {
     width: 100%;
     padding: 16px;
     margin: 10px 0;
@@ -54,20 +80,24 @@ input[type=file] { display: none; }
     font-weight: bold;
     cursor: pointer;
 }
+
 .upbtn {
-    background: #3a0028;
-    border: 3px dashed #ff00aa;
-    color: #ffbbff;
+    background: #8b5e3c;
+    border: 3px dashed #f2c89f;
+    color: #fff8f0;
 }
-.btnred {
-    background: #ff00aa;
-    color: white;
+
+.btnmain {
+    background: #b76e3b;
+    color: #fff8f0;
 }
-.btnghost {
-    background: #2f2f2f;
-    color: #ffbbff;
-    border: 1px solid #ff00aa;
+
+.btnsoft {
+    background: #4a2e1d;
+    color: #f3d7bc;
+    border: 1px solid #d7b08a;
 }
+
 .statusmsg {
     padding: 12px;
     border-radius: 8px;
@@ -75,9 +105,31 @@ input[type=file] { display: none; }
     text-align: center;
     display: none;
 }
-.statusmsg.load { display: block; background: #3a0028; color: #ff99dd; }
-.statusmsg.ok { display: block; background: #003300; color: #4caf50; }
-.statusmsg.err { display: block; background: #330000; color: #ff6666; }
+
+.statusmsg.load {
+    display: block;
+    background: #8b5e3c;
+    color: #fff3e8;
+}
+
+.statusmsg.ok {
+    display: block;
+    background: #2f5a32;
+    color: #d9ffd9;
+}
+
+.statusmsg.err {
+    display: block;
+    background: #6b2a2a;
+    color: #ffd8d8;
+}
+
+.smallnote {
+    font-size: 13px;
+    color: #f3d7bc;
+    margin-top: 6px;
+    line-height: 1.4;
+}
 
 .thumbrow {
     display: flex;
@@ -86,82 +138,96 @@ input[type=file] { display: none; }
     margin-top: 10px;
     padding-bottom: 4px;
 }
+
 .thumbrow img {
     width: 80px;
     height: 80px;
     object-fit: cover;
     border-radius: 8px;
-    border: 2px solid #ff00aa;
+    border: 2px solid #f2c89f;
     flex: 0 0 auto;
 }
 
+hr {
+    border: none;
+    border-top: 1px solid #9b7555;
+    margin: 16px 0;
+}
+
 .pcard {
-    background: #1e1e1e;
-    border: 2px solid #ff00aa;
+    background: #6b4226;
+    border: 2px solid #d7b08a;
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 20px;
     cursor: pointer;
     transition: transform 0.12s ease;
 }
+
 .pcard:active {
     transform: scale(0.99);
 }
+
 .pphoto {
     width: 100%;
     max-height: 520px;
-    background: #000;
+    background: #2d1b10;
     overflow: hidden;
 }
+
 .pphoto img {
     width: 100%;
     height: auto;
     display: block;
     object-fit: contain;
 }
-.pinfo { padding: 16px; }
-.pname { font-size: 24px; font-weight: bold; color: #ffbbff; }
 
-#detailView { display: none; }
+.pinfo {
+    padding: 16px;
+}
+
+.pname {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffe0c2;
+}
+
+#detailView {
+    display: none;
+}
+
 .detailPhoto {
     width: 100%;
     max-height: 520px;
-    background: #000;
+    background: #2d1b10;
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 16px;
 }
+
 .detailPhoto img {
     width: 100%;
     height: auto;
     display: block;
     object-fit: contain;
 }
+
 .detailLabel {
-    color: #ff99dd;
+    color: #f3d7bc;
     font-size: 12px;
     text-transform: uppercase;
     margin-top: 14px;
     margin-bottom: 6px;
 }
+
 .detailValue {
-    background: #141414;
-    border: 1px solid #ff00aa;
+    background: #4a2e1d;
+    border: 1px solid #d7b08a;
     border-radius: 8px;
     padding: 12px;
-    color: #fff;
+    color: #fff8f0;
     line-height: 1.45;
     word-break: break-word;
-}
-.smallnote {
-    font-size: 13px;
-    color: #ff99dd;
-    margin-top: 6px;
-}
-hr {
-    border: none;
-    border-top: 1px solid #4d2340;
-    margin: 16px 0;
 }
 </style>
 </head>
@@ -172,46 +238,53 @@ hr {
 <div class="box">
     <h2>API Key</h2>
     <span class="lbl">Anthropic API Key</span>
-    <input type="password" id="sAK" placeholder="sk-ant-...">
-    <button class="btnred" onclick="saveKey()">Save / Update Key</button>
+    <input type="password" id="sAK" placeholder="sk ant ...">
+    <button class="btnmain" onclick="saveKey()">Save or Update Key</button>
     <div class="statusmsg" id="keyMsg"></div>
     <div class="smallnote">If no key is saved, the scan button will still fire and show a visible message.</div>
 </div>
 
 <div class="box">
     <h2>Add New Profile</h2>
-    <span class="lbl">Select Screenshots (Profile + Messages)</span>
+
+    <span class="lbl">Select Screenshots</span>
     <button class="upbtn" onclick="document.getElementById('ocrFiles').click()">Tap to select screenshots</button>
     <input type="file" id="ocrFiles" accept="image/*" multiple onchange="handleScreenshots(this)">
     <div class="thumbrow" id="thumbRow"></div>
 
-    <button class="btnred" id="scanBtn" onclick="scanAll()">Scan All Screenshots</button>
+    <button class="btnmain" id="scanBtn" onclick="scanAll()">Scan All Screenshots</button>
     <div class="statusmsg" id="ocrMsg"></div>
+
     <hr>
 
     <span class="lbl">Main Profile Photo</span>
-    <button class="upbtn" onclick="document.getElementById('pFile').click()">Choose / Replace Photo</button>
+    <button class="upbtn" onclick="document.getElementById('pFile').click()">Choose or Replace Photo</button>
     <input type="file" id="pFile" accept="image/*" onchange="prevPic(this)">
     <div id="photoPreview" style="margin-top:10px;display:none;">
         <img id="previewImg" style="width:100%;max-height:380px;border-radius:10px;object-fit:contain;">
     </div>
+
     <hr>
 
     <span class="lbl">Name</span>
     <input type="text" id="iName" placeholder="Her name">
+
     <span class="lbl">Age</span>
     <input type="number" id="iAge" placeholder="Age">
+
     <span class="lbl">Location</span>
     <input type="text" id="iLoc" placeholder="City, State">
+
     <span class="lbl">Bio / Notes</span>
     <textarea id="iBio" placeholder="Bio and other details..."></textarea>
 
-    <button class="btnred" onclick="addP()">Add Profile</button>
+    <button class="btnmain" onclick="addP()">Add Profile</button>
     <div class="statusmsg" id="addMsg"></div>
 </div>
 
 <div id="detailView" class="box"></div>
 <div id="profilesArea"></div>
+
 </div>
 
 <script>
@@ -228,7 +301,7 @@ function boot() {
             if (!Array.isArray(profiles)) profiles = [];
         }
     } catch (err) {
-        console.error('Failed to load profiles from storage', err);
+        console.error('Failed to load profiles', err);
         profiles = [];
     }
 
@@ -236,7 +309,7 @@ function boot() {
     document.getElementById('sAK').value = savedKey;
 
     render();
-    console.log('DateLogix boot complete', { profileCount: profiles.length });
+    console.log('Boot complete', { profileCount: profiles.length });
 }
 
 function saveProfiles() {
@@ -247,7 +320,7 @@ function saveKey() {
     const key = document.getElementById('sAK').value.trim();
     localStorage.setItem('dlAK', key);
     showMsg('keyMsg', 'ok', key ? '✅ Key saved' : '✅ Key cleared');
-    console.log('API key updated', { hasKey: !!key });
+    console.log('API key saved', { hasKey: !!key });
 }
 
 function prevPic(inp) {
@@ -272,8 +345,9 @@ function handleScreenshots(inp) {
 
     screenshotFiles.forEach(file => {
         const img = document.createElement('img');
-        img.src = URL.createObjectURL(file);
-        img.onload = () => URL.revokeObjectURL(img.src);
+        const blobUrl = URL.createObjectURL(file);
+        img.src = blobUrl;
+        img.onload = () => URL.revokeObjectURL(blobUrl);
         row.appendChild(img);
     });
 
@@ -308,11 +382,9 @@ function addP() {
     profiles.unshift(newProfile);
     saveProfiles();
     resetForm();
-    showMsg('addMsg', 'ok', '✅ Profile added!');
+    showMsg('addMsg', 'ok', '✅ Profile added');
     render();
     openProfile(newProfile.id);
-
-    console.log('Profile added', newProfile);
 }
 
 function resetForm() {
@@ -339,7 +411,7 @@ function renderProfiles() {
     area.innerHTML = '';
 
     if (profiles.length === 0) {
-        area.innerHTML = '<div class="box" style="text-align:center;color:#ff99dd;padding:30px;">No profiles yet</div>';
+        area.innerHTML = '<div class="box" style="text-align:center;color:#f3d7bc;padding:30px;">No profiles yet</div>';
         return;
     }
 
@@ -355,12 +427,12 @@ function renderProfiles() {
 
         card.innerHTML = `
             <div class="pphoto">
-                ${p.photo ? `<img src="${p.photo}" alt="${safeName}">` : '<div style="height:260px;background:#333;text-align:center;line-height:260px;font-size:80px;">👤</div>'}
+                ${p.photo ? `<img src="${p.photo}" alt="${safeName}">` : '<div style="height:260px;background:#3d281a;text-align:center;line-height:260px;font-size:80px;">👤</div>'}
             </div>
             <div class="pinfo">
                 <div class="pname">${safeName}${safeAge ? ' ' + safeAge : ''}</div>
-                ${safeLocation ? `<div style="color:#ff99dd;margin:6px 0;">${safeLocation}</div>` : ''}
-                ${safeBio ? `<div style="margin-top:8px;color:#ddd;line-height:1.4;">${truncateText(safeBio, 140)}</div>` : ''}
+                ${safeLocation ? `<div style="color:#f3d7bc;margin:6px 0;">${safeLocation}</div>` : ''}
+                ${safeBio ? `<div style="margin-top:8px;color:#fff0e4;line-height:1.4;">${truncateText(safeBio, 140)}</div>` : ''}
             </div>
         `;
         area.appendChild(card);
@@ -375,7 +447,7 @@ function openProfile(profileId) {
     detail.style.display = 'block';
     detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    console.log('Profile opened', { profileId });
+    console.log('Opened profile', { profileId });
 }
 
 function renderDetail() {
@@ -403,7 +475,7 @@ function renderDetail() {
     detail.innerHTML = `
         <h2 style="margin-bottom:14px;">Profile Detail</h2>
         <div class="detailPhoto">
-            ${profile.photo ? `<img src="${profile.photo}" alt="${safeName}">` : '<div style="height:280px;background:#333;text-align:center;line-height:280px;font-size:80px;">👤</div>'}
+            ${profile.photo ? `<img src="${profile.photo}" alt="${safeName}">` : '<div style="height:280px;background:#3d281a;text-align:center;line-height:280px;font-size:80px;">👤</div>'}
         </div>
 
         <div class="detailLabel">Name</div>
@@ -418,7 +490,7 @@ function renderDetail() {
         <div class="detailLabel">Bio / Notes</div>
         <div class="detailValue">${safeBio || 'No notes yet'}</div>
 
-        <button class="btnghost" onclick="closeProfileDetail()">Close Profile</button>
+        <button class="btnsoft" onclick="closeProfileDetail()">Close Profile</button>
     `;
 }
 
@@ -443,14 +515,13 @@ async function scanAll() {
         btn.disabled = true;
         btn.style.opacity = '0.7';
         showMsg('ocrMsg', 'load', `Scanning ${screenshotFiles.length} screenshot${screenshotFiles.length > 1 ? 's' : ''}...`);
-        console.log('Scan process started', {
+        console.log('Scan started', {
             screenshotCount: screenshotFiles.length,
             hasApiKey: !!key
         });
 
         if (!key) {
-            console.warn('No API key found');
-            await wait(350);
+            await wait(300);
             showMsg('ocrMsg', 'err', 'Scan started, but no Anthropic API key is saved yet');
             return;
         }
@@ -480,13 +551,13 @@ async function scanScreenshotsWithAnthropic(files, apiKey) {
     const imageBlocks = [];
 
     for (const file of files) {
-        const { mediaType, data } = await fileToBase64Payload(file);
+        const payload = await fileToBase64Payload(file);
         imageBlocks.push({
             type: 'image',
             source: {
                 type: 'base64',
-                media_type: mediaType,
-                data: data
+                media_type: payload.mediaType,
+                data: payload.data
             }
         });
     }
@@ -494,7 +565,7 @@ async function scanScreenshotsWithAnthropic(files, apiKey) {
     const promptText = `
 You are extracting dating profile information from app screenshots.
 
-Look across all screenshots and return ONLY valid JSON in this exact structure:
+Look across all screenshots and return only valid JSON in this exact structure:
 {
   "name": "",
   "age": "",
@@ -512,7 +583,7 @@ Do not include explanation.
 `;
 
     const payload = {
-        model: "claude-opus-4-6",
+        model: "claude-3-5-sonnet-latest",
         max_tokens: 500,
         messages: [
             {
@@ -524,10 +595,6 @@ Do not include explanation.
             }
         ]
     };
-
-    console.log('Sending request to Anthropic', {
-        imageCount: imageBlocks.length
-    });
 
     const res = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
