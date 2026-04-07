@@ -6,23 +6,71 @@
 <title>DateLogix</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #2b1a00; color: white; font-family: -apple-system, sans-serif; }
-#header { background: #ff6200; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; }
+body { 
+    background: #2b001f; 
+    color: white; 
+    font-family: -apple-system, sans-serif; 
+}
+#header { 
+    background: #ff00aa; 
+    padding: 20px; 
+    text-align: center; 
+    font-size: 28px; 
+    font-weight: bold; 
+}
 #page { padding: 16px; max-width: 480px; margin: 0 auto; }
-.box { background: #1e1e1e; border: 2px solid #ff6200; border-radius: 12px; padding: 18px; margin-bottom: 20px; }
-.lbl { display: block; font-size: 12px; color: #ffcc88; text-transform: uppercase; margin: 12px 0 6px; }
-input, textarea { width: 100%; padding: 12px; background: #141414; border: 1px solid #ff6200; border-radius: 8px; color: white; font-size: 16px; }
+.box { 
+    background: #1e1e1e; 
+    border: 2px solid #ff00aa; 
+    border-radius: 12px; 
+    padding: 18px; 
+    margin-bottom: 20px; 
+}
+.lbl { 
+    display: block; 
+    font-size: 12px; 
+    color: #ff99dd; 
+    text-transform: uppercase; 
+    margin: 12px 0 6px; 
+}
+input, textarea { 
+    width: 100%; padding: 12px; background: #141414; border: 1px solid #ff00aa; 
+    border-radius: 8px; color: white; font-size: 16px; 
+}
 textarea { min-height: 100px; }
 input[type=file] { display: none; }
-.upbtn, .btnred { width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; font-size: 17px; font-weight: bold; cursor: pointer; }
-.upbtn { background: #3a2200; border: 3px dashed #ff6200; color: #ffddaa; }
-.btnred { background: #ff6200; color: white; }
+.upbtn, .btnred { 
+    width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; 
+    font-size: 17px; font-weight: bold; cursor: pointer; 
+}
+.upbtn { background: #3a0028; border: 3px dashed #ff00aa; color: #ffbbff; }
+.btnred { background: #ff00aa; color: white; }
 .statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; }
-.statusmsg.load { display: block; background: #3a2200; color: orange; }
+.statusmsg.load { display: block; background: #3a0028; color: #ff99dd; }
 .statusmsg.ok { display: block; background: #003300; color: #4caf50; }
 .statusmsg.err { display: block; background: #330000; color: #ff6666; }
-.thumbrow { margin: 10px 0; overflow-x: auto; white-space: nowrap; }
-.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; margin-right: 8px; border: 2px solid #ff6200; }
+
+.pcard { 
+    background: #1e1e1e; 
+    border: 2px solid #ff00aa; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    margin-bottom: 20px; 
+}
+.pphoto { 
+    width: 100%; 
+    max-height: 520px; 
+    background: #000; 
+    overflow: hidden; 
+}
+.pphoto img { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    object-fit: contain; 
+}
+.pinfo { padding: 16px; }
+.pname { font-size: 24px; font-weight: bold; color: #ffbbff; }
 </style>
 </head>
 <body>
@@ -49,9 +97,11 @@ input[type=file] { display: none; }
     <hr>
 
     <span class="lbl">Main Profile Photo</span>
-    <button class="upbtn" onclick="document.getElementById('pFile').click()">Choose Photo</button>
+    <button class="upbtn" onclick="document.getElementById('pFile').click()">Choose / Replace Photo</button>
     <input type="file" id="pFile" accept="image/*" onchange="prevPic(this)">
-    <div id="photoPreview" style="margin-top:10px;display:none;"><img id="previewImg" style="width:100%;max-height:300px;border-radius:10px;"></div>
+    <div id="photoPreview" style="margin-top:10px;display:none;">
+        <img id="previewImg" style="width:100%;max-height:380px;border-radius:10px;object-fit:contain;">
+    </div>
     <hr>
 
     <span class="lbl">Name</span>
@@ -73,22 +123,18 @@ input[type=file] { display: none; }
 <script>
 let profiles = [];
 let currentPhotoData = '';
-let selectedFiles = [];
 
 function boot() {
     const saved = localStorage.getItem('dlP');
     if (saved) profiles = JSON.parse(saved);
-    document.getElementById('sAK').value = localStorage.getItem('dlAK') || '';
     render();
 }
 
 function saveKey() {
     const key = document.getElementById('sAK').value.trim();
     localStorage.setItem('dlAK', key);
-    showMsg('keyMsg', 'ok', 'Key saved');
+    showMsg('keyMsg', 'ok', '✅ Key saved');
 }
-
-async function scanAll() { showMsg('ocrMsg', 'ok', 'Scan feature coming - for now use manual entry'); }
 
 function prevPic(inp) {
     if (!inp.files[0]) return;
@@ -102,13 +148,12 @@ function prevPic(inp) {
 }
 
 function handleScreenshots(inp) {
-    selectedFiles = Array.from(inp.files);
     const row = document.getElementById('thumbRow');
     row.innerHTML = '';
-    selectedFiles.forEach(f => {
+    Array.from(inp.files).forEach(file => {
         const img = document.createElement('img');
-        img.className = 'thumb';
-        img.src = URL.createObjectURL(f);
+        img.style = 'width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:8px;border:2px solid #ff00aa;';
+        img.src = URL.createObjectURL(file);
         row.appendChild(img);
     });
 }
@@ -116,7 +161,7 @@ function handleScreenshots(inp) {
 function addP() {
     const name = document.getElementById('iName').value.trim();
     if (!name) return showMsg('addMsg', 'err', 'Name is required');
-    
+
     profiles.unshift({
         id: Date.now(),
         name: name,
@@ -125,9 +170,10 @@ function addP() {
         bio: document.getElementById('iBio').value || '',
         photo: currentPhotoData || ''
     });
+
     localStorage.setItem('dlP', JSON.stringify(profiles));
     resetForm();
-    showMsg('addMsg', 'ok', 'Profile added!');
+    showMsg('addMsg', 'ok', '✅ Profile added!');
     render();
 }
 
@@ -143,16 +189,26 @@ function resetForm() {
 function render() {
     const area = document.getElementById('profilesArea');
     area.innerHTML = '';
+
     if (profiles.length === 0) {
-        area.innerHTML = '<div class="box" style="text-align:center;color:#ffcc88;padding:30px;">No profiles yet</div>';
+        area.innerHTML = '<div class="box" style="text-align:center;color:#ff99dd;padding:30px;">No profiles yet</div>';
         return;
     }
-    // Simple render for now
+
     profiles.forEach(p => {
-        const div = document.createElement('div');
-        div.className = 'box';
-        div.innerHTML = `<strong>${p.name}</strong> ${p.age ? p.age : ''}<br>${p.location || ''}<br>${p.bio ? p.bio.substring(0,80) : ''}...`;
-        area.appendChild(div);
+        const card = document.createElement('div');
+        card.className = 'pcard';
+        card.innerHTML = `
+            <div class="pphoto">
+                ${p.photo ? `<img src="${p.photo}">` : '<div style="height:260px;background:#333;text-align:center;line-height:260px;font-size:80px;">👤</div>'}
+            </div>
+            <div class="pinfo">
+                <div class="pname">${p.name} ${p.age ? p.age : ''}</div>
+                ${p.location ? `<div style="color:#ff99dd;margin:6px 0;">${p.location}</div>` : ''}
+                ${p.bio ? `<div style="margin-top:8px;color:#ddd;line-height:1.4;">${p.bio}</div>` : ''}
+            </div>
+        `;
+        area.appendChild(card);
     });
 }
 
@@ -161,6 +217,7 @@ function showMsg(id, cls, msg) {
     if (el) {
         el.className = `statusmsg ${cls}`;
         el.innerHTML = msg;
+        el.style.display = 'block';
     }
 }
 
