@@ -7,51 +7,46 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #111; color: white; }
-#header { background: #8B0000; padding: 14px; text-align: center; font-size: 22px; font-weight: bold; letter-spacing: 1px; }
-#page { padding: 14px; max-width: 480px; margin: 0 auto; }
-.box { background: #1e1e1e; border-radius: 10px; padding: 16px; margin-bottom: 16px; }
-.box h2 { font-size: 15px; font-weight: bold; margin-bottom: 12px; color: #ccc; }
-.lbl { display: block; font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 4px; margin-top: 10px; }
+#header { background: #8B0000; padding: 16px; text-align: center; font-size: 24px; font-weight: bold; }
+#page { padding: 16px; max-width: 480px; margin: 0 auto; }
+.box { background: #1e1e1e; border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+.lbl { display: block; font-size: 12px; color: #aaa; text-transform: uppercase; margin: 12px 0 6px; }
 input[type=text], input[type=number], input[type=password], textarea { 
-    display: block; width: 100%; padding: 10px; background: #141414; border: 1px solid #444; 
-    border-radius: 8px; color: white; font-size: 14px; box-sizing: border-box; 
+    width: 100%; padding: 12px; background: #141414; border: 1px solid #444; 
+    border-radius: 8px; color: white; font-size: 16px; 
 }
-textarea { min-height: 80px; resize: vertical; }
-input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; width: 1px; height: 1px; }
+textarea { min-height: 90px; resize: vertical; }
+input[type=file] { display: none; }
 .upbtn { 
-    display: block; width: 100%; padding: 16px; border: 2px dashed #8B0000; border-radius: 8px; 
-    background: #1a0000; color: #aaa; font-size: 14px; text-align: center; cursor: pointer; 
-    margin: 10px 0; 
+    display: block; width: 100%; padding: 16px; margin: 8px 0; 
+    border: 2px dashed #8B0000; background: #1a0000; color: #ccc; 
+    border-radius: 10px; text-align: center; font-size: 15px; cursor: pointer;
 }
 .btnred { 
-    display: block; width: 100%; padding: 13px; margin-top: 12px; background: #8B0000; color: white; 
-    border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; 
+    display: block; width: 100%; padding: 14px; margin-top: 12px; 
+    background: #8B0000; color: white; border: none; border-radius: 10px; 
+    font-size: 16px; font-weight: bold; cursor: pointer;
 }
 .btndel { 
-    display: block; width: 100%; padding: 13px; margin-top: 8px; background: #ff4444; color: white; 
-    border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; 
+    display: block; width: 100%; padding: 14px; margin-top: 8px; 
+    background: #ff4444; color: white; border: none; border-radius: 10px; 
+    font-size: 16px; font-weight: bold; cursor: pointer;
 }
-.statusmsg { padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 13px; text-align: center; display: none; }
+.statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
 .statusmsg.load { display: block; background: #2a1a00; color: orange; }
 .statusmsg.ok { display: block; background: #003300; color: #4caf50; }
-.statusmsg.err { display: block; background: #330000; color: #ff5555; }
-.pcard { background: #1e1e1e; border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
-.pphoto { width: 100%; max-height: 420px; overflow: hidden; background: #2a2a2a; position: relative; }
-.pphoto img { width: 100%; height: auto; display: block; object-fit: contain; background: #000; }
-.pphoto-empty { width: 100%; height: 300px; background: #2a2a2a; text-align: center; line-height: 300px; font-size: 60px; color: #555; }
-.pinfo { padding: 14px; }
-.pname { font-size: 22px; font-weight: bold; }
-.page { font-size: 14px; color: #aaa; margin-left: 6px; }
-.ploc { color: #777; font-size: 13px; margin: 6px 0; }
-.pbio { color: #bbb; font-size: 13px; line-height: 1.5; margin-bottom: 10px; }
-.convo-summary { background: #252525; padding: 10px; border-radius: 8px; font-size: 13px; margin: 8px 0; white-space: pre-wrap; }
-.ntarea { 
-    display: block; width: 100%; padding: 10px; background: #141414; border: 1px solid #333; 
-    border-radius: 8px; color: white; font-size: 13px; min-height: 100px; margin: 8px 0; 
-}
-.thumbrow { margin: 8px 0; overflow-x: auto; white-space: nowrap; padding-bottom: 4px; }
-.thumb { width: 72px; height: 72px; object-fit: cover; border-radius: 6px; margin-right: 6px; border: 2px solid #555; display: inline-block; }
-hr { border: none; border-top: 1px solid #333; margin: 14px 0; }
+.statusmsg.err { display: block; background: #330000; color: #ff6666; }
+.pcard { background: #1e1e1e; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+.pphoto { width: 100%; max-height: 460px; overflow: hidden; background: #000; }
+.pphoto img { width: 100%; height: auto; display: block; object-fit: contain; }
+.pinfo { padding: 16px; }
+.pname { font-size: 23px; font-weight: bold; }
+.page { font-size: 15px; color: #aaa; margin-left: 8px; }
+.ploc, .pbio { color: #bbb; margin: 6px 0; line-height: 1.4; }
+.convo-summary { background: #252525; padding: 12px; border-radius: 8px; margin: 10px 0; font-size: 14px; white-space: pre-wrap; }
+.ntarea { width: 100%; padding: 12px; background: #141414; border: 1px solid #333; border-radius: 8px; color: white; min-height: 110px; margin: 8px 0; }
+.thumbrow { margin: 10px 0; overflow-x: auto; white-space: nowrap; padding-bottom: 6px; }
+.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; margin-right: 8px; border: 2px solid #555; }
 </style>
 </head>
 <body>
@@ -60,349 +55,13 @@ hr { border: none; border-top: 1px solid #333; margin: 14px 0; }
 
 <div class="box">
     <h2>API Key (Anthropic)</h2>
-    <span class="lbl">Enter or update your key anytime</span>
+    <span class="lbl">Paste your new key here</span>
     <input type="password" id="sAK" placeholder="sk-ant-...">
-    <button id="saveBtn" class="btnred" onclick="saveKey()">Save / Update Key</button>
+    <button class="btnred" onclick="saveKey()">Save / Update Key</button>
     <div class="statusmsg" id="keyMsg"></div>
 </div>
 
 <div class="box">
-    <h2>Add / Update Profile</h2>
-    
-    <span class="lbl">Tinder Profile + Chat Screenshots (select multiple)</span>
-    <p style="color:#666;font-size:12px;margin-bottom:8px;">You can select profile pics + text message screenshots together.</p>
-    <button class="upbtn" onclick="document.getElementById('ocrFiles').click()">Tap to select screenshots</button>
-    <input type="file" id="ocrFiles" accept="image/*" multiple onchange="handleScreenshots(this)">
-    <div class="thumbrow" id="thumbRow"></div>
-    <button class="btnred" onclick="scanAll()">Scan All Screenshots</button>
-    <div class="statusmsg" id="ocrMsg"></div>
-    <hr>
-
-    <span class="lbl">Main Profile Photo</span>
-    <button class="upbtn" onclick="document.getElementById('pFile').click()">Choose / Replace Photo</button>
-    <input type="file" id="pFile" accept="image/*" onchange="prevPic(this)">
-    <div id="photoPreview" style="margin-top:8px;display:none;">
-        <img id="previewImg" style="width:100%;max-height:300px;object-fit:contain;border-radius:8px;">
-    </div>
-    <hr>
-
-    <span class="lbl">Name</span>
-    <input type="text" id="iName" placeholder="Her name">
-    <span class="lbl">Age</span>
-    <input type="number" id="iAge" placeholder="Age">
-    <span class="lbl">Location</span>
-    <input type="text" id="iLoc" placeholder="City, State">
-    <span class="lbl">Bio / Info</span>
-    <textarea id="iBio" placeholder="Bio and other details..."></textarea>
-    
-    <button class="btnred" onclick="addP()">Add Profile</button>
-    <div class="statusmsg" id="addMsg"></div>
-</div>
-
-<div id="profilesArea"></div>
-</div>
-
-<script>
-let profiles = [];
-let currentPhotoData = '';
-let selectedFiles = [];
-
-function boot() {
-    const saved = localStorage.getItem('dlP');
-    if (saved) {
-        try { profiles = JSON.parse(saved); } catch(e) { profiles = []; }
-    }
-    const k = localStorage.getItem('dlAK') || '';
-    document.getElementById('sAK').value = k;
-    render();
-}
-
-function saveProfiles() {
-    localStorage.setItem('dlP', JSON.stringify(profiles));
-}
-
-function saveKey() {
-    const k = document.getElementById('sAK').value.trim();
-    if (!k) {
-        showMsg('keyMsg', 'err', 'Please enter a valid API key');
-        return;
-    }
-    localStorage.setItem('dlAK', k);
-    showMsg('keyMsg', 'ok', 'API Key saved/updated successfully ✓');
-}
-
-function handleScreenshots(inp) {
-    if (!inp.files?.length) return;
-    selectedFiles = Array.from(inp.files).slice(0, 8);
-    const thumbRow = document.getElementById('thumbRow');
-    thumbRow.innerHTML = '';
-    
-    selectedFiles.forEach(file => {
-        const r = new FileReader();
-        r.onload = e => {
-            const img = document.createElement('img');
-            img.className = 'thumb';
-            img.src = e.target.result;
-            thumbRow.appendChild(img);
-        };
-        r.readAsDataURL(file);
-    });
-    
-    showMsg('ocrMsg', 'ok', `${selectedFiles.length} screenshot(s) selected → Tap Scan`);
-}
-
-function prevPic(inp) {
-    if (!inp.files?.[0]) return;
-    const r = new FileReader();
-    r.onload = e => {
-        currentPhotoData = e.target.result;
-        document.getElementById('previewImg').src = currentPhotoData;
-        document.getElementById('photoPreview').style.display = 'block';
-    };
-    r.readAsDataURL(inp.files[0]);
-}
-
-async function scanAll() {
-    const key = localStorage.getItem('dlAK') || '';
-    if (!key) return showMsg('ocrMsg', 'err', 'Please save your API key first');
-
-    if (!selectedFiles.length) return showMsg('ocrMsg', 'err', 'Select screenshots first');
-
-    showMsg('ocrMsg', 'load', `Scanning ${selectedFiles.length} screenshot(s)...`);
-
-    const results = [];
-    for (let file of selectedFiles) {
-        try {
-            const base64 = await fileToBase64(file);
-            const b64 = base64.split(',')[1];
-            const mime = file.type || 'image/jpeg';
-            
-            const prompt = `This is a screenshot from Tinder or text messages. Extract all useful information as JSON only:
-{
-  "name": "",
-  "age": "",
-  "location": "",
-  "bio": "",
-  "conversation": "Full chat text if this is messages",
-  "extra": ""
-}`;
-
-            const res = await callAI(key, b64, mime, prompt);
-            if (res.txt) {
-                try {
-                    let clean = res.txt.replace(/```json/g,'').replace(/```/g,'').trim();
-                    results.push(JSON.parse(clean));
-                } catch(e) {}
-            }
-        } catch(e) {}
-    }
-
-    mergeResults(results);
-}
-
-function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-    });
-}
-
-function mergeResults(results) {
-    if (!results.length) return showMsg('ocrMsg', 'err', 'Could not extract text. Try better screenshots.');
-
-    let name = '', age = '', location = '', bio = '', convo = '';
-
-    results.forEach(d => {
-        if (d.name && !name) name = d.name;
-        if (d.age && !age) age = d.age;
-        if (d.location && !location) location = d.location;
-        if (d.bio) bio += ' ' + (d.bio || '');
-        if (d.conversation) convo += '\n\n' + (d.conversation || '');
-    });
-
-    if (name) document.getElementById('iName').value = name;
-    if (age) document.getElementById('iAge').value = age;
-    if (location) document.getElementById('iLoc').value = location;
-    if (bio) document.getElementById('iBio').value = bio.trim();
-
-    window.tempConvo = convo.trim();
-
-    showMsg('ocrMsg', 'ok', 'Scan complete! Review fields then tap "Add Profile"');
-}
-
-async function callAI(key, b64, mime, prompt) {
-    try {
-        const resp = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': key,
-                'anthropic-version': '2023-06-01',
-                'anthropic-dangerous-direct-browser-access': 'true'
-            },
-            body: JSON.stringify({
-                model: "claude-3-5-sonnet-20240620",
-                max_tokens: 1500,
-                messages: [{
-                    role: "user",
-                    content: [
-                        { type: "image", source: { type: "base64", media_type: mime, data: b64 } },
-                        { type: "text", text: prompt }
-                    ]
-                }]
-            })
-        });
-
-        const data = await resp.json();
-        if (data.error) throw new Error(data.error.message || 'API Error');
-        return { txt: data.content?.[0]?.text || '' };
-    } catch(e) {
-        console.error(e);
-        showMsg('ocrMsg', 'err', 'API call failed: ' + e.message);
-        return { err: true };
-    }
-}
-
-function addP() {
-    const name = document.getElementById('iName').value.trim();
-    if (!name) return showMsg('addMsg', 'err', 'Name is required');
-
-    profiles.unshift({
-        id: Date.now(),
-        name: name,
-        age: document.getElementById('iAge').value || '',
-        location: document.getElementById('iLoc').value.trim() || '',
-        bio: document.getElementById('iBio').value.trim() || '',
-        photo: currentPhotoData || '',
-        notes: '',
-        conversations: window.tempConvo || ''
-    });
-
-    saveProfiles();
-    resetForm();
-    showMsg('addMsg', 'ok', 'Profile added successfully!');
-    render();
-}
-
-function resetForm() {
-    document.getElementById('iName').value = '';
-    document.getElementById('iAge').value = '';
-    document.getElementById('iLoc').value = '';
-    document.getElementById('iBio').value = '';
-    document.getElementById('pFile').value = '';
-    document.getElementById('ocrFiles').value = '';
-    document.getElementById('thumbRow').innerHTML = '';
-    document.getElementById('photoPreview').style.display = 'none';
-    selectedFiles = [];
-    currentPhotoData = '';
-    window.tempConvo = '';
-}
-
-function saveNotes(pid) {
-    const el = document.getElementById('nt' + pid);
-    const p = profiles.find(x => x.id === pid);
-    if (p && el) p.notes = el.value;
-    saveProfiles();
-    showMsg('addMsg', 'ok', 'Notes saved');
-}
-
-function deleteProfile(pid) {
-    if (!confirm('Delete this profile permanently?')) return;
-    profiles = profiles.filter(p => p.id !== pid);
-    saveProfiles();
-    render();
-}
-
-function render() {
-    const area = document.getElementById('profilesArea');
-    area.innerHTML = '';
-
-    if (!profiles.length) {
-        area.innerHTML = `<div class="pcard"><div class="pphoto-empty">👩</div><div class="pinfo"><span class="pname">No profiles yet</span><div class="pbio">Add your first one above</div></div></div>`;
-        return;
-    }
-
-    profiles.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'pcard';
-
-        const photoDiv = document.createElement('div');
-        photoDiv.className = 'pphoto';
-        if (p.photo) {
-            const img = document.createElement('img');
-            img.src = p.photo;
-            photoDiv.appendChild(img);
-        } else {
-            photoDiv.className = 'pphoto-empty';
-            photoDiv.textContent = p.name?.[0] || '?';
-        }
-        card.appendChild(photoDiv);
-
-        const info = document.createElement('div');
-        info.className = 'pinfo';
-
-        info.innerHTML = `
-            <span class="pname">${escapeHtml(p.name)}</span>
-            ${p.age ? `<span class="page">${p.age}</span>` : ''}
-            ${p.location ? `<div class="ploc">${escapeHtml(p.location)}</div>` : ''}
-            ${p.bio ? `<div class="pbio">${escapeHtml(p.bio)}</div>` : ''}
-        `;
-
-        if (p.conversations) {
-            const sum = document.createElement('div');
-            sum.className = 'convo-summary';
-            sum.innerHTML = `<strong>Chat:</strong><br>${escapeHtml(p.conversations.substring(0,250))}${p.conversations.length > 250 ? '...' : ''}`;
-            info.appendChild(sum);
-        }
-
-        const notesLabel = document.createElement('div');
-        notesLabel.style.cssText = 'font-size:11px;color:#777;text-transform:uppercase;margin:12px 0 4px;';
-        notesLabel.textContent = 'Private Notes';
-        info.appendChild(notesLabel);
-
-        const ta = document.createElement('textarea');
-        ta.className = 'ntarea';
-        ta.id = 'nt' + p.id;
-        ta.value = p.notes || '';
-        info.appendChild(ta);
-
-        const saveBtn = document.createElement('button');
-        saveBtn.className = 'btnred';
-        saveBtn.textContent = 'Save Notes';
-        saveBtn.onclick = () => saveNotes(p.id);
-        info.appendChild(saveBtn);
-
-        const delBtn = document.createElement('button');
-        delBtn.className = 'btndel';
-        delBtn.textContent = 'Delete Profile';
-        delBtn.onclick = () => deleteProfile(p.id);
-        info.appendChild(delBtn);
-
-        card.appendChild(info);
-        area.appendChild(card);
-    });
-}
-
-function escapeHtml(text) {
-    if (!text) return '';
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-}
-
-function showMsg(id, cls, msg) {
-    const el = document.getElementById(id);
-    if (el) {
-        el.className = `statusmsg ${cls}`;
-        el.innerHTML = msg;
-    }
-}
-
-boot();
-</script>
-</body>
-</html>
+    <h2>Add New Profile</h2>
+    <span class="lbl">Tinder Profile + Chat Screenshots (you can select multiple)</span>
+    <button
