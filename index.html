@@ -150,6 +150,22 @@ var pendingCommScreenshots = [];
 var editingId = null;
 var detectedPlatform = '';
 
+function compressImage(dataUrl, callback) {
+    var img = new Image();
+    img.onload = function() {
+        var canvas = document.createElement("canvas");
+        var maxW = 600; var maxH = 800;
+        var w = img.width; var h = img.height;
+        if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+        if (h > maxH) { w = Math.round(w * maxH / h); h = maxH; }
+        canvas.width = w; canvas.height = h;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, w, h);
+        callback(canvas.toDataURL("image/jpeg", 0.6));
+    };
+    img.src = dataUrl;
+}
+
 function boot() {
     var raw = localStorage.getItem('dlP');
     profiles = [];
@@ -254,11 +270,13 @@ function autoAddPhoto(inp) {
     btn.className = 'add-icon-btn scanning';
     var r = new FileReader();
     r.onload = function(e) {
-        currentPhotoData = e.target.result;
-        document.getElementById('previewImg').src = currentPhotoData;
-        document.getElementById('photoPreview').style.display = 'block';
-        btn.className = 'add-icon-btn done';
-        showMsg('addFormMsg', 'ok', 'Photo added!');
+        compressImage(e.target.result, function(compressed) {
+            currentPhotoData = compressed;
+            document.getElementById('previewImg').src = compressed;
+            document.getElementById('photoPreview').style.display = 'block';
+            btn.className = 'add-icon-btn done';
+            showMsg('addFormMsg', 'ok', 'Photo added!');
+        });
     };
     r.readAsDataURL(inp.files[0]);
 }
@@ -308,9 +326,11 @@ function autoScanProfile(inp) {
             if (files[idx] && !currentPhotoData) {
                 var pr = new FileReader();
                 pr.onload = function(e) {
-                    currentPhotoData = e.target.result;
-                    document.getElementById('previewImg').src = currentPhotoData;
-                    document.getElementById('photoPreview').style.display = 'block';
+                    compressImage(e.target.result, function(compressed) {
+                        currentPhotoData = compressed;
+                        document.getElementById('previewImg').src = compressed;
+                        document.getElementById('photoPreview').style.display = 'block';
+                    });
                 };
                 pr.readAsDataURL(files[idx]);
             }
@@ -536,17 +556,19 @@ function addPhotoToProfile(pid) {
     statusEl.className = 'statusmsg load'; statusEl.innerHTML = 'Adding photo...';
     var r = new FileReader();
     r.onload = function(e) {
-        var i;
-        for (i = 0; i < profiles.length; i++) {
-            if (profiles[i].id === pid) {
-                if (!profiles[i].photos) profiles[i].photos = [];
-                profiles[i].photos.push(e.target.result);
-                if (!profiles[i].photo) profiles[i].photo = e.target.result;
-                break;
+        compressImage(e.target.result, function(compressed) {
+            var i;
+            for (i = 0; i < profiles.length; i++) {
+                if (profiles[i].id === pid) {
+                    if (!profiles[i].photos) profiles[i].photos = [];
+                    profiles[i].photos.push(compressed);
+                    if (!profiles[i].photo) profiles[i].photo = compressed;
+                    break;
+                }
             }
-        }
-        sp(); render();
-        statusEl.className = 'statusmsg ok'; statusEl.innerHTML = 'Photo added!';
+            sp(); render();
+            statusEl.className = 'statusmsg ok'; statusEl.innerHTML = 'Photo added!';
+        });
     };
     r.readAsDataURL(inp.files[0]);
 }
