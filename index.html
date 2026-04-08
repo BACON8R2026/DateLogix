@@ -7,77 +7,75 @@
 <title>DateLogix</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #fff9c4; color: #1a1a1a; font-family: -apple-system, sans-serif; }
-#header { background: #f9a825; color: #1a1a1a; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 2px solid #f57f17; }
+body { background: #cc0000; color: #1a1a1a; font-family: -apple-system, sans-serif; }
+#header { background: #8b0000; color: white; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 2px solid #600000; }
 #page { padding: 16px; max-width: 480px; margin: 0 auto; }
-.box { background: #fffde7; border: 2px solid #f9a825; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-.box h2 { font-size: 16px; font-weight: bold; color: #e65100; margin-bottom: 10px; }
-.lbl { display: block; font-size: 12px; color: #e65100; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
-input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #f9a825; border-radius: 8px; color: #1a1a1a; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.box { background: #fff8f8; border: 2px solid #8b0000; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.box h2 { font-size: 16px; font-weight: bold; color: #8b0000; margin-bottom: 10px; }
+.lbl { display: block; font-size: 12px; color: #8b0000; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
+input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #8b0000; border-radius: 8px; color: #1a1a1a; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 textarea { min-height: 80px; resize: vertical; }
 input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; width: 1px; height: 1px; }
-.btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #f9a825; color: #1a1a1a; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnsoft { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #f9a825; border-radius: 10px; background: white; color: #e65100; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btndel { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #cc3333; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #8b0000; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btnsoft { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #8b0000; border-radius: 10px; background: white; color: #8b0000; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.btndel { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #333; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 .btnmic { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #2e7d32; color: white; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 .statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
-.statusmsg.load { display: block; background: #ffe082; color: #e65100; }
+.statusmsg.load { display: block; background: #ffcccc; color: #8b0000; }
 .statusmsg.ok { display: block; background: #c8e6c9; color: #1b5e20; }
 .statusmsg.err { display: block; background: #ffcdd2; color: #b71c1c; }
-.smallnote { font-size: 13px; color: #795548; margin: 6px 0 10px 0; line-height: 1.4; }
-hr { border: none; border-top: 1px solid #ffe082; margin: 16px 0; }
+.smallnote { font-size: 13px; color: #8b0000; margin: 6px 0 10px 0; line-height: 1.4; }
+hr { border: none; border-top: 1px solid #ffcccc; margin: 16px 0; }
 
 /* ADD FORM ICONS */
 .add-icon-row { display: block; margin: 12px 0; text-align: center; }
-.add-icon-btn { display: inline-block; width: 30%; margin: 0 1%; padding: 12px 4px; background: #fff9c4; border: 2px solid #f9a825; border-radius: 12px; color: #e65100; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; vertical-align: top; }
+.add-icon-btn { display: inline-block; width: 30%; margin: 0 1%; padding: 12px 4px; background: white; border: 2px solid #8b0000; border-radius: 12px; color: #8b0000; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; vertical-align: top; }
 .add-icon-btn .ie { display: block; font-size: 26px; margin-bottom: 4px; }
-.add-icon-btn.scanning { background: #ffe082; border-color: #f57f17; }
+.add-icon-btn.scanning { background: #ffcccc; border-color: #cc0000; }
 .add-icon-btn.done { background: #c8e6c9; border-color: #2e7d32; color: #1b5e20; }
 
 /* PROFILE CARD */
-.pcard { background: #fffde7; border: 2px solid #f9a825; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
-.pcard-photo { width: 100%; height: 300px; background: #ffe082; overflow: hidden; }
+.pcard { background: #fff8f8; border: 2px solid #8b0000; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+.pcard-photo { width: 100%; height: 300px; background: #ffcccc; overflow: hidden; }
 .pcard-photo img { width: 100%; height: 300px; display: block; object-fit: cover; object-position: 50% 15%; cursor: pointer; }
-.pcard-photo-empty { width: 100%; height: 200px; background: #ffe082; text-align: center; line-height: 200px; font-size: 80px; }
+.pcard-photo-empty { width: 100%; height: 200px; background: #ffcccc; text-align: center; line-height: 200px; font-size: 80px; }
 .pcard-body { padding: 16px; }
-.pname { font-size: 24px; font-weight: bold; color: #e65100; display: inline; }
-.page { font-size: 16px; color: #795548; margin-left: 8px; display: inline; }
-.ploc { color: #795548; margin: 6px 0 10px 0; font-size: 14px; }
+.pname { font-size: 24px; font-weight: bold; color: #8b0000; display: inline; }
+.page { font-size: 16px; color: #555; margin-left: 8px; display: inline; }
+.ploc { color: #555; margin: 6px 0 10px 0; font-size: 14px; }
 
-/* 4 ICON ROW ON CARD */
+/* 4 ICON ROW */
 .card-icon-row { display: table; width: 100%; margin: 10px 0 16px 0; border-collapse: separate; border-spacing: 4px; }
 .card-icon-cell { display: table-cell; width: 25%; text-align: center; }
-.card-icon-btn { display: block; width: 100%; padding: 10px 2px; background: #f9a825; border: none; border-radius: 10px; color: #1a1a1a; font-size: 11px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; text-align: center; }
+.card-icon-btn { display: block; width: 100%; padding: 10px 2px; background: #8b0000; border: none; border-radius: 10px; color: white; font-size: 11px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; text-align: center; }
 .card-icon-btn .ie { display: block; font-size: 22px; margin-bottom: 3px; }
 
-.card-section-hdr { background: #f9a825; color: #1a1a1a; padding: 12px 16px; font-size: 17px; font-weight: bold; margin: 16px -16px 12px -16px; }
+.card-section-hdr { background: #8b0000; color: white; padding: 12px 16px; font-size: 17px; font-weight: bold; margin: 16px -16px 12px -16px; }
 
-/* BULLET DISPLAY */
-.bullet-block { background: white; border: 1px solid #ffe082; border-radius: 10px; padding: 12px 14px; margin: 8px 0; }
-.bullet-category { font-size: 12px; font-weight: bold; color: #e65100; text-transform: uppercase; letter-spacing: 0.5px; margin: 10px 0 4px 0; }
+/* BULLET DISPLAY - KEY FIX */
+.bullet-block { background: white; border: 1px solid #ffcccc; border-radius: 10px; padding: 14px 16px; margin: 8px 0; width: 100%; }
+.bullet-category { font-size: 13px; font-weight: bold; color: #8b0000; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 6px 0; display: block; }
 .bullet-category:first-child { margin-top: 0; }
-.bullet-item { font-size: 14px; color: #1a1a1a; line-height: 1.5; padding: 2px 0 2px 16px; position: relative; }
-.bullet-item:before { content: “•”; position: absolute; left: 4px; color: #f9a825; font-weight: bold; }
+.bullet-item { font-size: 14px; color: #1a1a1a; line-height: 1.6; padding: 1px 0 1px 18px; position: relative; display: block; }
+.bullet-item:before { content: “•”; position: absolute; left: 4px; color: #8b0000; font-weight: bold; font-size: 16px; line-height: 1.4; }
 
 /* COMM THUMBNAILS */
 .comm-thumb-row { display: block; margin: 8px 0; }
-.comm-thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid #f9a825; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; cursor: pointer; }
+.comm-thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid #8b0000; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; cursor: pointer; }
 
-.ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #f9a825; border-radius: 8px; color: #1a1a1a; font-size: 14px; min-height: 70px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+.ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #8b0000; border-radius: 8px; color: #1a1a1a; font-size: 14px; min-height: 70px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
 .photogrid { display: block; margin: 10px 0; }
-.pgrid-img { width: 90px; height: 90px; object-fit: cover; border-radius: 8px; border: 2px solid #f9a825; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
+.pgrid-img { width: 90px; height: 90px; object-fit: cover; border-radius: 8px; border: 2px solid #8b0000; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
 
-/* LIGHTBOX */
 #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 999; text-align: center; }
 #lightbox img { max-width: 100%; max-height: 88%; margin-top: 6%; object-fit: contain; display: inline-block; }
 #lightbox-close { position: fixed; top: 16px; right: 20px; color: white; font-size: 40px; cursor: pointer; z-index: 1000; background: none; border: none; font-family: -apple-system, sans-serif; }
 
-/* EDIT MODAL */
 #editModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 998; overflow-y: auto; }
-#editModalInner { background: #fffde7; border: 2px solid #f9a825; border-radius: 12px; margin: 20px 16px; padding: 20px; }
-#editModal h2 { color: #e65100; margin-bottom: 16px; }
+#editModalInner { background: #fff8f8; border: 2px solid #8b0000; border-radius: 12px; margin: 20px 16px; padding: 20px; }
+#editModal h2 { color: #8b0000; margin-bottom: 16px; }
 
-.thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid #f9a825; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
+.thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid #8b0000; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
 </style>
 
 </head>
@@ -97,7 +95,7 @@ hr { border: none; border-top: 1px solid #ffe082; margin: 16px 0; }
 <input type="number" id="editAge" placeholder="Age">
 <span class="lbl">Location</span>
 <input type="text" id="editLoc" placeholder="City, State">
-<span class="lbl">Bio (raw text - will be reformatted)</span>
+<span class="lbl">Bio (raw text)</span>
 <textarea id="editBio" placeholder="Bio and details..."></textarea>
 <button class="btnmain" onclick="saveEdit()">Save Changes</button>
 <button class="btnsoft" onclick="closeEdit()">Cancel</button>
@@ -177,49 +175,56 @@ function saveKey() {
 }
 
 function profilePrompt() {
-    return 'These are dating app profile screenshots. Extract all info and return ONLY valid JSON, no markdown:\n{"name":"","age":"","location":"","bio":"","photoIndex":0}\n\nFor the bio field, format it as bullet points grouped by category. Use this exact format:\n**Looking For:** bullet1 | bullet2\n**Interests:** bullet1 | bullet2\n**About Her:** bullet1 | bullet2\n**Perks:** bullet1 | bullet2\nOnly include categories that have actual content. Keep each bullet short (3-7 words). photoIndex is the zero-based index of the screenshot with the main profile photo.';
+    return 'These are dating app profile screenshots. Extract all visible information. Return ONLY valid JSON with no markdown:\n{"name":"","age":"","location":"","bio":"","photoIndex":0}\n\nFor the bio field, organize the info into relevant categories based on what she wrote. Format EXACTLY like this, one bullet per line:\n**Category Name:**\n- bullet point one\n- bullet point two\n**Another Category:**\n- bullet point\n\nCreate whatever categories fit her actual profile content (e.g. Looking For, Interests, About Her, Perks, Kids, Job, etc). Keep each bullet short (3-8 words). photoIndex is the zero-based index of the screenshot showing the main profile photo.';
 }
 
 function commPrompt() {
-    return 'These are text message screenshots. Read all messages and return a bullet-point summary. Format exactly like this — use | to separate bullets within a category:\n**Key Facts:** fact1 | fact2 | fact3\n**Plans/Events:** plan1 | plan2\n**Conversation Starters:** starter1 | starter2\n**Vibe:** description\nOnly include categories that have real content. Keep each bullet to 3-8 words. Return only this formatted text, no JSON, no extra explanation.';
+    return 'These are text message screenshots. Read all messages carefully. Return a bullet-point summary organized into relevant categories. Format EXACTLY like this, one bullet per line:\n**Category Name:**\n- bullet point\n- bullet point\n**Another Category:**\n- bullet point\n\nCreate categories that fit the actual conversation (e.g. Key Facts, Plans, Conversation Starters, Her Interests, Red Flags, Vibe, etc). Keep each bullet to 3-8 words. Return only this formatted text, nothing else.';
 }
 
 function parseBullets(text) {
+    if (!text) return [];
     var lines = text.split('\n');
     var sections = [];
+    var current = null;
     var i;
     for (i = 0; i < lines.length; i++) {
         var line = lines[i].trim();
         if (!line) continue;
-        var catMatch = line.match(/^\*\*(.+?):\*\*\s*(.*)/);
+        var catMatch = line.match(/^\*\*(.+?)\*\*:?\s*$/);
         if (catMatch) {
-            var cat = catMatch[1].trim();
-            var items = catMatch[2] ? catMatch[2].split('|') : [];
+            current = { cat: catMatch[1].trim(), bullets: [] };
+            sections.push(current);
+        } else if (line.charAt(0) === '-' && current) {
+            var bullet = line.substring(1).trim();
+            if (bullet) current.bullets.push(bullet);
+        } else if (line.match(/^\*\*(.+?):\*\*\s*(.+)/)) {
+            var m = line.match(/^\*\*(.+?):\*\*\s*(.*)/);
+            var items = m[2].split('|');
             var bullets = [];
             var j;
             for (j = 0; j < items.length; j++) {
                 var b = items[j].trim();
                 if (b) bullets.push(b);
             }
-            if (bullets.length) sections.push({ cat: cat, bullets: bullets });
+            if (bullets.length) sections.push({ cat: m[1].trim(), bullets: bullets });
         }
     }
     return sections;
 }
 
 function renderBullets(sections) {
-    if (!sections || !sections.length) return null;
     var block = document.createElement('div');
     block.className = 'bullet-block';
     var i;
     for (i = 0; i < sections.length; i++) {
-        var catEl = document.createElement('div');
+        var catEl = document.createElement('span');
         catEl.className = 'bullet-category';
         catEl.innerHTML = esc(sections[i].cat);
         block.appendChild(catEl);
         var j;
         for (j = 0; j < sections[i].bullets.length; j++) {
-            var item = document.createElement('div');
+            var item = document.createElement('span');
             item.className = 'bullet-item';
             item.innerHTML = esc(sections[i].bullets[j]);
             block.appendChild(item);
@@ -308,7 +313,7 @@ function autoScanComms(inp) {
     showMsg('addFormMsg', 'load', 'Reading ' + inp.files.length + ' message screenshot(s)...');
     pendingCommFiles = [];
     var i;
-    for (i = 0; i < inp.files.length; i++) { pendingCommFiles.push(inp.files[i]); }
+    for (i = 0; i < inp.files.length; i++) pendingCommFiles.push(inp.files[i]);
     loadFilesToBlocks(pendingCommFiles, function(blocks) {
         callAI(key, blocks, commPrompt(), function(text) {
             var c = document.getElementById('iComm');
@@ -340,7 +345,7 @@ function loadFilesToBlocks(files, onDone) {
 function callAI(key, blocks, prompt, onSuccess, onError) {
     var body = JSON.stringify({
         model: 'claude-opus-4-5',
-        max_tokens: 1200,
+        max_tokens: 1500,
         messages: [{ role: 'user', content: blocks.concat([{ type: 'text', text: prompt }]) }]
     });
     var xhr = new XMLHttpRequest();
@@ -457,7 +462,7 @@ function saveComm(pid) {
     var el = document.getElementById('comm' + pid); if (!el) return;
     var i;
     for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) === String(pid)) { profiles[i].comm = el.value; break; } }
-    sp(); alert('Saved!');
+    sp(); render(); alert('Saved!');
 }
 
 function addMoreProfile(pid) {
@@ -473,7 +478,7 @@ function addMoreProfile(pid) {
     loadFilesToBlocks(files, function(blocks) {
         callAI(key, blocks, profilePrompt(), function(text) {
             var parsed = parseJSON(text);
-            if (!parsed) { statusEl.className = 'statusmsg err'; statusEl.innerHTML = 'Could not read. Try again.'; return; }
+            if (!parsed) { statusEl.className = 'statusmsg err'; statusEl.innerHTML = 'Could not read.'; return; }
             var j;
             for (j = 0; j < profiles.length; j++) {
                 if (String(profiles[j].id) === String(pid)) {
@@ -569,7 +574,7 @@ function setMainPhoto(pid, src) {
 
 function startVoice(pid) {
     var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR) { alert('Voice input not supported on this browser.'); return; }
+    if (!SR) { alert('Voice input not supported.'); return; }
     var rec = new SR();
     rec.lang = 'en-US';
     rec.interimResults = false;
@@ -592,23 +597,23 @@ function delP(pid) {
 function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'block'; }
 function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; document.getElementById('lightbox-img').src = ''; }
 
-function makeFileInput(id, accept, isMultiple, onChangeFn) {
+function makeFileInput(id, accept, isMultiple, fn) {
     var inp = document.createElement('input');
     inp.type = 'file'; inp.accept = accept;
     if (isMultiple) inp.multiple = true;
     inp.id = id;
     inp.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;width:1px;height:1px;';
-    inp.onchange = onChangeFn;
+    inp.onchange = fn;
     return inp;
 }
 
-function makeIconCell(emoji, label, clickFn) {
+function makeIconCell(emoji, label, fn) {
     var cell = document.createElement('div');
     cell.className = 'card-icon-cell';
     var btn = document.createElement('button');
     btn.className = 'card-icon-btn';
     btn.innerHTML = '<span class="ie">' + emoji + '</span>' + label;
-    btn.onclick = clickFn;
+    btn.onclick = fn;
     cell.appendChild(btn);
     return cell;
 }
@@ -619,7 +624,7 @@ function render() {
     if (!profiles.length) {
         var empty = document.createElement('div');
         empty.className = 'box';
-        empty.style.cssText = 'text-align:center;color:#e65100;padding:30px;';
+        empty.style.cssText = 'text-align:center;color:#8b0000;padding:30px;';
         empty.innerHTML = 'No profiles yet. Add your first one above.';
         area.appendChild(empty);
         return;
@@ -631,7 +636,6 @@ function render() {
         var card = document.createElement('div');
         card.className = 'pcard';
 
-        // PHOTO
         var photoDiv = document.createElement('div');
         if (p.photo) {
             photoDiv.className = 'pcard-photo';
@@ -648,7 +652,6 @@ function render() {
         var body = document.createElement('div');
         body.className = 'pcard-body';
 
-        // NAME AGE LOC
         var nameEl = document.createElement('span');
         nameEl.className = 'pname';
         nameEl.innerHTML = esc(p.name);
@@ -666,18 +669,15 @@ function render() {
             body.appendChild(locEl);
         }
 
-        // STATUS
         var cardStatus = document.createElement('div');
         cardStatus.className = 'statusmsg';
         cardStatus.id = 'cardStatus' + pid;
         body.appendChild(cardStatus);
 
-        // HIDDEN FILE INPUTS
         body.appendChild(makeFileInput('moreInfo' + pid, 'image/*', true, (function(id) { return function() { addMoreProfile(id); }; })(pid)));
         body.appendChild(makeFileInput('morePhoto' + pid, 'image/*', false, (function(id) { return function() { addPhotoToProfile(id); }; })(pid)));
         body.appendChild(makeFileInput('moreComm' + pid, 'image/*', true, (function(id) { return function() { addCommToProfile(id); }; })(pid)));
 
-        // 4 ICON ROW
         var iconTable = document.createElement('div');
         iconTable.className = 'card-icon-row';
         iconTable.appendChild(makeIconCell('👤', 'Add Info', (function(id) { return function() { document.getElementById('moreInfo' + id).click(); }; })(pid)));
@@ -686,7 +686,7 @@ function render() {
         iconTable.appendChild(makeIconCell('✏️', 'Edit', (function(id) { return function() { openEdit(id); }; })(pid)));
         body.appendChild(iconTable);
 
-        // PROFILE INFO SECTION
+        // PROFILE INFO
         var s1 = document.createElement('div');
         s1.className = 'card-section-hdr';
         s1.innerHTML = '👤  Profile Info';
@@ -694,9 +694,8 @@ function render() {
 
         if (p.bio) {
             var bioSections = parseBullets(p.bio);
-            if (bioSections && bioSections.length) {
-                var bioBlock = renderBullets(bioSections);
-                body.appendChild(bioBlock);
+            if (bioSections.length) {
+                body.appendChild(renderBullets(bioSections));
             } else {
                 var bioEl = document.createElement('div');
                 bioEl.style.cssText = 'font-size:14px;line-height:1.5;margin:8px 0;';
@@ -706,7 +705,7 @@ function render() {
         }
 
         var nlbl = document.createElement('div');
-        nlbl.style.cssText = 'font-size:11px;color:#e65100;text-transform:uppercase;margin:12px 0 4px;';
+        nlbl.style.cssText = 'font-size:11px;color:#8b0000;text-transform:uppercase;margin:12px 0 4px;';
         nlbl.innerHTML = 'Private Notes';
         body.appendChild(nlbl);
 
@@ -729,7 +728,7 @@ function render() {
         saveNBtn.onclick = (function(id) { return function() { saveN(id); }; })(pid);
         body.appendChild(saveNBtn);
 
-        // PHOTOS SECTION
+        // PHOTOS
         var s2 = document.createElement('div');
         s2.className = 'card-section-hdr';
         s2.innerHTML = '📷  Photos';
@@ -753,7 +752,7 @@ function render() {
         }
         body.appendChild(photoGrid);
 
-        // COMMUNICATIONS SECTION
+        // COMMUNICATIONS
         var s3 = document.createElement('div');
         s3.className = 'card-section-hdr';
         s3.innerHTML = '💬  Communications';
@@ -761,9 +760,8 @@ function render() {
 
         if (p.comm) {
             var commSections = parseBullets(p.comm);
-            if (commSections && commSections.length) {
-                var commBlock = renderBullets(commSections);
-                body.appendChild(commBlock);
+            if (commSections.length) {
+                body.appendChild(renderBullets(commSections));
             } else {
                 var commRaw = document.createElement('div');
                 commRaw.style.cssText = 'font-size:14px;line-height:1.5;margin:8px 0;';
@@ -773,7 +771,7 @@ function render() {
         }
 
         var editCommLbl = document.createElement('div');
-        editCommLbl.style.cssText = 'font-size:11px;color:#e65100;text-transform:uppercase;margin:10px 0 4px;';
+        editCommLbl.style.cssText = 'font-size:11px;color:#8b0000;text-transform:uppercase;margin:10px 0 4px;';
         editCommLbl.innerHTML = 'Edit Summary';
         body.appendChild(editCommLbl);
 
@@ -790,14 +788,12 @@ function render() {
         saveCommBtn.onclick = (function(id) { return function() { saveComm(id); }; })(pid);
         body.appendChild(saveCommBtn);
 
-        // COMM THUMBNAILS
         var commScreens = p.commScreenshots || [];
         if (commScreens.length) {
             var cslbl = document.createElement('div');
-            cslbl.style.cssText = 'font-size:11px;color:#e65100;text-transform:uppercase;margin:12px 0 4px;';
+            cslbl.style.cssText = 'font-size:11px;color:#8b0000;text-transform:uppercase;margin:12px 0 4px;';
             cslbl.innerHTML = 'Message Screenshots';
             body.appendChild(cslbl);
-
             var thumbRow = document.createElement('div');
             thumbRow.className = 'comm-thumb-row';
             var k;
@@ -811,7 +807,6 @@ function render() {
             body.appendChild(thumbRow);
         }
 
-        // DELETE
         var delBtn = document.createElement('button');
         delBtn.className = 'btndel';
         delBtn.innerHTML = 'Delete Profile';
