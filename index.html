@@ -26,58 +26,48 @@ input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; 
 .statusmsg.err { display: block; background: #ffcdd2; color: #b71c1c; }
 .smallnote { font-size: 13px; color: #bf360c; margin: 6px 0 10px 0; line-height: 1.4; }
 hr { border: none; border-top: 1px solid #ffccaa; margin: 16px 0; }
-
 .add-icon-row { display: block; margin: 12px 0; text-align: center; }
 .add-icon-btn { display: inline-block; width: 30%; margin: 0 1%; padding: 12px 4px; background: white; border: 2px solid #bf360c; border-radius: 12px; color: #bf360c; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; vertical-align: top; }
 .add-icon-btn .ie { display: block; font-size: 26px; margin-bottom: 4px; }
 .add-icon-btn.scanning { background: #ffccaa; border-color: #e65100; }
 .add-icon-btn.done { background: #c8e6c9; border-color: #2e7d32; color: #1b5e20; }
-
 .pcard { background: #fff8f5; border: 2px solid #bf360c; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
 .pcard-photo-wrap { width: 100%; height: 320px; background: #ffccaa; overflow: hidden; position: relative; }
 .pcard-photo-wrap img { width: 100%; height: 320px; display: block; object-fit: cover; object-position: 50% 20%; }
 .pcard-photo-empty { width: 100%; height: 200px; background: #ffccaa; text-align: center; line-height: 200px; font-size: 80px; }
-.platform-badge { position: absolute; top: 10px; left: 10px; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+.platform-badge { position: absolute; top: 10px; left: 10px; width: 36px; height: 36px; border-radius: 8px; text-align: center; line-height: 36px; font-size: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
 .platform-tinder { background: #fe3c72; }
 .platform-bumble { background: #ffc629; }
 .platform-hinge { background: #d63a6b; }
 .platform-match { background: #00a0dc; }
 .platform-unknown { background: #888; }
-
 .pcard-body { padding: 16px; }
 .pname { font-size: 24px; font-weight: bold; color: #bf360c; display: inline; }
 .page { font-size: 16px; color: #555; margin-left: 8px; display: inline; }
 .ploc { color: #555; margin: 6px 0 10px 0; font-size: 14px; }
-
 .card-icon-row { display: table; width: 100%; margin: 10px 0 16px 0; border-collapse: separate; border-spacing: 4px; }
 .card-icon-cell { display: table-cell; width: 25%; text-align: center; }
 .card-icon-btn { display: block; width: 100%; padding: 10px 2px; background: #bf360c; border: none; border-radius: 10px; color: white; font-size: 11px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; text-align: center; }
 .card-icon-btn .ie { display: block; font-size: 22px; margin-bottom: 3px; }
-
 .card-section-hdr { background: #bf360c; color: white; padding: 12px 16px; font-size: 17px; font-weight: bold; margin: 16px -16px 12px -16px; }
-
 .bullet-block { background: white; border: 1px solid #ffccaa; border-radius: 10px; padding: 14px 16px; margin: 8px 0; width: 100%; }
 .bullet-category { font-size: 13px; font-weight: bold; color: #bf360c; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 6px 0; display: block; }
 .bullet-category:first-child { margin-top: 0; }
 .bullet-item { font-size: 14px; color: #1a1a1a; line-height: 1.6; padding: 1px 0 1px 18px; position: relative; display: block; }
-.bullet-item:before { content: “•”; position: absolute; left: 4px; color: #bf360c; font-weight: bold; font-size: 16px; line-height: 1.4; }
-
+.bullet-item:before { content: "•"; position: absolute; left: 4px; color: #bf360c; font-weight: bold; font-size: 16px; line-height: 1.4; }
 .comm-thumb-row { display: block; margin: 8px 0; }
 .comm-thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid #bf360c; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; cursor: pointer; }
 .ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #bf360c; border-radius: 8px; color: #1a1a1a; font-size: 14px; min-height: 70px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
 .photogrid { display: block; margin: 10px 0; }
 .pgrid-img { width: 90px; height: 90px; object-fit: cover; border-radius: 8px; border: 2px solid #bf360c; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
 .thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid #bf360c; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
-
 #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 999; text-align: center; }
 #lightbox img { max-width: 100%; max-height: 88%; margin-top: 6%; object-fit: contain; display: inline-block; }
 #lightbox-close { position: fixed; top: 16px; right: 20px; color: white; font-size: 40px; cursor: pointer; z-index: 1000; background: none; border: none; font-family: -apple-system, sans-serif; }
-
 #editModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 998; overflow-y: auto; }
 #editModalInner { background: #fff8f5; border: 2px solid #bf360c; border-radius: 12px; margin: 20px 16px; padding: 20px; }
 #editModal h2 { color: #bf360c; margin-bottom: 16px; }
 </style>
-
 </head>
 <body>
 
@@ -95,7 +85,7 @@ hr { border: none; border-top: 1px solid #ffccaa; margin: 16px 0; }
 <input type="number" id="editAge" placeholder="Age">
 <span class="lbl">Location</span>
 <input type="text" id="editLoc" placeholder="City, State">
-<span class="lbl">Bio (raw text)</span>
+<span class="lbl">Bio</span>
 <textarea id="editBio" placeholder="Bio and details..."></textarea>
 <button class="btnmain" onclick="saveEdit()">Save Changes</button>
 <button class="btnsoft" onclick="closeEdit()">Cancel</button>
@@ -115,7 +105,7 @@ hr { border: none; border-top: 1px solid #ffccaa; margin: 16px 0; }
 
 <div class="box">
 <h2>Add New Profile</h2>
-<p class="smallnote">Tap an icon to upload. Files scan automatically.</p>
+<p class="smallnote">Tap an icon to upload. Files scan automatically. No fields are required.</p>
 <div class="add-icon-row">
 <button class="add-icon-btn" id="addIconInfo" onclick="document.getElementById('ocrFiles').click()">
 <span class="ie">👤</span>Profile Info
@@ -137,11 +127,11 @@ hr { border: none; border-top: 1px solid #ffccaa; margin: 16px 0; }
 </div>
 <hr>
 <span class="lbl">Name</span>
-<input type="text" id="iName" placeholder="Her name">
+<input type="text" id="iName" placeholder="Her name (optional)">
 <span class="lbl">Age</span>
-<input type="number" id="iAge" placeholder="Age">
+<input type="number" id="iAge" placeholder="Age (optional)">
 <span class="lbl">Location</span>
-<input type="text" id="iLoc" placeholder="City, State">
+<input type="text" id="iLoc" placeholder="City, State (optional)">
 <span class="lbl">Communications Summary</span>
 <textarea id="iComm" placeholder="Auto-filled when you scan messages..."></textarea>
 <span class="lbl">Bio / Notes</span>
@@ -156,19 +146,27 @@ hr { border: none; border-top: 1px solid #ffccaa; margin: 16px 0; }
 <script>
 var profiles = [];
 var currentPhotoData = '';
-var pendingCommFiles = [];
 var pendingCommScreenshots = [];
 var editingId = null;
 var detectedPlatform = '';
 
 function boot() {
-    var s = localStorage.getItem('dlP');
-    if (s) { try { profiles = JSON.parse(s); if (!Array.isArray(profiles)) profiles = []; } catch(e) { profiles = []; } }
-    document.getElementById('sAK').value = localStorage.getItem('dlAK') || '';
+    var raw = localStorage.getItem('dlP');
+    profiles = [];
+    if (raw) {
+        try {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) profiles = parsed;
+        } catch(e) { profiles = []; }
+    }
+    var k = localStorage.getItem('dlAK') || '';
+    document.getElementById('sAK').value = k;
     render();
 }
 
-function sp() { localStorage.setItem('dlP', JSON.stringify(profiles)); }
+function sp() {
+    try { localStorage.setItem('dlP', JSON.stringify(profiles)); } catch(e) { alert('Storage error: ' + e.message); }
+}
 
 function saveKey() {
     var k = document.getElementById('sAK').value.trim();
@@ -178,19 +176,19 @@ function saveKey() {
 
 function platformInfo(name) {
     var n = (name || '').toLowerCase();
-    if (n === 'tinder') return { emoji: '🔥', cls: 'platform-tinder', label: 'Tinder' };
-    if (n === 'bumble') return { emoji: '🐝', cls: 'platform-bumble', label: 'Bumble' };
-    if (n === 'hinge') return { emoji: '💘', cls: 'platform-hinge', label: 'Hinge' };
-    if (n === 'match') return { emoji: '💙', cls: 'platform-match', label: 'Match' };
-    return { emoji: '❓', cls: 'platform-unknown', label: name || 'Unknown' };
+    if (n.indexOf('tinder') !== -1) return { emoji: '🔥', cls: 'platform-tinder' };
+    if (n.indexOf('bumble') !== -1) return { emoji: '🐝', cls: 'platform-bumble' };
+    if (n.indexOf('hinge') !== -1) return { emoji: '💘', cls: 'platform-hinge' };
+    if (n.indexOf('match') !== -1) return { emoji: '💙', cls: 'platform-match' };
+    return { emoji: '💜', cls: 'platform-unknown' };
 }
 
 function profilePrompt() {
-    return 'These are dating app profile screenshots. Identify which dating app this is from (Tinder, Bumble, Hinge, Match, or other). Extract all visible information. Return ONLY valid JSON with no markdown:\n{"name":"","age":"","location":"","bio":"","photoIndex":0,"platform":""}\n\nFor the bio field, organize into relevant categories. Format EXACTLY like this:\n**Category Name:**\n- bullet point one\n- bullet point two\n\nUse whatever category names fit her actual content. Keep bullets short (3-8 words). photoIndex is the zero-based index of the screenshot with the main profile photo. platform should be: tinder, bumble, hinge, match, or the app name you detect.';
+    return 'These are dating app profile screenshots. Identify the dating app (Tinder, Bumble, Hinge, Match, or other). Extract all info. Return ONLY valid JSON, no markdown:\n{"name":"","age":"","location":"","bio":"","photoIndex":0,"platform":""}\n\nFor bio, use this format exactly:\n**Category:**\n- bullet\n- bullet\n\nCategories should match her content. Keep bullets 3-8 words. photoIndex = zero-based index of main profile photo screenshot.';
 }
 
 function commPrompt() {
-    return 'These are text message screenshots. Read all messages carefully. Return a bullet-point summary. Format EXACTLY like this:\n**Category Name:**\n- bullet point\n- bullet point\n\nUse categories that fit the actual conversation. Keep bullets 3-8 words. Return only this formatted text.';
+    return 'These are text message screenshots. Summarize in bullet points. Format exactly:\n**Category:**\n- bullet\n- bullet\n\nPick categories that fit the conversation. Keep bullets 3-8 words. Return only this text.';
 }
 
 function parseBullets(text) {
@@ -202,31 +200,32 @@ function parseBullets(text) {
     for (i = 0; i < lines.length; i++) {
         var line = lines[i].trim();
         if (!line) continue;
-        var catMatch = line.match(/^\*\*(.+?)\*\*:?\s*$/);
-        if (catMatch) {
-            current = { cat: catMatch[1].trim(), bullets: [] };
+        var m1 = line.match(/^\*\*(.+?)\*\*:?\s*$/);
+        var m2 = line.match(/^\*\*(.+?):\*\*\s*(.*)/);
+        if (m1) {
+            current = { cat: m1[1].trim(), bullets: [] };
             sections.push(current);
-        } else if (line.charAt(0) === '-' && current) {
-            var bullet = line.substring(1).trim();
-            if (bullet) current.bullets.push(bullet);
-        } else if (line.match(/^\*\*(.+?):\*\*/)) {
-            var m2 = line.match(/^\*\*(.+?):\*\*\s*(.*)/);
-            if (m2) {
-                var newSec = { cat: m2[1].trim(), bullets: [] };
-                if (m2[2]) {
-                    var items = m2[2].split('|');
-                    var j;
-                    for (j = 0; j < items.length; j++) {
-                        var b = items[j].trim();
-                        if (b) newSec.bullets.push(b);
-                    }
+        } else if (m2 && !m1) {
+            current = { cat: m2[1].trim(), bullets: [] };
+            sections.push(current);
+            if (m2[2]) {
+                var parts = m2[2].split('|');
+                var j;
+                for (j = 0; j < parts.length; j++) {
+                    var b = parts[j].trim();
+                    if (b) current.bullets.push(b);
                 }
-                if (newSec.bullets.length) { sections.push(newSec); current = null; }
-                else { current = newSec; sections.push(newSec); }
             }
+        } else if ((line.charAt(0) === '-' || line.charAt(0) === '*') && current) {
+            var bullet = line.substring(1).trim();
+            if (bullet && bullet.charAt(0) !== '*') current.bullets.push(bullet);
         }
     }
-    return sections;
+    var out = [];
+    for (i = 0; i < sections.length; i++) {
+        if (sections[i].bullets.length) out.push(sections[i]);
+    }
+    return out;
 }
 
 function renderBullets(sections) {
@@ -234,7 +233,6 @@ function renderBullets(sections) {
     block.className = 'bullet-block';
     var i;
     for (i = 0; i < sections.length; i++) {
-        if (!sections[i].bullets.length) continue;
         var catEl = document.createElement('span');
         catEl.className = 'bullet-category';
         catEl.innerHTML = esc(sections[i].cat);
@@ -271,7 +269,7 @@ function autoScanProfile(inp) {
     if (!key) { showMsg('addFormMsg', 'err', 'Save your API key first.'); return; }
     var btn = document.getElementById('addIconInfo');
     btn.className = 'add-icon-btn scanning';
-    showMsg('addFormMsg', 'load', 'Scanning ' + inp.files.length + ' profile screenshot(s)...');
+    showMsg('addFormMsg', 'load', 'Scanning ' + inp.files.length + ' screenshot(s)...');
     var row = document.getElementById('thumbRow');
     row.innerHTML = '';
     var files = [];
@@ -317,7 +315,7 @@ function autoScanProfile(inp) {
                 pr.readAsDataURL(files[idx]);
             }
             btn.className = 'add-icon-btn done';
-            showMsg('addFormMsg', 'ok', 'Profile scanned! Fields filled. Tap Add Profile when ready.');
+            showMsg('addFormMsg', 'ok', 'Profile scanned! Review fields then tap Add Profile.');
         }, function(err) { btn.className = 'add-icon-btn'; showMsg('addFormMsg', 'err', err); });
     });
 }
@@ -329,12 +327,12 @@ function autoScanComms(inp) {
     var btn = document.getElementById('addIconComms');
     btn.className = 'add-icon-btn scanning';
     showMsg('addFormMsg', 'load', 'Reading ' + inp.files.length + ' message screenshot(s)...');
-    pendingCommFiles = [];
-    pendingCommScreenshots = [];
+    var files = [];
     var i;
-    for (i = 0; i < inp.files.length; i++) pendingCommFiles.push(inp.files[i]);
+    for (i = 0; i < inp.files.length; i++) files.push(inp.files[i]);
+    pendingCommScreenshots = [];
     var loaded = 0;
-    for (i = 0; i < pendingCommFiles.length; i++) {
+    for (i = 0; i < files.length; i++) {
         (function(file) {
             var r = new FileReader();
             r.onload = function(e) {
@@ -342,9 +340,9 @@ function autoScanComms(inp) {
                 loaded++;
             };
             r.readAsDataURL(file);
-        })(pendingCommFiles[i]);
+        })(files[i]);
     }
-    loadFilesToBlocks(pendingCommFiles, function(blocks) {
+    loadFilesToBlocks(files, function(blocks) {
         callAI(key, blocks, commPrompt(), function(text) {
             var c = document.getElementById('iComm');
             c.value = c.value.trim() ? c.value.trim() + '\n\n' + text : text;
@@ -404,21 +402,17 @@ function parseJSON(text) {
 }
 
 function addP() {
-    var name = document.getElementById('iName').value.trim();
-    if (!name) { showMsg('addMsg', 'err', 'Name is required.'); return; }
-
-    showMsg('addMsg', 'load', 'Adding profile...');
-
+    var newId = Date.now();
     var newProfile = {
-        id: Date.now(),
-        name: name,
+        id: newId,
+        name: document.getElementById('iName').value.trim() || 'Unknown',
         age: document.getElementById('iAge').value.trim() || '',
         location: document.getElementById('iLoc').value.trim() || '',
         comm: document.getElementById('iComm').value.trim() || '',
         bio: document.getElementById('iBio').value.trim() || '',
         photo: currentPhotoData || '',
         photos: currentPhotoData ? [currentPhotoData] : [],
-        commScreenshots: pendingCommScreenshots.slice(),
+        commScreenshots: pendingCommScreenshots.slice(0),
         notes: '',
         platform: detectedPlatform || ''
     };
@@ -439,18 +433,31 @@ function addP() {
     document.getElementById('addIconInfo').className = 'add-icon-btn';
     document.getElementById('addIconPhotos').className = 'add-icon-btn';
     document.getElementById('addIconComms').className = 'add-icon-btn';
-    pendingCommFiles = [];
     pendingCommScreenshots = [];
     currentPhotoData = '';
     detectedPlatform = '';
 
-    showMsg('addMsg', 'ok', 'Profile added! ' + newProfile.name + ' saved.');
+    showMsg('addMsg', 'ok', 'Profile added!');
+    render();
+}
+
+function delP(pid) {
+    if (!confirm('Delete this profile?')) return;
+    var newProfiles = [];
+    var i;
+    for (i = 0; i < profiles.length; i++) {
+        if (profiles[i].id !== pid) {
+            newProfiles.push(profiles[i]);
+        }
+    }
+    profiles = newProfiles;
+    sp();
     render();
 }
 
 function openEdit(pid) {
     var i; var p = null;
-    for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) === String(pid)) { p = profiles[i]; break; } }
+    for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { p = profiles[i]; break; } }
     if (!p) return;
     editingId = pid;
     document.getElementById('editName').value = p.name || '';
@@ -464,7 +471,7 @@ function saveEdit() {
     if (!editingId) return;
     var i;
     for (i = 0; i < profiles.length; i++) {
-        if (String(profiles[i].id) === String(editingId)) {
+        if (profiles[i].id === editingId) {
             profiles[i].name = document.getElementById('editName').value.trim();
             profiles[i].age = document.getElementById('editAge').value.trim();
             profiles[i].location = document.getElementById('editLoc').value.trim();
@@ -480,14 +487,14 @@ function closeEdit() { editingId = null; document.getElementById('editModal').st
 function saveN(pid) {
     var el = document.getElementById('nt' + pid); if (!el) return;
     var i;
-    for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) === String(pid)) { profiles[i].notes = el.value; break; } }
+    for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { profiles[i].notes = el.value; break; } }
     sp(); alert('Notes saved!');
 }
 
 function saveComm(pid) {
     var el = document.getElementById('comm' + pid); if (!el) return;
     var i;
-    for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) === String(pid)) { profiles[i].comm = el.value; break; } }
+    for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { profiles[i].comm = el.value; break; } }
     sp(); render(); alert('Saved!');
 }
 
@@ -507,8 +514,8 @@ function addMoreProfile(pid) {
             if (!parsed) { statusEl.className = 'statusmsg err'; statusEl.innerHTML = 'Could not read.'; return; }
             var j;
             for (j = 0; j < profiles.length; j++) {
-                if (String(profiles[j].id) === String(pid)) {
-                    if (parsed.name && !profiles[j].name) profiles[j].name = parsed.name;
+                if (profiles[j].id === pid) {
+                    if (parsed.name && profiles[j].name === 'Unknown') profiles[j].name = parsed.name;
                     if (parsed.age && !profiles[j].age) profiles[j].age = String(parsed.age);
                     if (parsed.location && !profiles[j].location) profiles[j].location = parsed.location;
                     if (parsed.bio) profiles[j].bio = profiles[j].bio ? profiles[j].bio + '\n\n' + parsed.bio : parsed.bio;
@@ -531,7 +538,7 @@ function addPhotoToProfile(pid) {
     r.onload = function(e) {
         var i;
         for (i = 0; i < profiles.length; i++) {
-            if (String(profiles[i].id) === String(pid)) {
+            if (profiles[i].id === pid) {
                 if (!profiles[i].photos) profiles[i].photos = [];
                 profiles[i].photos.push(e.target.result);
                 if (!profiles[i].photo) profiles[i].photo = e.target.result;
@@ -565,7 +572,7 @@ function addCommToProfile(pid) {
                 if (loaded === files.length) {
                     var j;
                     for (j = 0; j < profiles.length; j++) {
-                        if (String(profiles[j].id) === String(pid)) {
+                        if (profiles[j].id === pid) {
                             if (!profiles[j].commScreenshots) profiles[j].commScreenshots = [];
                             var k;
                             for (k = 0; k < newScreenshots.length; k++) profiles[j].commScreenshots.push(newScreenshots[k]);
@@ -577,7 +584,7 @@ function addCommToProfile(pid) {
                         callAI(key, blocks, commPrompt(), function(text) {
                             var m;
                             for (m = 0; m < profiles.length; m++) {
-                                if (String(profiles[m].id) === String(pid)) {
+                                if (profiles[m].id === pid) {
                                     profiles[m].comm = profiles[m].comm ? profiles[m].comm + '\n\n' + text : text;
                                     break;
                                 }
@@ -595,7 +602,7 @@ function addCommToProfile(pid) {
 
 function setMainPhoto(pid, src) {
     var i;
-    for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) === String(pid)) { profiles[i].photo = src; break; } }
+    for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { profiles[i].photo = src; break; } }
     sp(); render();
 }
 
@@ -610,15 +617,8 @@ function startVoice(pid) {
         var el = document.getElementById('nt' + pid);
         if (el) { el.value = el.value ? el.value + ' ' + t : t; }
     };
-    rec.onerror = function() { alert('Voice input failed. Try again.'); };
+    rec.onerror = function() { alert('Voice input failed.'); };
     rec.start();
-}
-
-function delP(pid) {
-    if (!confirm('Delete this profile?')) return;
-    var out = []; var i;
-    for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) !== String(pid)) out.push(profiles[i]); }
-    profiles = out; sp(); render();
 }
 
 function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'block'; }
@@ -663,7 +663,6 @@ function render() {
         var card = document.createElement('div');
         card.className = 'pcard';
 
-        // PHOTO WITH PLATFORM BADGE
         var photoWrap = document.createElement('div');
         if (p.photo) {
             photoWrap.className = 'pcard-photo-wrap';
@@ -671,18 +670,16 @@ function render() {
             mainImg.src = p.photo;
             mainImg.onclick = (function(src) { return function() { openLightbox(src); }; })(p.photo);
             photoWrap.appendChild(mainImg);
-
             if (p.platform) {
                 var pinfo = platformInfo(p.platform);
                 var badge = document.createElement('div');
                 badge.className = 'platform-badge ' + pinfo.cls;
                 badge.innerHTML = pinfo.emoji;
-                badge.title = pinfo.label;
                 photoWrap.appendChild(badge);
             }
         } else {
             photoWrap.className = 'pcard-photo-empty';
-            photoWrap.innerHTML = p.name ? p.name.charAt(0) : '?';
+            photoWrap.innerHTML = (p.name && p.name !== 'Unknown') ? p.name.charAt(0) : '?';
         }
         card.appendChild(photoWrap);
 
@@ -779,7 +776,7 @@ function render() {
             gi.src = photos[j];
             gi.onclick = (function(src, id) {
                 return function() {
-                    if (confirm('Set as main profile photo?')) { setMainPhoto(id, src); }
+                    if (confirm('Set as main photo?')) { setMainPhoto(id, src); }
                     else { openLightbox(src); }
                 };
             })(photos[j], pid);
