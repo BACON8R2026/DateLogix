@@ -14,22 +14,20 @@ body { background: #fff9c4; color: #1a1a1a; font-family: -apple-system, sans-ser
 .box h2 { font-size: 16px; font-weight: bold; color: #e65100; margin-bottom: 10px; }
 .lbl { display: block; font-size: 12px; color: #e65100; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
 input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #f9a825; border-radius: 8px; color: #1a1a1a; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-textarea { min-height: 100px; resize: vertical; }
+textarea { min-height: 80px; resize: vertical; }
 input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; width: 1px; height: 1px; }
 .btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #f9a825; color: #1a1a1a; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 .btnsoft { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #f9a825; border-radius: 10px; background: white; color: #e65100; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 .btndel { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #cc3333; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 .btnmic { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #2e7d32; color: white; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnedit { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #1565c0; color: white; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
 .statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
 .statusmsg.load { display: block; background: #ffe082; color: #e65100; }
 .statusmsg.ok { display: block; background: #c8e6c9; color: #1b5e20; }
 .statusmsg.err { display: block; background: #ffcdd2; color: #b71c1c; }
 .smallnote { font-size: 13px; color: #795548; margin: 6px 0 10px 0; line-height: 1.4; }
-.thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #f9a825; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
 hr { border: none; border-top: 1px solid #ffe082; margin: 16px 0; }
 
-/* ADD FORM ICON ROW */
+/* ADD FORM ICONS */
 .add-icon-row { display: block; margin: 12px 0; text-align: center; }
 .add-icon-btn { display: inline-block; width: 30%; margin: 0 1%; padding: 12px 4px; background: #fff9c4; border: 2px solid #f9a825; border-radius: 12px; color: #e65100; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; vertical-align: top; }
 .add-icon-btn .ie { display: block; font-size: 26px; margin-bottom: 4px; }
@@ -53,11 +51,21 @@ hr { border: none; border-top: 1px solid #ffe082; margin: 16px 0; }
 .card-icon-btn .ie { display: block; font-size: 22px; margin-bottom: 3px; }
 
 .card-section-hdr { background: #f9a825; color: #1a1a1a; padding: 12px 16px; font-size: 17px; font-weight: bold; margin: 16px -16px 12px -16px; }
-.pbio { color: #1a1a1a; font-size: 14px; line-height: 1.5; margin: 8px 0; }
-.ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #f9a825; border-radius: 8px; color: #1a1a1a; font-size: 14px; min-height: 80px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+
+/* BULLET DISPLAY */
+.bullet-block { background: white; border: 1px solid #ffe082; border-radius: 10px; padding: 12px 14px; margin: 8px 0; }
+.bullet-category { font-size: 12px; font-weight: bold; color: #e65100; text-transform: uppercase; letter-spacing: 0.5px; margin: 10px 0 4px 0; }
+.bullet-category:first-child { margin-top: 0; }
+.bullet-item { font-size: 14px; color: #1a1a1a; line-height: 1.5; padding: 2px 0 2px 16px; position: relative; }
+.bullet-item:before { content: “•”; position: absolute; left: 4px; color: #f9a825; font-weight: bold; }
+
+/* COMM THUMBNAILS */
+.comm-thumb-row { display: block; margin: 8px 0; }
+.comm-thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid #f9a825; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; cursor: pointer; }
+
+.ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #f9a825; border-radius: 8px; color: #1a1a1a; font-size: 14px; min-height: 70px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
 .photogrid { display: block; margin: 10px 0; }
-.pgrid-img { width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid #f9a825; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
-.comm-thumb { width: 100%; border-radius: 8px; border: 1px solid #ffe082; display: block; margin: 8px 0; cursor: pointer; }
+.pgrid-img { width: 90px; height: 90px; object-fit: cover; border-radius: 8px; border: 2px solid #f9a825; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
 
 /* LIGHTBOX */
 #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 999; text-align: center; }
@@ -68,6 +76,8 @@ hr { border: none; border-top: 1px solid #ffe082; margin: 16px 0; }
 #editModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 998; overflow-y: auto; }
 #editModalInner { background: #fffde7; border: 2px solid #f9a825; border-radius: 12px; margin: 20px 16px; padding: 20px; }
 #editModal h2 { color: #e65100; margin-bottom: 16px; }
+
+.thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid #f9a825; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
 </style>
 
 </head>
@@ -87,7 +97,7 @@ hr { border: none; border-top: 1px solid #ffe082; margin: 16px 0; }
 <input type="number" id="editAge" placeholder="Age">
 <span class="lbl">Location</span>
 <input type="text" id="editLoc" placeholder="City, State">
-<span class="lbl">Bio / Notes</span>
+<span class="lbl">Bio (raw text - will be reformatted)</span>
 <textarea id="editBio" placeholder="Bio and details..."></textarea>
 <button class="btnmain" onclick="saveEdit()">Save Changes</button>
 <button class="btnsoft" onclick="closeEdit()">Cancel</button>
@@ -97,8 +107,6 @@ hr { border: none; border-top: 1px solid #ffe082; margin: 16px 0; }
 <div id="header">DATELOGIX</div>
 <div id="page">
 
-<!-- API KEY -->
-
 <div class="box">
 <h2>API Key</h2>
 <span class="lbl">Anthropic API Key</span>
@@ -107,12 +115,9 @@ hr { border: none; border-top: 1px solid #ffe082; margin: 16px 0; }
 <div class="statusmsg" id="keyMsg"></div>
 </div>
 
-<!-- ADD PROFILE -->
-
 <div class="box">
 <h2>Add New Profile</h2>
-<p class="smallnote">Tap an icon to upload. Files are scanned automatically.</p>
-
+<p class="smallnote">Tap an icon to upload. Files scan automatically.</p>
 <div class="add-icon-row">
 <button class="add-icon-btn" id="addIconInfo" onclick="document.getElementById('ocrFiles').click()">
 <span class="ie">👤</span>Profile Info
@@ -124,18 +129,14 @@ hr { border: none; border-top: 1px solid #ffe082; margin: 16px 0; }
 <span class="ie">💬</span>Messages
 </button>
 </div>
-
 <input type="file" id="ocrFiles" accept="image/*" multiple onchange="autoScanProfile(this)">
 <input type="file" id="pFile" accept="image/*" onchange="autoAddPhoto(this)">
 <input type="file" id="commFile" accept="image/*" multiple onchange="autoScanComms(this)">
-
 <div class="statusmsg" id="addFormMsg"></div>
-<div class="thumbrow" id="thumbRow"></div>
-
+<div id="thumbRow" style="margin-top:8px;"></div>
 <div id="photoPreview" style="display:none;margin:10px 0;">
 <img id="previewImg" style="width:100%;height:260px;border-radius:10px;object-fit:cover;object-position:50% 15%;display:block;">
 </div>
-
 <hr>
 <span class="lbl">Name</span>
 <input type="text" id="iName" placeholder="Her name">
@@ -175,6 +176,58 @@ function saveKey() {
     showMsg('keyMsg', 'ok', k ? 'Key saved!' : 'Key cleared.');
 }
 
+function profilePrompt() {
+    return 'These are dating app profile screenshots. Extract all info and return ONLY valid JSON, no markdown:\n{"name":"","age":"","location":"","bio":"","photoIndex":0}\n\nFor the bio field, format it as bullet points grouped by category. Use this exact format:\n**Looking For:** bullet1 | bullet2\n**Interests:** bullet1 | bullet2\n**About Her:** bullet1 | bullet2\n**Perks:** bullet1 | bullet2\nOnly include categories that have actual content. Keep each bullet short (3-7 words). photoIndex is the zero-based index of the screenshot with the main profile photo.';
+}
+
+function commPrompt() {
+    return 'These are text message screenshots. Read all messages and return a bullet-point summary. Format exactly like this — use | to separate bullets within a category:\n**Key Facts:** fact1 | fact2 | fact3\n**Plans/Events:** plan1 | plan2\n**Conversation Starters:** starter1 | starter2\n**Vibe:** description\nOnly include categories that have real content. Keep each bullet to 3-8 words. Return only this formatted text, no JSON, no extra explanation.';
+}
+
+function parseBullets(text) {
+    var lines = text.split('\n');
+    var sections = [];
+    var i;
+    for (i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (!line) continue;
+        var catMatch = line.match(/^\*\*(.+?):\*\*\s*(.*)/);
+        if (catMatch) {
+            var cat = catMatch[1].trim();
+            var items = catMatch[2] ? catMatch[2].split('|') : [];
+            var bullets = [];
+            var j;
+            for (j = 0; j < items.length; j++) {
+                var b = items[j].trim();
+                if (b) bullets.push(b);
+            }
+            if (bullets.length) sections.push({ cat: cat, bullets: bullets });
+        }
+    }
+    return sections;
+}
+
+function renderBullets(sections) {
+    if (!sections || !sections.length) return null;
+    var block = document.createElement('div');
+    block.className = 'bullet-block';
+    var i;
+    for (i = 0; i < sections.length; i++) {
+        var catEl = document.createElement('div');
+        catEl.className = 'bullet-category';
+        catEl.innerHTML = esc(sections[i].cat);
+        block.appendChild(catEl);
+        var j;
+        for (j = 0; j < sections[i].bullets.length; j++) {
+            var item = document.createElement('div');
+            item.className = 'bullet-item';
+            item.innerHTML = esc(sections[i].bullets[j]);
+            block.appendChild(item);
+        }
+    }
+    return block;
+}
+
 function autoAddPhoto(inp) {
     if (!inp || !inp.files || !inp.files[0]) return;
     var btn = document.getElementById('addIconPhotos');
@@ -194,11 +247,9 @@ function autoScanProfile(inp) {
     if (!inp || !inp.files || !inp.files.length) return;
     var key = (localStorage.getItem('dlAK') || '').trim();
     if (!key) { showMsg('addFormMsg', 'err', 'Save your API key first.'); return; }
-
     var btn = document.getElementById('addIconInfo');
     btn.className = 'add-icon-btn scanning';
     showMsg('addFormMsg', 'load', 'Scanning ' + inp.files.length + ' profile screenshot(s)...');
-
     var row = document.getElementById('thumbRow');
     row.innerHTML = '';
     var files = [];
@@ -221,12 +272,10 @@ function autoScanProfile(inp) {
         rd.readAsDataURL(inp.files[i]);
         row.appendChild(img);
     }
-
     loadFilesToBlocks(files, function(blocks) {
-        var prompt = 'These are dating app profile screenshots. Return ONLY valid JSON, no markdown: {"name":"","age":"","location":"","bio":"","photoIndex":0}. photoIndex is the zero-based index of the screenshot showing the main profile photo.';
-        callAI(key, blocks, prompt, function(text) {
+        callAI(key, blocks, profilePrompt(), function(text) {
             var parsed = parseJSON(text);
-            if (!parsed) { btn.className = 'add-icon-btn'; showMsg('addFormMsg', 'err', 'Could not read profile. Try again.'); return; }
+            if (!parsed) { btn.className = 'add-icon-btn'; showMsg('addFormMsg', 'err', 'Could not read. Try again.'); return; }
             if (parsed.name) document.getElementById('iName').value = parsed.name;
             if (parsed.age) document.getElementById('iAge').value = String(parsed.age);
             if (parsed.location) document.getElementById('iLoc').value = parsed.location;
@@ -245,7 +294,7 @@ function autoScanProfile(inp) {
                 pr.readAsDataURL(files[idx]);
             }
             btn.className = 'add-icon-btn done';
-            showMsg('addFormMsg', 'ok', 'Profile scanned! Fields filled. Review then tap Add Profile.');
+            showMsg('addFormMsg', 'ok', 'Profile scanned! Fields filled. Tap Add Profile when ready.');
         }, function(err) { btn.className = 'add-icon-btn'; showMsg('addFormMsg', 'err', err); });
     });
 }
@@ -254,22 +303,18 @@ function autoScanComms(inp) {
     if (!inp || !inp.files || !inp.files.length) return;
     var key = (localStorage.getItem('dlAK') || '').trim();
     if (!key) { showMsg('addFormMsg', 'err', 'Save your API key first.'); return; }
-
     var btn = document.getElementById('addIconComms');
     btn.className = 'add-icon-btn scanning';
     showMsg('addFormMsg', 'load', 'Reading ' + inp.files.length + ' message screenshot(s)...');
-
     pendingCommFiles = [];
     var i;
     for (i = 0; i < inp.files.length; i++) { pendingCommFiles.push(inp.files[i]); }
-
     loadFilesToBlocks(pendingCommFiles, function(blocks) {
-        var prompt = 'These are text message conversation screenshots. Read all messages and write a concise summary of what was discussed — topics, plans, tone, anything notable. Return only the summary text, no JSON, no labels.';
-        callAI(key, blocks, prompt, function(text) {
+        callAI(key, blocks, commPrompt(), function(text) {
             var c = document.getElementById('iComm');
             c.value = c.value.trim() ? c.value.trim() + '\n\n' + text : text;
             btn.className = 'add-icon-btn done';
-            showMsg('addFormMsg', 'ok', 'Messages scanned! Summary added to Communications field.');
+            showMsg('addFormMsg', 'ok', 'Messages scanned! Summary added.');
         }, function(err) { btn.className = 'add-icon-btn'; showMsg('addFormMsg', 'err', err); });
     });
 }
@@ -285,7 +330,7 @@ function loadFilesToBlocks(files, onDone) {
                 var parts = e.target.result.split(',');
                 blocks.push({ type: 'image', source: { type: 'base64', media_type: file.type || 'image/jpeg', data: parts[1] || '' } });
                 loaded++;
-                if (loaded === files.length) { onDone(blocks); }
+                if (loaded === files.length) onDone(blocks);
             };
             r.readAsDataURL(file);
         })(files[i]);
@@ -295,7 +340,7 @@ function loadFilesToBlocks(files, onDone) {
 function callAI(key, blocks, prompt, onSuccess, onError) {
     var body = JSON.stringify({
         model: 'claude-opus-4-5',
-        max_tokens: 1000,
+        max_tokens: 1200,
         messages: [{ role: 'user', content: blocks.concat([{ type: 'text', text: prompt }]) }]
     });
     var xhr = new XMLHttpRequest();
@@ -305,13 +350,13 @@ function callAI(key, blocks, prompt, onSuccess, onError) {
     xhr.setRequestHeader('anthropic-version', '2023-06-01');
     xhr.setRequestHeader('anthropic-dangerous-direct-browser-access', 'true');
     xhr.onload = function() {
-        if (xhr.status !== 200) { onError('API error ' + xhr.status + '. Check your key.'); return; }
+        if (xhr.status !== 200) { onError('API error ' + xhr.status); return; }
         var data;
-        try { data = JSON.parse(xhr.responseText); } catch(e) { onError('Could not parse response.'); return; }
-        if (!data.content || !data.content[0] || !data.content[0].text) { onError('Unexpected response format.'); return; }
+        try { data = JSON.parse(xhr.responseText); } catch(e) { onError('Parse error.'); return; }
+        if (!data.content || !data.content[0] || !data.content[0].text) { onError('Bad response.'); return; }
         onSuccess(data.content[0].text.trim());
     };
-    xhr.onerror = function() { onError('Network error. Check connection.'); };
+    xhr.onerror = function() { onError('Network error.'); };
     xhr.send(body);
 }
 
@@ -326,11 +371,9 @@ function parseJSON(text) {
 function addP() {
     var name = document.getElementById('iName').value.trim();
     if (!name) { showMsg('addMsg', 'err', 'Name is required.'); return; }
-
     var commScreenshots = [];
     var loaded = 0;
     var total = pendingCommFiles.length;
-
     function finalize() {
         profiles.unshift({
             id: Date.now(),
@@ -363,7 +406,6 @@ function addP() {
         showMsg('addMsg', 'ok', 'Profile added!');
         render();
     }
-
     if (!total) { finalize(); return; }
     var i;
     for (i = 0; i < total; i++) {
@@ -415,7 +457,7 @@ function saveComm(pid) {
     var el = document.getElementById('comm' + pid); if (!el) return;
     var i;
     for (i = 0; i < profiles.length; i++) { if (String(profiles[i].id) === String(pid)) { profiles[i].comm = el.value; break; } }
-    sp(); alert('Communications saved!');
+    sp(); alert('Saved!');
 }
 
 function addMoreProfile(pid) {
@@ -424,14 +466,12 @@ function addMoreProfile(pid) {
     var key = (localStorage.getItem('dlAK') || '').trim();
     if (!key) { alert('Save your API key first.'); return; }
     var statusEl = document.getElementById('cardStatus' + pid);
-    statusEl.className = 'statusmsg load';
-    statusEl.innerHTML = 'Scanning...';
+    statusEl.className = 'statusmsg load'; statusEl.innerHTML = 'Scanning...';
     var files = [];
     var i;
-    for (i = 0; i < inp.files.length; i++) { files.push(inp.files[i]); }
+    for (i = 0; i < inp.files.length; i++) files.push(inp.files[i]);
     loadFilesToBlocks(files, function(blocks) {
-        var prompt = 'These are dating app profile screenshots. Return ONLY valid JSON, no markdown: {"name":"","age":"","location":"","bio":"","photoIndex":0}.';
-        callAI(key, blocks, prompt, function(text) {
+        callAI(key, blocks, profilePrompt(), function(text) {
             var parsed = parseJSON(text);
             if (!parsed) { statusEl.className = 'statusmsg err'; statusEl.innerHTML = 'Could not read. Try again.'; return; }
             var j;
@@ -441,17 +481,11 @@ function addMoreProfile(pid) {
                     if (parsed.age && !profiles[j].age) profiles[j].age = String(parsed.age);
                     if (parsed.location && !profiles[j].location) profiles[j].location = parsed.location;
                     if (parsed.bio) profiles[j].bio = profiles[j].bio ? profiles[j].bio + '\n\n' + parsed.bio : parsed.bio;
-                    if (!profiles[j].photo && files[parsed.photoIndex || 0]) {
-                        var pr = new FileReader();
-                        pr.onload = function(e) { profiles[j].photo = e.target.result; sp(); render(); };
-                        pr.readAsDataURL(files[parsed.photoIndex || 0]);
-                    }
                     break;
                 }
             }
             sp(); render();
-            statusEl.className = 'statusmsg ok';
-            statusEl.innerHTML = 'Profile updated!';
+            statusEl.className = 'statusmsg ok'; statusEl.innerHTML = 'Profile updated!';
         }, function(err) { statusEl.className = 'statusmsg err'; statusEl.innerHTML = err; });
     });
 }
@@ -460,8 +494,7 @@ function addPhotoToProfile(pid) {
     var inp = document.getElementById('morePhoto' + pid);
     if (!inp || !inp.files || !inp.files[0]) return;
     var statusEl = document.getElementById('cardStatus' + pid);
-    statusEl.className = 'statusmsg load';
-    statusEl.innerHTML = 'Adding photo...';
+    statusEl.className = 'statusmsg load'; statusEl.innerHTML = 'Adding photo...';
     var r = new FileReader();
     r.onload = function(e) {
         var i;
@@ -474,8 +507,7 @@ function addPhotoToProfile(pid) {
             }
         }
         sp(); render();
-        statusEl.className = 'statusmsg ok';
-        statusEl.innerHTML = 'Photo added!';
+        statusEl.className = 'statusmsg ok'; statusEl.innerHTML = 'Photo added!';
     };
     r.readAsDataURL(inp.files[0]);
 }
@@ -486,11 +518,10 @@ function addCommToProfile(pid) {
     var key = (localStorage.getItem('dlAK') || '').trim();
     if (!key) { alert('Save your API key first.'); return; }
     var statusEl = document.getElementById('cardStatus' + pid);
-    statusEl.className = 'statusmsg load';
-    statusEl.innerHTML = 'Reading messages...';
+    statusEl.className = 'statusmsg load'; statusEl.innerHTML = 'Reading messages...';
     var files = [];
     var i;
-    for (i = 0; i < inp.files.length; i++) { files.push(inp.files[i]); }
+    for (i = 0; i < inp.files.length; i++) files.push(inp.files[i]);
     var newScreenshots = [];
     var loaded = 0;
     for (i = 0; i < files.length; i++) {
@@ -511,8 +542,7 @@ function addCommToProfile(pid) {
                     }
                     sp();
                     loadFilesToBlocks(files, function(blocks) {
-                        var prompt = 'These are text message conversation screenshots. Write a concise summary of what was discussed. Return only the summary text.';
-                        callAI(key, blocks, prompt, function(text) {
+                        callAI(key, blocks, commPrompt(), function(text) {
                             var m;
                             for (m = 0; m < profiles.length; m++) {
                                 if (String(profiles[m].id) === String(pid)) {
@@ -521,8 +551,7 @@ function addCommToProfile(pid) {
                                 }
                             }
                             sp(); render();
-                            statusEl.className = 'statusmsg ok';
-                            statusEl.innerHTML = 'Messages added and summary updated!';
+                            statusEl.className = 'statusmsg ok'; statusEl.innerHTML = 'Messages added and summary updated!';
                         }, function(err) { statusEl.className = 'statusmsg err'; statusEl.innerHTML = err; });
                     });
                 }
@@ -565,13 +594,23 @@ function closeLightbox() { document.getElementById('lightbox').style.display = '
 
 function makeFileInput(id, accept, isMultiple, onChangeFn) {
     var inp = document.createElement('input');
-    inp.type = 'file';
-    inp.accept = accept;
+    inp.type = 'file'; inp.accept = accept;
     if (isMultiple) inp.multiple = true;
     inp.id = id;
     inp.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;width:1px;height:1px;';
     inp.onchange = onChangeFn;
     return inp;
+}
+
+function makeIconCell(emoji, label, clickFn) {
+    var cell = document.createElement('div');
+    cell.className = 'card-icon-cell';
+    var btn = document.createElement('button');
+    btn.className = 'card-icon-btn';
+    btn.innerHTML = '<span class="ie">' + emoji + '</span>' + label;
+    btn.onclick = clickFn;
+    cell.appendChild(btn);
+    return cell;
 }
 
 function render() {
@@ -580,14 +619,11 @@ function render() {
     if (!profiles.length) {
         var empty = document.createElement('div');
         empty.className = 'box';
-        empty.style.textAlign = 'center';
-        empty.style.color = '#e65100';
-        empty.style.padding = '30px';
+        empty.style.cssText = 'text-align:center;color:#e65100;padding:30px;';
         empty.innerHTML = 'No profiles yet. Add your first one above.';
         area.appendChild(empty);
         return;
     }
-
     var i;
     for (i = 0; i < profiles.length; i++) {
         var p = profiles[i];
@@ -612,7 +648,7 @@ function render() {
         var body = document.createElement('div');
         body.className = 'pcard-body';
 
-        // NAME + AGE
+        // NAME AGE LOC
         var nameEl = document.createElement('span');
         nameEl.className = 'pname';
         nameEl.innerHTML = esc(p.name);
@@ -630,40 +666,24 @@ function render() {
             body.appendChild(locEl);
         }
 
-        // STATUS MSG FOR CARD
+        // STATUS
         var cardStatus = document.createElement('div');
         cardStatus.className = 'statusmsg';
         cardStatus.id = 'cardStatus' + pid;
         body.appendChild(cardStatus);
 
+        // HIDDEN FILE INPUTS
+        body.appendChild(makeFileInput('moreInfo' + pid, 'image/*', true, (function(id) { return function() { addMoreProfile(id); }; })(pid)));
+        body.appendChild(makeFileInput('morePhoto' + pid, 'image/*', false, (function(id) { return function() { addPhotoToProfile(id); }; })(pid)));
+        body.appendChild(makeFileInput('moreComm' + pid, 'image/*', true, (function(id) { return function() { addCommToProfile(id); }; })(pid)));
+
         // 4 ICON ROW
         var iconTable = document.createElement('div');
         iconTable.className = 'card-icon-row';
-
-        // Hidden file inputs
-        var infoInp = makeFileInput('moreInfo' + pid, 'image/*', true, (function(id) { return function() { addMoreProfile(id); }; })(pid));
-        body.appendChild(infoInp);
-        var photoInp = makeFileInput('morePhoto' + pid, 'image/*', false, (function(id) { return function() { addPhotoToProfile(id); }; })(pid));
-        body.appendChild(photoInp);
-        var commInp = makeFileInput('moreComm' + pid, 'image/*', true, (function(id) { return function() { addCommToProfile(id); }; })(pid));
-        body.appendChild(commInp);
-
-        function makeIconCell(emoji, label, clickFn) {
-            var cell = document.createElement('div');
-            cell.className = 'card-icon-cell';
-            var btn = document.createElement('button');
-            btn.className = 'card-icon-btn';
-            btn.innerHTML = '<span class="ie">' + emoji + '</span>' + label;
-            btn.onclick = clickFn;
-            cell.appendChild(btn);
-            return cell;
-        }
-
         iconTable.appendChild(makeIconCell('👤', 'Add Info', (function(id) { return function() { document.getElementById('moreInfo' + id).click(); }; })(pid)));
         iconTable.appendChild(makeIconCell('📷', 'Add Photo', (function(id) { return function() { document.getElementById('morePhoto' + id).click(); }; })(pid)));
         iconTable.appendChild(makeIconCell('💬', 'Add Msgs', (function(id) { return function() { document.getElementById('moreComm' + id).click(); }; })(pid)));
         iconTable.appendChild(makeIconCell('✏️', 'Edit', (function(id) { return function() { openEdit(id); }; })(pid)));
-
         body.appendChild(iconTable);
 
         // PROFILE INFO SECTION
@@ -673,10 +693,16 @@ function render() {
         body.appendChild(s1);
 
         if (p.bio) {
-            var bioEl = document.createElement('div');
-            bioEl.className = 'pbio';
-            bioEl.innerHTML = esc(p.bio);
-            body.appendChild(bioEl);
+            var bioSections = parseBullets(p.bio);
+            if (bioSections && bioSections.length) {
+                var bioBlock = renderBullets(bioSections);
+                body.appendChild(bioBlock);
+            } else {
+                var bioEl = document.createElement('div');
+                bioEl.style.cssText = 'font-size:14px;line-height:1.5;margin:8px 0;';
+                bioEl.innerHTML = esc(p.bio);
+                body.appendChild(bioEl);
+            }
         }
 
         var nlbl = document.createElement('div');
@@ -733,15 +759,28 @@ function render() {
         s3.innerHTML = '💬  Communications';
         body.appendChild(s3);
 
-        var clbl = document.createElement('div');
-        clbl.style.cssText = 'font-size:11px;color:#e65100;text-transform:uppercase;margin:8px 0 4px;';
-        clbl.innerHTML = 'Summary';
-        body.appendChild(clbl);
+        if (p.comm) {
+            var commSections = parseBullets(p.comm);
+            if (commSections && commSections.length) {
+                var commBlock = renderBullets(commSections);
+                body.appendChild(commBlock);
+            } else {
+                var commRaw = document.createElement('div');
+                commRaw.style.cssText = 'font-size:14px;line-height:1.5;margin:8px 0;';
+                commRaw.innerHTML = esc(p.comm);
+                body.appendChild(commRaw);
+            }
+        }
+
+        var editCommLbl = document.createElement('div');
+        editCommLbl.style.cssText = 'font-size:11px;color:#e65100;text-transform:uppercase;margin:10px 0 4px;';
+        editCommLbl.innerHTML = 'Edit Summary';
+        body.appendChild(editCommLbl);
 
         var commTa = document.createElement('textarea');
         commTa.className = 'ntarea';
         commTa.id = 'comm' + pid;
-        commTa.placeholder = 'Summary of conversations...';
+        commTa.placeholder = 'Edit communications summary...';
         commTa.value = p.comm || '';
         body.appendChild(commTa);
 
@@ -751,19 +790,25 @@ function render() {
         saveCommBtn.onclick = (function(id) { return function() { saveComm(id); }; })(pid);
         body.appendChild(saveCommBtn);
 
-        var cslbl = document.createElement('div');
-        cslbl.style.cssText = 'font-size:11px;color:#e65100;text-transform:uppercase;margin:12px 0 4px;';
-        cslbl.innerHTML = 'Message Screenshots';
-        body.appendChild(cslbl);
-
+        // COMM THUMBNAILS
         var commScreens = p.commScreenshots || [];
-        var k;
-        for (k = 0; k < commScreens.length; k++) {
-            var cimg = document.createElement('img');
-            cimg.className = 'comm-thumb';
-            cimg.src = commScreens[k];
-            cimg.onclick = (function(src) { return function() { openLightbox(src); }; })(commScreens[k]);
-            body.appendChild(cimg);
+        if (commScreens.length) {
+            var cslbl = document.createElement('div');
+            cslbl.style.cssText = 'font-size:11px;color:#e65100;text-transform:uppercase;margin:12px 0 4px;';
+            cslbl.innerHTML = 'Message Screenshots';
+            body.appendChild(cslbl);
+
+            var thumbRow = document.createElement('div');
+            thumbRow.className = 'comm-thumb-row';
+            var k;
+            for (k = 0; k < commScreens.length; k++) {
+                var cimg = document.createElement('img');
+                cimg.className = 'comm-thumb';
+                cimg.src = commScreens[k];
+                cimg.onclick = (function(src) { return function() { openLightbox(src); }; })(commScreens[k]);
+                thumbRow.appendChild(cimg);
+            }
+            body.appendChild(thumbRow);
         }
 
         // DELETE
@@ -779,8 +824,7 @@ function render() {
 }
 
 function showMsg(id, cls, msg) {
-    var el = document.getElementById(id);
-    if (!el) return;
+    var el = document.getElementById(id); if (!el) return;
     el.className = 'statusmsg ' + cls;
     el.innerHTML = msg;
 }
