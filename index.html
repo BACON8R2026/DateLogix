@@ -3,110 +3,269 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>DateLogix</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #e65100; color: #1a1a1a; font-family: -apple-system, sans-serif; }
-#header { background: #bf360c; color: white; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 2px solid #8b2000; }
-#page { padding: 16px; max-width: 480px; margin: 0 auto; }
-.box { background: #fff8f5; border: 2px solid #bf360c; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-.box h2 { font-size: 16px; font-weight: bold; color: #bf360c; margin-bottom: 10px; }
-.lbl { display: block; font-size: 12px; color: #bf360c; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.5px; }
-input[type=text], input[type=number], input[type=password], textarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #bf360c; border-radius: 8px; color: #1a1a1a; font-size: 16px; box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-textarea { min-height: 80px; resize: vertical; }
-input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; width: 1px; height: 1px; }
-.btnmain { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #bf360c; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnsoft { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #bf360c; border-radius: 10px; background: white; color: #bf360c; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btndel { display: block; width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 10px; background: #333; color: white; font-size: 17px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.btnmic { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #2e7d32; color: white; font-size: 15px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
-.statusmsg { padding: 12px; border-radius: 8px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
-.statusmsg.load { display: block; background: #ffccaa; color: #bf360c; }
-.statusmsg.ok { display: block; background: #c8e6c9; color: #1b5e20; }
-.statusmsg.err { display: block; background: #ffcdd2; color: #b71c1c; }
-.smallnote { font-size: 13px; color: #bf360c; margin: 6px 0 10px 0; line-height: 1.4; }
-hr { border: none; border-top: 1px solid #ffccaa; margin: 16px 0; }
-.add-icon-row { display: block; margin: 12px 0; text-align: center; }
-.add-icon-btn { display: inline-block; width: 30%; margin: 0 1%; padding: 12px 4px; background: white; border: 2px solid #bf360c; border-radius: 12px; color: #bf360c; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; vertical-align: top; }
-.add-icon-btn .ie { display: block; font-size: 26px; margin-bottom: 4px; }
-.add-icon-btn.scanning { background: #ffccaa; border-color: #e65100; }
-.add-icon-btn.done { background: #c8e6c9; border-color: #2e7d32; color: #1b5e20; }
-.pcard { background: #fff8f5; border: 2px solid #bf360c; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
-.pcard-photo-wrap { width: 100%; height: 320px; background: #ffccaa; overflow: hidden; position: relative; }
-.pcard-photo-wrap img { width: 100%; height: 320px; display: block; object-fit: cover; object-position: 50% 20%; }
-.pcard-photo-empty { width: 100%; height: 200px; background: #ffccaa; text-align: center; line-height: 200px; font-size: 80px; }
-.platform-badge { position: absolute; top: 10px; left: 10px; width: 36px; height: 36px; border-radius: 8px; text-align: center; line-height: 36px; font-size: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
-.platform-tinder { background: #fe3c72; }
-.platform-bumble { background: #ffc629; }
-.platform-hinge { background: #d63a6b; }
-.platform-match { background: #00a0dc; }
-.platform-unknown { background: #888; }
-.pcard-body { padding: 16px; }
-.pname { font-size: 24px; font-weight: bold; color: #bf360c; display: inline; }
-.page { font-size: 16px; color: #555; margin-left: 8px; display: inline; }
-.ploc { color: #555; margin: 6px 0 10px 0; font-size: 14px; }
-.card-icon-row { display: table; width: 100%; margin: 10px 0 16px 0; border-collapse: separate; border-spacing: 4px; }
-.card-icon-cell { display: table-cell; width: 25%; text-align: center; }
-.card-icon-btn { display: block; width: 100%; padding: 10px 2px; background: #bf360c; border: none; border-radius: 10px; color: white; font-size: 11px; font-weight: bold; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; text-align: center; }
-.card-icon-btn .ie { display: block; font-size: 22px; margin-bottom: 3px; }
-.card-section-hdr { background: #bf360c; color: white; padding: 12px 16px; font-size: 17px; font-weight: bold; margin: 16px -16px 12px -16px; }
-.bullet-block { background: white; border: 1px solid #ffccaa; border-radius: 10px; padding: 14px 16px; margin: 8px 0; width: 100%; }
-.bullet-category { font-size: 13px; font-weight: bold; color: #bf360c; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 6px 0; display: block; }
-.bullet-category:first-child { margin-top: 0; }
-.bullet-item { font-size: 14px; color: #1a1a1a; line-height: 1.6; padding: 1px 0 1px 18px; position: relative; display: block; }
-.bullet-item:before { content: "•"; position: absolute; left: 4px; color: #bf360c; font-weight: bold; font-size: 16px; line-height: 1.4; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: -apple-system, sans-serif; color: white; }
+
+/* SCREENS */
+.screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: none; }
+.screen.active { display: block; }
+
+/* ── TOP BAR ── */
+#topBar {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+padding: 16px 20px;
+display: table; width: 100%;
+background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+}
+#topBarLeft { display: table-cell; vertical-align: middle; }
+#topBarTitle { font-size: 22px; font-weight: 800; letter-spacing: 2px; color: #c9a84c; }
+#topBarRight { display: table-cell; vertical-align: middle; text-align: right; }
+#btnAddProfile {
+width: 40px; height: 40px; border-radius: 50%;
+background: #c9a84c; border: none; color: #000;
+font-size: 26px; font-weight: bold; cursor: pointer;
+line-height: 40px; text-align: center;
+-webkit-appearance: none;
+}
+
+/* ── BOTTOM NAV ── */
+#bottomNav {
+position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+background: #111; border-top: 1px solid #333;
+display: table; width: 100%;
+}
+.nav-btn {
+display: table-cell; text-align: center; padding: 10px 0 14px;
+color: #555; font-size: 10px; font-weight: 600;
+cursor: pointer; border: none; background: none;
+-webkit-appearance: none; font-family: -apple-system, sans-serif;
+}
+.nav-btn .nav-icon { display: block; font-size: 22px; margin-bottom: 2px; }
+.nav-btn.active { color: #c9a84c; }
+
+/* ── CARD STACK (HOME) ── */
+#homeScreen { background: #000; overflow: hidden; }
+#cardStack { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* Individual profile card */
+.pcard-full {
+position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+overflow-y: auto; -webkit-overflow-scrolling: touch;
+display: none;
+}
+.pcard-full.active { display: block; }
+
+/* Photo hero */
+.card-hero {
+position: relative; width: 100%; height: 100vh;
+min-height: 100%; flex-shrink: 0;
+}
+.card-hero-img {
+position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+object-fit: cover; object-position: 50% 20%;
+}
+.card-hero-empty {
+position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+background: #1a1a1a; text-align: center; line-height: 100vh; font-size: 100px;
+}
+.card-hero-grad {
+position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+background: linear-gradient(transparent, rgba(0,0,0,0.95));
+}
+
+/* Platform badge */
+.platform-badge {
+position: absolute; top: 70px; left: 16px;
+width: 36px; height: 36px; border-radius: 10px;
+text-align: center; line-height: 36px; font-size: 20px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.pb-tinder { background: #fe3c72; }
+.pb-bumble { background: #ffc629; }
+.pb-hinge { background: #d63a6b; }
+.pb-match { background: #00a0dc; }
+.pb-unknown { background: #444; }
+
+/* Name overlay */
+.card-name-block {
+position: absolute; bottom: 90px; left: 20px; right: 20px;
+}
+.card-name { font-size: 32px; font-weight: 800; color: white; display: inline; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+.card-age { font-size: 24px; font-weight: 400; color: rgba(255,255,255,0.85); margin-left: 10px; display: inline; }
+.card-loc { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+/* Floating action icons */
+.card-actions {
+position: absolute; bottom: 20px; left: 0; right: 0;
+text-align: center;
+}
+.card-actions-inner { display: inline-block; }
+.action-btn {
+display: inline-block; width: 52px; height: 52px; border-radius: 50%;
+background: rgba(201,168,76,0.9); border: none; color: #000;
+font-size: 22px; cursor: pointer; text-align: center; line-height: 52px;
+margin: 0 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+-webkit-appearance: none;
+}
+.action-btn-label { display: block; font-size: 9px; color: rgba(255,255,255,0.7); margin-top: 2px; text-align: center; }
+
+/* Scroll hint */
+.scroll-hint {
+position: absolute; bottom: 80px; right: 20px;
+font-size: 11px; color: rgba(255,255,255,0.4);
+writing-mode: vertical-rl;
+}
+
+/* Profile details section (below hero) */
+.card-details {
+background: #0a0a0a; min-height: 100vh; padding: 24px 20px 120px;
+}
+.detail-section-hdr {
+font-size: 11px; font-weight: 800; color: #c9a84c;
+text-transform: uppercase; letter-spacing: 2px;
+margin: 24px 0 12px; padding-bottom: 6px;
+border-bottom: 1px solid #222;
+}
+.detail-section-hdr:first-child { margin-top: 0; }
+.bullet-block { margin: 8px 0; }
+.bullet-cat { font-size: 12px; font-weight: 700; color: #c9a84c; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 6px; display: block; }
+.bullet-cat:first-child { margin-top: 0; }
+.bullet-item { font-size: 15px; color: #ddd; line-height: 1.7; padding: 0 0 0 16px; position: relative; display: block; }
+.bullet-item:before { content: “•”; position: absolute; left: 2px; color: #c9a84c; }
+.plain-text { font-size: 15px; color: #ddd; line-height: 1.6; }
+.ntarea { display: block; width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #333; border-radius: 10px; color: white; font-size: 15px; min-height: 80px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; resize: none; }
 .comm-thumb-row { display: block; margin: 8px 0; }
-.comm-thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid #bf360c; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; cursor: pointer; }
-.ntarea { display: block; width: 100%; padding: 12px; background: white; border: 1px solid #bf360c; border-radius: 8px; color: #1a1a1a; font-size: 14px; min-height: 70px; margin: 8px 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
-.photogrid { display: block; margin: 10px 0; }
-.pgrid-img { width: 90px; height: 90px; object-fit: cover; border-radius: 8px; border: 2px solid #bf360c; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
-.thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid #bf360c; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
-#lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 999; text-align: center; }
-#lightbox img { max-width: 100%; max-height: 88%; margin-top: 6%; object-fit: contain; display: inline-block; }
-#lightbox-close { position: fixed; top: 16px; right: 20px; color: white; font-size: 40px; cursor: pointer; z-index: 1000; background: none; border: none; font-family: -apple-system, sans-serif; }
-#editModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 998; overflow-y: auto; }
-#editModalInner { background: #fff8f5; border: 2px solid #bf360c; border-radius: 12px; margin: 20px 16px; padding: 20px; }
-#editModal h2 { color: #bf360c; margin-bottom: 16px; }
+.comm-thumb { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid #333; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; cursor: pointer; }
+.photogrid { display: block; margin: 8px 0; }
+.pgrid-img { width: 88px; height: 88px; object-fit: cover; border-radius: 10px; border: 1px solid #333; display: inline-block; vertical-align: top; margin: 4px; cursor: pointer; }
+.goldbtn { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #c9a84c; color: #000; font-size: 15px; font-weight: 700; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.darkbtn { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #333; border-radius: 10px; background: #1a1a1a; color: #c9a84c; font-size: 15px; font-weight: 700; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.redbtn { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #8b0000; color: white; font-size: 15px; font-weight: 700; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+.micbtn { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #1a3a1a; color: #4caf50; font-size: 15px; font-weight: 700; cursor: pointer; -webkit-appearance: none; font-family: -apple-system, sans-serif; }
+
+/* Swipe nav dots */
+#swipeDots {
+position: fixed; top: 60px; left: 0; right: 0; text-align: center; z-index: 99;
+}
+.dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); margin: 0 3px; }
+.dot.active { background: #c9a84c; }
+
+/* Empty home */
+#emptyHome {
+position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+text-align: center; color: #444;
+}
+#emptyHome .eh-icon { font-size: 60px; margin-bottom: 16px; }
+#emptyHome .eh-text { font-size: 16px; color: #555; }
+#emptyHome .eh-sub { font-size: 13px; color: #333; margin-top: 8px; }
+
+/* ── ADD SCREEN ── */
+#addScreen { background: #0a0a0a; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-top: 70px; padding-bottom: 100px; }
+#addScreen-inner { padding: 0 20px; max-width: 480px; margin: 0 auto; }
+.add-screen-title { font-size: 22px; font-weight: 800; color: #c9a84c; margin-bottom: 20px; letter-spacing: 1px; }
+
+.add-icon-row { display: block; margin: 16px 0; text-align: center; }
+.add-icon-btn { display: inline-block; width: 30%; margin: 0 1%; padding: 14px 4px; background: #1a1a1a; border: 2px solid #333; border-radius: 14px; color: #888; font-size: 12px; font-weight: 700; cursor: pointer; text-align: center; -webkit-appearance: none; font-family: -apple-system, sans-serif; vertical-align: top; }
+.add-icon-btn .ie { display: block; font-size: 28px; margin-bottom: 6px; }
+.add-icon-btn.scanning { background: #2a2000; border-color: #c9a84c; color: #c9a84c; }
+.add-icon-btn.done { background: #0a2a0a; border-color: #4caf50; color: #4caf50; }
+
+input[type=text], input[type=number], input[type=password], input[type=tel], textarea {
+display: block; width: 100%; padding: 14px; background: #1a1a1a;
+border: 1px solid #333; border-radius: 10px; color: white; font-size: 16px;
+box-sizing: border-box; -webkit-appearance: none; font-family: -apple-system, sans-serif;
+margin-bottom: 2px;
+}
+textarea { min-height: 90px; resize: none; }
+input[type=file] { position: absolute; left: -9999px; top: -9999px; opacity: 0; width: 1px; height: 1px; }
+.field-lbl { font-size: 11px; font-weight: 700; color: #c9a84c; text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 6px; display: block; }
+.statusmsg { padding: 12px; border-radius: 10px; margin: 10px 0; text-align: center; display: none; font-size: 14px; }
+.statusmsg.load { display: block; background: #2a2000; color: #c9a84c; }
+.statusmsg.ok { display: block; background: #0a2a0a; color: #4caf50; }
+.statusmsg.err { display: block; background: #2a0000; color: #ff6666; }
+.thumb { width: 72px; height: 72px; object-fit: cover; border-radius: 10px; border: 1px solid #333; display: inline-block; vertical-align: top; margin-right: 8px; margin-bottom: 8px; }
+#addPhotoPreview { width: 100%; height: 240px; background: #1a1a1a; border-radius: 12px; overflow: hidden; margin: 8px 0; display: none; }
+#addPhotoPreview img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; }
+.divider { border: none; border-top: 1px solid #222; margin: 24px 0; }
+
+/* ── SETTINGS SCREEN ── */
+#settingsScreen { background: #0a0a0a; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-top: 70px; padding-bottom: 100px; }
+#settingsScreen-inner { padding: 0 20px; max-width: 480px; margin: 0 auto; }
+.settings-title { font-size: 22px; font-weight: 800; color: #c9a84c; margin-bottom: 24px; letter-spacing: 1px; }
+.settings-section { background: #111; border: 1px solid #222; border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+.settings-section-title { font-size: 13px; font-weight: 700; color: #c9a84c; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+
+/* ── LIGHTBOX ── */
+#lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 999; text-align: center; }
+#lightbox img { max-width: 100%; max-height: 92%; margin-top: 4%; object-fit: contain; display: inline-block; }
+#lightbox-close { position: fixed; top: 20px; right: 20px; color: white; font-size: 36px; cursor: pointer; z-index: 1000; background: none; border: none; }
+
+/* EDIT MODAL */
+#editModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 500; overflow-y: auto; }
+#editModalInner { background: #111; border: 1px solid #333; border-radius: 16px; margin: 60px 16px 40px; padding: 24px; }
+#editModal h2 { color: #c9a84c; font-size: 20px; margin-bottom: 20px; }
 </style>
+
 </head>
 <body>
 
+<!-- LIGHTBOX -->
+
 <div id="lightbox" onclick="closeLightbox()">
-<button id="lightbox-close" onclick="closeLightbox()">x</button>
+<button id="lightbox-close" onclick="closeLightbox()">✕</button>
 <img id="lightbox-img" src="">
 </div>
+
+<!-- EDIT MODAL -->
 
 <div id="editModal">
 <div id="editModalInner">
 <h2>Edit Profile</h2>
-<span class="lbl">Name</span>
+<span class="field-lbl">Name</span>
 <input type="text" id="editName" placeholder="Her name">
-<span class="lbl">Age</span>
+<span class="field-lbl">Age</span>
 <input type="number" id="editAge" placeholder="Age">
-<span class="lbl">Location</span>
+<span class="field-lbl">Location</span>
 <input type="text" id="editLoc" placeholder="City, State">
-<span class="lbl">Bio</span>
-<textarea id="editBio" placeholder="Bio and details..."></textarea>
-<button class="btnmain" onclick="saveEdit()">Save Changes</button>
-<button class="btnsoft" onclick="closeEdit()">Cancel</button>
+<span class="field-lbl">Bio</span>
+<textarea id="editBio" placeholder="Bio..."></textarea>
+<button class="goldbtn" style="margin-top:16px;" onclick="saveEdit()">Save Changes</button>
+<button class="darkbtn" onclick="closeEdit()">Cancel</button>
 </div>
 </div>
 
-<div id="header">DATELOGIX</div>
-<div id="page">
+<!-- TOP BAR -->
 
-<div class="box">
-<h2>API Key</h2>
-<span class="lbl">Anthropic API Key</span>
-<input type="password" id="sAK" placeholder="sk-ant-...">
-<button class="btnmain" onclick="saveKey()">Save / Update Key</button>
-<div class="statusmsg" id="keyMsg"></div>
-<button class="btndel" onclick="clearStorage()" style="margin-top:8px;">🗑 Clear All Storage</button>
+<div id="topBar">
+<div id="topBarLeft"><span id="topBarTitle">DATELOGIX</span></div>
+<div id="topBarRight"><button id="btnAddProfile" onclick="goAdd()">+</button></div>
 </div>
 
-<div class="box">
-<h2>Add New Profile</h2>
-<p class="smallnote">Tap an icon to upload. Files scan automatically. No fields are required.</p>
+<!-- SWIPE DOTS -->
+
+<div id="swipeDots"></div>
+
+<!-- HOME SCREEN -->
+
+<div id="homeScreen" class="screen active">
+<div id="cardStack"></div>
+<div id="emptyHome" style="display:none;">
+<div class="eh-icon">💫</div>
+<div class="eh-text">No profiles yet</div>
+<div class="eh-sub">Tap + to add your first one</div>
+</div>
+</div>
+
+<!-- ADD SCREEN -->
+
+<div id="addScreen" class="screen">
+<div id="addScreen-inner">
+<div class="add-screen-title">Add New Profile</div>
+<p style="font-size:13px;color:#555;margin-bottom:16px;">Tap an icon to upload. Scans automatically.</p>
+
 <div class="add-icon-row">
 <button class="add-icon-btn" id="addIconInfo" onclick="document.getElementById('ocrFiles').click()">
 <span class="ie">👤</span>Profile Info
@@ -123,25 +282,65 @@ hr { border: none; border-top: 1px solid #ffccaa; margin: 16px 0; }
 <input type="file" id="commFile" accept="image/*" multiple onchange="autoScanComms(this)">
 <div class="statusmsg" id="addFormMsg"></div>
 <div id="thumbRow" style="margin-top:8px;"></div>
-<div id="photoPreview" style="display:none;margin:10px 0;">
-<img id="previewImg" style="width:100%;height:260px;border-radius:10px;object-fit:cover;object-position:50% 20%;display:block;">
-</div>
-<hr>
-<span class="lbl">Name</span>
+<div id="addPhotoPreview"><img id="addPreviewImg" src=""></div>
+
+<div class="divider"></div>
+<span class="field-lbl">Name</span>
 <input type="text" id="iName" placeholder="Her name (optional)">
-<span class="lbl">Age</span>
-<input type="number" id="iAge" placeholder="Age (optional)">
-<span class="lbl">Location</span>
-<input type="text" id="iLoc" placeholder="City, State (optional)">
-<span class="lbl">Communications Summary</span>
+<span class="field-lbl">Age</span>
+<input type="number" id="iAge" placeholder="Age">
+<span class="field-lbl">Location</span>
+<input type="text" id="iLoc" placeholder="City, State">
+<span class="field-lbl">Communications Summary</span>
 <textarea id="iComm" placeholder="Auto-filled when you scan messages..."></textarea>
-<span class="lbl">Bio / Notes</span>
+<span class="field-lbl">Bio / Notes</span>
 <textarea id="iBio" placeholder="Auto-filled when you scan profile..."></textarea>
-<button class="btnmain" onclick="addP()">Add Profile</button>
+<button class="goldbtn" style="margin-top:20px;" onclick="addP()">Add Profile</button>
 <div class="statusmsg" id="addMsg"></div>
+<button class="darkbtn" onclick="goHome()">Cancel</button>
+</div>
 </div>
 
-<div id="profilesArea"></div>
+<!-- SETTINGS SCREEN -->
+
+<div id="settingsScreen" class="screen">
+<div id="settingsScreen-inner">
+<div class="settings-title">Settings</div>
+
+<div class="settings-section">
+<div class="settings-section-title">AI / OCR</div>
+<span class="field-lbl">Anthropic API Key</span>
+<input type="password" id="sAK" placeholder="sk-ant-...">
+<p style="font-size:12px;color:#555;margin-top:6px;">Required for scanning screenshots</p>
+<button class="goldbtn" style="margin-top:12px;" onclick="saveKey()">Save Key</button>
+<div class="statusmsg" id="keyMsg"></div>
+</div>
+
+<div class="settings-section">
+<div class="settings-section-title">Storage</div>
+<p style="font-size:13px;color:#777;margin-bottom:14px;">If you hit storage errors, clear all data below.</p>
+<button class="redbtn" onclick="clearStorage()">🗑 Clear All Data</button>
+</div>
+
+<div class="settings-section">
+<div class="settings-section-title">About</div>
+<p style="font-size:13px;color:#555;line-height:1.6;">DateLogix — your private dating CRM. Upload screenshots from Tinder, Bumble, Hinge or Match. AI extracts her info automatically.</p>
+</div>
+</div>
+</div>
+
+<!-- BOTTOM NAV -->
+
+<div id="bottomNav">
+<button class="nav-btn active" id="navHome" onclick="goHome()">
+<span class="nav-icon">💫</span>Profiles
+</button>
+<button class="nav-btn" id="navAdd" onclick="goAdd()">
+<span class="nav-icon">➕</span>Add
+</button>
+<button class="nav-btn" id="navSettings" onclick="goSettings()">
+<span class="nav-icon">⚙️</span>Settings
+</button>
 </div>
 
 <script>
@@ -150,45 +349,16 @@ var currentPhotoData = '';
 var pendingCommScreenshots = [];
 var editingId = null;
 var detectedPlatform = '';
-
-function compressImage(dataUrl, callback) {
-    var img = new Image();
-    img.onload = function() {
-        var canvas = document.createElement("canvas");
-        var maxW = 600; var maxH = 800;
-        var w = img.width; var h = img.height;
-        if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
-        if (h > maxH) { w = Math.round(w * maxH / h); h = maxH; }
-        canvas.width = w; canvas.height = h;
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, w, h);
-        callback(canvas.toDataURL("image/jpeg", 0.6));
-    };
-    img.src = dataUrl;
-}
-
-function clearStorage() {
-    if (!confirm('This will delete ALL profiles and photos. Are you sure?')) return;
-    localStorage.clear();
-    profiles = [];
-    currentPhotoData = '';
-    pendingCommScreenshots = [];
-    render();
-    alert('Storage cleared. You can now add profiles again.');
-}
+var currentCardIndex = 0;
+var touchStartX = 0;
+var touchStartY = 0;
 
 function boot() {
     var raw = localStorage.getItem('dlP');
     profiles = [];
-    if (raw) {
-        try {
-            var parsed = JSON.parse(raw);
-            if (Array.isArray(parsed)) profiles = parsed;
-        } catch(e) { profiles = []; }
-    }
-    var k = localStorage.getItem('dlAK') || '';
-    document.getElementById('sAK').value = k;
-    render();
+    if (raw) { try { var p = JSON.parse(raw); if (Array.isArray(p)) profiles = p; } catch(e) {} }
+    document.getElementById('sAK').value = localStorage.getItem('dlAK') || '';
+    renderHome();
 }
 
 function sp() {
@@ -199,24 +369,18 @@ function sp() {
             var stripped = [];
             var i;
             for (i = 0; i < profiles.length; i++) {
-                var p = {};
-                var key;
-                for (key in profiles[i]) {
-                    if (profiles[i].hasOwnProperty(key)) p[key] = profiles[i][key];
-                }
+                var p = JSON.parse(JSON.stringify(profiles[i]));
                 if (p.photo && p.photo.length > 50000) p.photo = '';
-                if (p.photos) p.photos = [];
-                if (p.commScreenshots) p.commScreenshots = [];
+                p.photos = [];
+                p.commScreenshots = [];
                 stripped.push(p);
             }
             localStorage.setItem('dlP', JSON.stringify(stripped));
-            showMsg('addMsg', 'ok', 'Profile saved (photos skipped - storage full). Use Clear Storage button below to reset.');
         } catch(e2) {
             localStorage.clear();
-            localStorage.setItem('dlP', JSON.stringify([]));
             profiles = [];
-            alert('Storage was full and has been cleared. Please re-add your profiles.');
-            render();
+            alert('Storage full. All data cleared. Please re-add profiles.');
+            renderHome();
         }
     }
 }
@@ -227,78 +391,357 @@ function saveKey() {
     showMsg('keyMsg', 'ok', k ? 'Key saved!' : 'Key cleared.');
 }
 
-function platformInfo(name) {
-    var n = (name || '').toLowerCase();
-    if (n.indexOf('tinder') !== -1) return { emoji: '🔥', cls: 'platform-tinder' };
-    if (n.indexOf('bumble') !== -1) return { emoji: '🐝', cls: 'platform-bumble' };
-    if (n.indexOf('hinge') !== -1) return { emoji: '💘', cls: 'platform-hinge' };
-    if (n.indexOf('match') !== -1) return { emoji: '💙', cls: 'platform-match' };
-    return { emoji: '💜', cls: 'platform-unknown' };
+function clearStorage() {
+    if (!confirm('Delete ALL profiles and data?')) return;
+    localStorage.clear();
+    profiles = [];
+    currentPhotoData = '';
+    pendingCommScreenshots = [];
+    currentCardIndex = 0;
+    renderHome();
+    goHome();
+    alert('All data cleared.');
 }
 
-function profilePrompt() {
-    return 'These are dating app profile screenshots. Identify the dating app (Tinder, Bumble, Hinge, Match, or other). Extract all info. Return ONLY valid JSON, no markdown:\n{"name":"","age":"","location":"","bio":"","photoIndex":0,"platform":""}\n\nFor bio, use this format exactly:\n**Category:**\n- bullet\n- bullet\n\nCategories should match her content. Keep bullets 3-8 words. photoIndex = zero-based index of main profile photo screenshot.';
+/* ── NAVIGATION ── */
+function goHome() {
+    showScreen('homeScreen');
+    setNavActive('navHome');
+    document.getElementById('topBar').style.display = 'table';
+    document.getElementById('swipeDots').style.display = 'block';
+    renderHome();
 }
 
-function commPrompt() {
-    return 'These are text message screenshots. Summarize in bullet points. Format exactly:\n**Category:**\n- bullet\n- bullet\n\nPick categories that fit the conversation. Keep bullets 3-8 words. Return only this text.';
+function goAdd() {
+    showScreen('addScreen');
+    setNavActive('navAdd');
+    document.getElementById('topBar').style.display = 'table';
+    document.getElementById('swipeDots').style.display = 'none';
 }
 
-function parseBullets(text) {
-    if (!text) return [];
-    var lines = text.split('\n');
-    var sections = [];
-    var current = null;
+function goSettings() {
+    showScreen('settingsScreen');
+    setNavActive('navSettings');
+    document.getElementById('topBar').style.display = 'table';
+    document.getElementById('swipeDots').style.display = 'none';
+}
+
+function showScreen(id) {
+    var screens = document.querySelectorAll('.screen');
     var i;
-    for (i = 0; i < lines.length; i++) {
-        var line = lines[i].trim();
-        if (!line) continue;
-        var m1 = line.match(/^\*\*(.+?)\*\*:?\s*$/);
-        var m2 = line.match(/^\*\*(.+?):\*\*\s*(.*)/);
-        if (m1) {
-            current = { cat: m1[1].trim(), bullets: [] };
-            sections.push(current);
-        } else if (m2 && !m1) {
-            current = { cat: m2[1].trim(), bullets: [] };
-            sections.push(current);
-            if (m2[2]) {
-                var parts = m2[2].split('|');
-                var j;
-                for (j = 0; j < parts.length; j++) {
-                    var b = parts[j].trim();
-                    if (b) current.bullets.push(b);
-                }
+    for (i = 0; i < screens.length; i++) screens[i].className = 'screen';
+    document.getElementById(id).className = 'screen active';
+}
+
+function setNavActive(id) {
+    var btns = document.querySelectorAll('.nav-btn');
+    var i;
+    for (i = 0; i < btns.length; i++) btns[i].className = 'nav-btn';
+    document.getElementById(id).className = 'nav-btn active';
+}
+
+/* ── HOME / CARD STACK ── */
+function renderHome() {
+    var stack = document.getElementById('cardStack');
+    var empty = document.getElementById('emptyHome');
+    var dots = document.getElementById('swipeDots');
+    stack.innerHTML = '';
+    dots.innerHTML = '';
+
+    if (!profiles.length) {
+        empty.style.display = 'block';
+        return;
+    }
+    empty.style.display = 'none';
+
+    if (currentCardIndex >= profiles.length) currentCardIndex = 0;
+
+    var i;
+    for (i = 0; i < profiles.length; i++) {
+        var p = profiles[i];
+        var pid = p.id;
+        var card = document.createElement('div');
+        card.className = 'pcard-full' + (i === currentCardIndex ? ' active' : '');
+        card.id = 'card' + i;
+
+        var hero = buildHero(p, pid, i);
+        card.appendChild(hero);
+
+        var details = buildDetails(p, pid);
+        card.appendChild(details);
+
+        stack.appendChild(card);
+
+        var dot = document.createElement('span');
+        dot.className = 'dot' + (i === currentCardIndex ? ' active' : '');
+        dots.appendChild(dot);
+    }
+
+    setupSwipe();
+}
+
+function buildHero(p, pid, idx) {
+    var hero = document.createElement('div');
+    hero.className = 'card-hero';
+
+    if (p.photo) {
+        var img = document.createElement('img');
+        img.className = 'card-hero-img';
+        img.src = p.photo;
+        img.onclick = (function(src) { return function() { openLightbox(src); }; })(p.photo);
+        hero.appendChild(img);
+    } else {
+        var emp = document.createElement('div');
+        emp.className = 'card-hero-empty';
+        emp.innerHTML = (p.name && p.name !== 'Unknown') ? p.name.charAt(0) : '💫';
+        hero.appendChild(emp);
+    }
+
+    var grad = document.createElement('div');
+    grad.className = 'card-hero-grad';
+    hero.appendChild(grad);
+
+    if (p.platform) {
+        var pinfo = getPlatformInfo(p.platform);
+        var badge = document.createElement('div');
+        badge.className = 'platform-badge ' + pinfo.cls;
+        badge.innerHTML = pinfo.emoji;
+        hero.appendChild(badge);
+    }
+
+    var nameBlock = document.createElement('div');
+    nameBlock.className = 'card-name-block';
+    var nameEl = document.createElement('span');
+    nameEl.className = 'card-name';
+    nameEl.innerHTML = esc(p.name || 'Unknown');
+    nameBlock.appendChild(nameEl);
+    if (p.age) {
+        var ageEl = document.createElement('span');
+        ageEl.className = 'card-age';
+        ageEl.innerHTML = esc(p.age);
+        nameBlock.appendChild(ageEl);
+    }
+    if (p.location) {
+        var locEl = document.createElement('div');
+        locEl.className = 'card-loc';
+        locEl.innerHTML = '📍 ' + esc(p.location);
+        nameBlock.appendChild(locEl);
+    }
+    hero.appendChild(nameBlock);
+
+    var hint = document.createElement('div');
+    hint.className = 'scroll-hint';
+    hint.innerHTML = 'scroll ↑';
+    hero.appendChild(hint);
+
+    var actions = document.createElement('div');
+    actions.className = 'card-actions';
+    var inner = document.createElement('div');
+    inner.className = 'card-actions-inner';
+
+    function makeAction(emoji, label, fn) {
+        var wrap = document.createElement('span');
+        var btn = document.createElement('button');
+        btn.className = 'action-btn';
+        btn.innerHTML = emoji;
+        btn.onclick = fn;
+        var lbl = document.createElement('span');
+        lbl.className = 'action-btn-label';
+        lbl.innerHTML = label;
+        wrap.appendChild(btn);
+        wrap.appendChild(lbl);
+        inner.appendChild(wrap);
+    }
+
+    makeAction('👤', 'Add Info', (function(id) { return function() { document.getElementById('moreInfo' + id).click(); }; })(pid));
+    makeAction('📷', 'Photo', (function(id) { return function() { document.getElementById('morePhoto' + id).click(); }; })(pid));
+    makeAction('💬', 'Msgs', (function(id) { return function() { document.getElementById('moreComm' + id).click(); }; })(pid));
+    makeAction('✏️', 'Edit', (function(id) { return function() { openEdit(id); }; })(pid));
+
+    actions.appendChild(inner);
+    hero.appendChild(actions);
+
+    return hero;
+}
+
+function buildDetails(p, pid) {
+    var details = document.createElement('div');
+    details.className = 'card-details';
+
+    var statusEl = document.createElement('div');
+    statusEl.className = 'statusmsg';
+    statusEl.id = 'cardStatus' + pid;
+    details.appendChild(statusEl);
+
+    details.appendChild(makeFileInput('moreInfo' + pid, 'image/*', true, (function(id) { return function() { addMoreProfile(id); }; })(pid)));
+    details.appendChild(makeFileInput('morePhoto' + pid, 'image/*', false, (function(id) { return function() { addPhotoToProfile(id); }; })(pid)));
+    details.appendChild(makeFileInput('moreComm' + pid, 'image/*', true, (function(id) { return function() { addCommToProfile(id); }; })(pid)));
+
+    var s1 = document.createElement('div');
+    s1.className = 'detail-section-hdr';
+    s1.innerHTML = '👤 Profile Info';
+    details.appendChild(s1);
+
+    if (p.bio) {
+        var bioSections = parseBullets(p.bio);
+        if (bioSections.length) {
+            details.appendChild(renderBullets(bioSections));
+        } else {
+            var bioEl = document.createElement('div');
+            bioEl.className = 'plain-text';
+            bioEl.innerHTML = esc(p.bio);
+            details.appendChild(bioEl);
+        }
+    }
+
+    var nlbl = document.createElement('div');
+    nlbl.style.cssText = 'font-size:11px;font-weight:700;color:#c9a84c;text-transform:uppercase;letter-spacing:1px;margin:20px 0 8px;';
+    nlbl.innerHTML = 'Private Notes';
+    details.appendChild(nlbl);
+
+    var ta = document.createElement('textarea');
+    ta.className = 'ntarea';
+    ta.id = 'nt' + pid;
+    ta.placeholder = 'Add private notes...';
+    ta.value = p.notes || '';
+    details.appendChild(ta);
+
+    var micBtn = document.createElement('button');
+    micBtn.className = 'micbtn';
+    micBtn.innerHTML = '🎤 Speak to Add Notes';
+    micBtn.onclick = (function(id) { return function() { startVoice(id); }; })(pid);
+    details.appendChild(micBtn);
+
+    var saveNBtn = document.createElement('button');
+    saveNBtn.className = 'darkbtn';
+    saveNBtn.innerHTML = 'Save Notes';
+    saveNBtn.onclick = (function(id) { return function() { saveN(id); }; })(pid);
+    details.appendChild(saveNBtn);
+
+    var s2 = document.createElement('div');
+    s2.className = 'detail-section-hdr';
+    s2.innerHTML = '📷 Photos';
+    details.appendChild(s2);
+
+    var photoGrid = document.createElement('div');
+    photoGrid.className = 'photogrid';
+    var photos = p.photos || (p.photo ? [p.photo] : []);
+    var j;
+    for (j = 0; j < photos.length; j++) {
+        var gi = document.createElement('img');
+        gi.className = 'pgrid-img';
+        gi.src = photos[j];
+        gi.onclick = (function(src, id) {
+            return function() {
+                if (confirm('Set as main photo?')) { setMainPhoto(id, src); }
+                else { openLightbox(src); }
+            };
+        })(photos[j], pid);
+        photoGrid.appendChild(gi);
+    }
+    details.appendChild(photoGrid);
+
+    var s3 = document.createElement('div');
+    s3.className = 'detail-section-hdr';
+    s3.innerHTML = '💬 Communications';
+    details.appendChild(s3);
+
+    if (p.comm) {
+        var commSections = parseBullets(p.comm);
+        if (commSections.length) {
+            details.appendChild(renderBullets(commSections));
+        } else {
+            var commRaw = document.createElement('div');
+            commRaw.className = 'plain-text';
+            commRaw.innerHTML = esc(p.comm);
+            details.appendChild(commRaw);
+        }
+    }
+
+    var editCommLbl = document.createElement('div');
+    editCommLbl.style.cssText = 'font-size:11px;font-weight:700;color:#c9a84c;text-transform:uppercase;letter-spacing:1px;margin:20px 0 8px;';
+    editCommLbl.innerHTML = 'Edit Summary';
+    details.appendChild(editCommLbl);
+
+    var commTa = document.createElement('textarea');
+    commTa.className = 'ntarea';
+    commTa.id = 'comm' + pid;
+    commTa.placeholder = 'Edit communications summary...';
+    commTa.value = p.comm || '';
+    details.appendChild(commTa);
+
+    var saveCommBtn = document.createElement('button');
+    saveCommBtn.className = 'darkbtn';
+    saveCommBtn.innerHTML = 'Save Summary';
+    saveCommBtn.onclick = (function(id) { return function() { saveComm(id); }; })(pid);
+    details.appendChild(saveCommBtn);
+
+    var commScreens = p.commScreenshots || [];
+    if (commScreens.length) {
+        var cslbl = document.createElement('div');
+        cslbl.style.cssText = 'font-size:11px;font-weight:700;color:#c9a84c;text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px;';
+        cslbl.innerHTML = 'Message Screenshots';
+        details.appendChild(cslbl);
+        var thumbRow = document.createElement('div');
+        thumbRow.className = 'comm-thumb-row';
+        var k;
+        for (k = 0; k < commScreens.length; k++) {
+            var cimg = document.createElement('img');
+            cimg.className = 'comm-thumb';
+            cimg.src = commScreens[k];
+            cimg.onclick = (function(src) { return function() { openLightbox(src); }; })(commScreens[k]);
+            thumbRow.appendChild(cimg);
+        }
+        details.appendChild(thumbRow);
+    }
+
+    var delBtn = document.createElement('button');
+    delBtn.className = 'redbtn';
+    delBtn.style.marginTop = '32px';
+    delBtn.innerHTML = 'Delete Profile';
+    delBtn.onclick = (function(id) { return function() { delP(id); }; })(pid);
+    details.appendChild(delBtn);
+
+    return details;
+}
+
+/* ── SWIPE ── */
+function setupSwipe() {
+    var stack = document.getElementById('cardStack');
+    stack.ontouchstart = function(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    };
+    stack.ontouchend = function(e) {
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        var dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+            if (dx < 0 && currentCardIndex < profiles.length - 1) {
+                currentCardIndex++;
+                renderHome();
+            } else if (dx > 0 && currentCardIndex > 0) {
+                currentCardIndex--;
+                renderHome();
             }
-        } else if ((line.charAt(0) === '-' || line.charAt(0) === '*') && current) {
-            var bullet = line.substring(1).trim();
-            if (bullet && bullet.charAt(0) !== '*') current.bullets.push(bullet);
         }
-    }
-    var out = [];
-    for (i = 0; i < sections.length; i++) {
-        if (sections[i].bullets.length) out.push(sections[i]);
-    }
-    return out;
+    };
 }
 
-function renderBullets(sections) {
-    var block = document.createElement('div');
-    block.className = 'bullet-block';
-    var i;
-    for (i = 0; i < sections.length; i++) {
-        var catEl = document.createElement('span');
-        catEl.className = 'bullet-category';
-        catEl.innerHTML = esc(sections[i].cat);
-        block.appendChild(catEl);
-        var j;
-        for (j = 0; j < sections[i].bullets.length; j++) {
-            var item = document.createElement('span');
-            item.className = 'bullet-item';
-            item.innerHTML = esc(sections[i].bullets[j]);
-            block.appendChild(item);
-        }
-    }
-    return block;
+/* ── ADD PROFILE ── */
+function compressImage(dataUrl, callback) {
+    var img = new Image();
+    img.onload = function() {
+        var canvas = document.createElement('canvas');
+        var maxW = 600; var maxH = 800;
+        var w = img.width; var h = img.height;
+        if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+        if (h > maxH) { w = Math.round(w * maxH / h); h = maxH; }
+        canvas.width = w; canvas.height = h;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        callback(canvas.toDataURL('image/jpeg', 0.6));
+    };
+    img.src = dataUrl;
 }
 
 function autoAddPhoto(inp) {
@@ -307,10 +750,10 @@ function autoAddPhoto(inp) {
     btn.className = 'add-icon-btn scanning';
     var r = new FileReader();
     r.onload = function(e) {
-        compressImage(e.target.result, function(compressed) {
-            currentPhotoData = compressed;
-            document.getElementById('previewImg').src = compressed;
-            document.getElementById('photoPreview').style.display = 'block';
+        compressImage(e.target.result, function(c) {
+            currentPhotoData = c;
+            document.getElementById('addPreviewImg').src = c;
+            document.getElementById('addPhotoPreview').style.display = 'block';
             btn.className = 'add-icon-btn done';
             showMsg('addFormMsg', 'ok', 'Photo added!');
         });
@@ -321,7 +764,7 @@ function autoAddPhoto(inp) {
 function autoScanProfile(inp) {
     if (!inp || !inp.files || !inp.files.length) return;
     var key = (localStorage.getItem('dlAK') || '').trim();
-    if (!key) { showMsg('addFormMsg', 'err', 'Save your API key first.'); return; }
+    if (!key) { showMsg('addFormMsg', 'err', 'Save your API key in Settings first.'); return; }
     var btn = document.getElementById('addIconInfo');
     btn.className = 'add-icon-btn scanning';
     showMsg('addFormMsg', 'load', 'Scanning ' + inp.files.length + ' screenshot(s)...');
@@ -338,9 +781,11 @@ function autoScanProfile(inp) {
             return function(e) {
                 imgEl.src = e.target.result;
                 if (isFirst && !currentPhotoData) {
-                    currentPhotoData = e.target.result;
-                    document.getElementById('previewImg').src = currentPhotoData;
-                    document.getElementById('photoPreview').style.display = 'block';
+                    compressImage(e.target.result, function(c) {
+                        currentPhotoData = c;
+                        document.getElementById('addPreviewImg').src = c;
+                        document.getElementById('addPhotoPreview').style.display = 'block';
+                    });
                 }
             };
         })(img, i === 0);
@@ -354,25 +799,15 @@ function autoScanProfile(inp) {
             if (parsed.name) document.getElementById('iName').value = parsed.name;
             if (parsed.age) document.getElementById('iAge').value = String(parsed.age);
             if (parsed.location) document.getElementById('iLoc').value = parsed.location;
-            if (parsed.bio) {
-                var b = document.getElementById('iBio');
-                b.value = b.value.trim() ? b.value.trim() + '\n\n' + parsed.bio : parsed.bio;
-            }
+            if (parsed.bio) { var b = document.getElementById('iBio'); b.value = b.value.trim() ? b.value.trim() + '\n\n' + parsed.bio : parsed.bio; }
             if (parsed.platform) detectedPlatform = parsed.platform.toLowerCase();
-            var idx = parsed.photoIndex ? parseInt(parsed.photoIndex) : 0;
-            if (files[idx] && !currentPhotoData) {
+            if (files[parsed.photoIndex || 0] && !currentPhotoData) {
                 var pr = new FileReader();
-                pr.onload = function(e) {
-                    compressImage(e.target.result, function(compressed) {
-                        currentPhotoData = compressed;
-                        document.getElementById('previewImg').src = compressed;
-                        document.getElementById('photoPreview').style.display = 'block';
-                    });
-                };
-                pr.readAsDataURL(files[idx]);
+                pr.onload = function(e) { compressImage(e.target.result, function(c) { currentPhotoData = c; document.getElementById('addPreviewImg').src = c; document.getElementById('addPhotoPreview').style.display = 'block'; }); };
+                pr.readAsDataURL(files[parsed.photoIndex || 0]);
             }
             btn.className = 'add-icon-btn done';
-            showMsg('addFormMsg', 'ok', 'Profile scanned! Review fields then tap Add Profile.');
+            showMsg('addFormMsg', 'ok', 'Scanned! Review fields then tap Add Profile.');
         }, function(err) { btn.className = 'add-icon-btn'; showMsg('addFormMsg', 'err', err); });
     });
 }
@@ -380,7 +815,7 @@ function autoScanProfile(inp) {
 function autoScanComms(inp) {
     if (!inp || !inp.files || !inp.files.length) return;
     var key = (localStorage.getItem('dlAK') || '').trim();
-    if (!key) { showMsg('addFormMsg', 'err', 'Save your API key first.'); return; }
+    if (!key) { showMsg('addFormMsg', 'err', 'Save your API key in Settings first.'); return; }
     var btn = document.getElementById('addIconComms');
     btn.className = 'add-icon-btn scanning';
     showMsg('addFormMsg', 'load', 'Reading ' + inp.files.length + ' message screenshot(s)...');
@@ -392,10 +827,7 @@ function autoScanComms(inp) {
     for (i = 0; i < files.length; i++) {
         (function(file) {
             var r = new FileReader();
-            r.onload = function(e) {
-                pendingCommScreenshots.push(e.target.result);
-                loaded++;
-            };
+            r.onload = function(e) { pendingCommScreenshots.push(e.target.result); loaded++; };
             r.readAsDataURL(file);
         })(files[i]);
     }
@@ -407,55 +839,6 @@ function autoScanComms(inp) {
             showMsg('addFormMsg', 'ok', 'Messages scanned! Summary added.');
         }, function(err) { btn.className = 'add-icon-btn'; showMsg('addFormMsg', 'err', err); });
     });
-}
-
-function loadFilesToBlocks(files, onDone) {
-    var blocks = [];
-    var loaded = 0;
-    var i;
-    for (i = 0; i < files.length; i++) {
-        (function(file) {
-            var r = new FileReader();
-            r.onload = function(e) {
-                var parts = e.target.result.split(',');
-                blocks.push({ type: 'image', source: { type: 'base64', media_type: file.type || 'image/jpeg', data: parts[1] || '' } });
-                loaded++;
-                if (loaded === files.length) onDone(blocks);
-            };
-            r.readAsDataURL(file);
-        })(files[i]);
-    }
-}
-
-function callAI(key, blocks, prompt, onSuccess, onError) {
-    var body = JSON.stringify({
-        model: 'claude-opus-4-5',
-        max_tokens: 1500,
-        messages: [{ role: 'user', content: blocks.concat([{ type: 'text', text: prompt }]) }]
-    });
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://api.anthropic.com/v1/messages', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('x-api-key', key);
-    xhr.setRequestHeader('anthropic-version', '2023-06-01');
-    xhr.setRequestHeader('anthropic-dangerous-direct-browser-access', 'true');
-    xhr.onload = function() {
-        if (xhr.status !== 200) { onError('API error ' + xhr.status); return; }
-        var data;
-        try { data = JSON.parse(xhr.responseText); } catch(e) { onError('Parse error.'); return; }
-        if (!data.content || !data.content[0] || !data.content[0].text) { onError('Bad response.'); return; }
-        onSuccess(data.content[0].text.trim());
-    };
-    xhr.onerror = function() { onError('Network error.'); };
-    xhr.send(body);
-}
-
-function parseJSON(text) {
-    try { return JSON.parse(text); } catch(e) {
-        var m = text.match(/\{[\s\S]*\}/);
-        if (m) { try { return JSON.parse(m[0]); } catch(e2) {} }
-        return null;
-    }
 }
 
 function addP() {
@@ -473,10 +856,8 @@ function addP() {
         notes: '',
         platform: detectedPlatform || ''
     };
-
     profiles.unshift(newProfile);
     sp();
-
     document.getElementById('iName').value = '';
     document.getElementById('iAge').value = '';
     document.getElementById('iLoc').value = '';
@@ -486,80 +867,24 @@ function addP() {
     document.getElementById('ocrFiles').value = '';
     document.getElementById('commFile').value = '';
     document.getElementById('thumbRow').innerHTML = '';
-    document.getElementById('photoPreview').style.display = 'none';
+    document.getElementById('addPhotoPreview').style.display = 'none';
     document.getElementById('addIconInfo').className = 'add-icon-btn';
     document.getElementById('addIconPhotos').className = 'add-icon-btn';
     document.getElementById('addIconComms').className = 'add-icon-btn';
     pendingCommScreenshots = [];
     currentPhotoData = '';
     detectedPlatform = '';
-
+    currentCardIndex = 0;
     showMsg('addMsg', 'ok', 'Profile added!');
-    render();
+    setTimeout(function() { goHome(); }, 800);
 }
 
-function delP(pid) {
-    if (!confirm('Delete this profile?')) return;
-    var newProfiles = [];
-    var i;
-    for (i = 0; i < profiles.length; i++) {
-        if (profiles[i].id !== pid) {
-            newProfiles.push(profiles[i]);
-        }
-    }
-    profiles = newProfiles;
-    sp();
-    render();
-}
-
-function openEdit(pid) {
-    var i; var p = null;
-    for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { p = profiles[i]; break; } }
-    if (!p) return;
-    editingId = pid;
-    document.getElementById('editName').value = p.name || '';
-    document.getElementById('editAge').value = p.age || '';
-    document.getElementById('editLoc').value = p.location || '';
-    document.getElementById('editBio').value = p.bio || '';
-    document.getElementById('editModal').style.display = 'block';
-}
-
-function saveEdit() {
-    if (!editingId) return;
-    var i;
-    for (i = 0; i < profiles.length; i++) {
-        if (profiles[i].id === editingId) {
-            profiles[i].name = document.getElementById('editName').value.trim();
-            profiles[i].age = document.getElementById('editAge').value.trim();
-            profiles[i].location = document.getElementById('editLoc').value.trim();
-            profiles[i].bio = document.getElementById('editBio').value.trim();
-            break;
-        }
-    }
-    sp(); closeEdit(); render();
-}
-
-function closeEdit() { editingId = null; document.getElementById('editModal').style.display = 'none'; }
-
-function saveN(pid) {
-    var el = document.getElementById('nt' + pid); if (!el) return;
-    var i;
-    for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { profiles[i].notes = el.value; break; } }
-    sp(); alert('Notes saved!');
-}
-
-function saveComm(pid) {
-    var el = document.getElementById('comm' + pid); if (!el) return;
-    var i;
-    for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { profiles[i].comm = el.value; break; } }
-    sp(); render(); alert('Saved!');
-}
-
+/* ── PROFILE ACTIONS ── */
 function addMoreProfile(pid) {
     var inp = document.getElementById('moreInfo' + pid);
     if (!inp || !inp.files || !inp.files.length) return;
     var key = (localStorage.getItem('dlAK') || '').trim();
-    if (!key) { alert('Save your API key first.'); return; }
+    if (!key) { alert('Save your API key in Settings first.'); return; }
     var statusEl = document.getElementById('cardStatus' + pid);
     statusEl.className = 'statusmsg load'; statusEl.innerHTML = 'Scanning...';
     var files = [];
@@ -580,8 +905,8 @@ function addMoreProfile(pid) {
                     break;
                 }
             }
-            sp(); render();
-            statusEl.className = 'statusmsg ok'; statusEl.innerHTML = 'Profile updated!';
+            sp(); renderHome();
+            statusEl.className = 'statusmsg ok'; statusEl.innerHTML = 'Updated!';
         }, function(err) { statusEl.className = 'statusmsg err'; statusEl.innerHTML = err; });
     });
 }
@@ -593,17 +918,17 @@ function addPhotoToProfile(pid) {
     statusEl.className = 'statusmsg load'; statusEl.innerHTML = 'Adding photo...';
     var r = new FileReader();
     r.onload = function(e) {
-        compressImage(e.target.result, function(compressed) {
+        compressImage(e.target.result, function(c) {
             var i;
             for (i = 0; i < profiles.length; i++) {
                 if (profiles[i].id === pid) {
                     if (!profiles[i].photos) profiles[i].photos = [];
-                    profiles[i].photos.push(compressed);
-                    if (!profiles[i].photo) profiles[i].photo = compressed;
+                    profiles[i].photos.push(c);
+                    if (!profiles[i].photo) profiles[i].photo = c;
                     break;
                 }
             }
-            sp(); render();
+            sp(); renderHome();
             statusEl.className = 'statusmsg ok'; statusEl.innerHTML = 'Photo added!';
         });
     };
@@ -614,7 +939,7 @@ function addCommToProfile(pid) {
     var inp = document.getElementById('moreComm' + pid);
     if (!inp || !inp.files || !inp.files.length) return;
     var key = (localStorage.getItem('dlAK') || '').trim();
-    if (!key) { alert('Save your API key first.'); return; }
+    if (!key) { alert('Save your API key in Settings first.'); return; }
     var statusEl = document.getElementById('cardStatus' + pid);
     statusEl.className = 'statusmsg load'; statusEl.innerHTML = 'Reading messages...';
     var files = [];
@@ -648,7 +973,7 @@ function addCommToProfile(pid) {
                                     break;
                                 }
                             }
-                            sp(); render();
+                            sp(); renderHome();
                             statusEl.className = 'statusmsg ok'; statusEl.innerHTML = 'Messages added!';
                         }, function(err) { statusEl.className = 'statusmsg err'; statusEl.innerHTML = err; });
                     });
@@ -662,15 +987,66 @@ function addCommToProfile(pid) {
 function setMainPhoto(pid, src) {
     var i;
     for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { profiles[i].photo = src; break; } }
-    sp(); render();
+    sp(); renderHome();
 }
+
+function saveN(pid) {
+    var el = document.getElementById('nt' + pid); if (!el) return;
+    var i;
+    for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { profiles[i].notes = el.value; break; } }
+    sp(); alert('Notes saved!');
+}
+
+function saveComm(pid) {
+    var el = document.getElementById('comm' + pid); if (!el) return;
+    var i;
+    for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { profiles[i].comm = el.value; break; } }
+    sp(); renderHome(); alert('Saved!');
+}
+
+function delP(pid) {
+    if (!confirm('Delete this profile?')) return;
+    var out = []; var i;
+    for (i = 0; i < profiles.length; i++) { if (profiles[i].id !== pid) out.push(profiles[i]); }
+    profiles = out;
+    if (currentCardIndex >= profiles.length && currentCardIndex > 0) currentCardIndex--;
+    sp(); renderHome();
+}
+
+function openEdit(pid) {
+    var i; var p = null;
+    for (i = 0; i < profiles.length; i++) { if (profiles[i].id === pid) { p = profiles[i]; break; } }
+    if (!p) return;
+    editingId = pid;
+    document.getElementById('editName').value = p.name || '';
+    document.getElementById('editAge').value = p.age || '';
+    document.getElementById('editLoc').value = p.location || '';
+    document.getElementById('editBio').value = p.bio || '';
+    document.getElementById('editModal').style.display = 'block';
+}
+
+function saveEdit() {
+    if (!editingId) return;
+    var i;
+    for (i = 0; i < profiles.length; i++) {
+        if (profiles[i].id === editingId) {
+            profiles[i].name = document.getElementById('editName').value.trim();
+            profiles[i].age = document.getElementById('editAge').value.trim();
+            profiles[i].location = document.getElementById('editLoc').value.trim();
+            profiles[i].bio = document.getElementById('editBio').value.trim();
+            break;
+        }
+    }
+    sp(); closeEdit(); renderHome();
+}
+
+function closeEdit() { editingId = null; document.getElementById('editModal').style.display = 'none'; }
 
 function startVoice(pid) {
     var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) { alert('Voice input not supported.'); return; }
     var rec = new SR();
-    rec.lang = 'en-US';
-    rec.interimResults = false;
+    rec.lang = 'en-US'; rec.interimResults = false;
     rec.onresult = function(e) {
         var t = e.results[0][0].transcript;
         var el = document.getElementById('nt' + pid);
@@ -680,8 +1056,103 @@ function startVoice(pid) {
     rec.start();
 }
 
-function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'block'; }
-function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; document.getElementById('lightbox-img').src = ''; }
+/* ── AI ── */
+function profilePrompt() {
+    return 'These are dating app profile screenshots. Identify the dating app (Tinder, Bumble, Hinge, Match). Extract all info. Return ONLY valid JSON:\n{"name":"","age":"","location":"","bio":"","photoIndex":0,"platform":""}\n\nFor bio use this format:\n**Category:**\n- bullet\n- bullet\n\nKeep bullets 3-8 words. photoIndex = index of main photo screenshot.';
+}
+
+function commPrompt() {
+    return 'These are text message screenshots. Summarize in bullet points:\n**Category:**\n- bullet\n\nPick categories that fit. Keep bullets 3-8 words. Return only this text.';
+}
+
+function loadFilesToBlocks(files, onDone) {
+    var blocks = []; var loaded = 0; var i;
+    for (i = 0; i < files.length; i++) {
+        (function(file) {
+            var r = new FileReader();
+            r.onload = function(e) {
+                var parts = e.target.result.split(',');
+                blocks.push({ type: 'image', source: { type: 'base64', media_type: file.type || 'image/jpeg', data: parts[1] || '' } });
+                loaded++;
+                if (loaded === files.length) onDone(blocks);
+            };
+            r.readAsDataURL(file);
+        })(files[i]);
+    }
+}
+
+function callAI(key, blocks, prompt, onSuccess, onError) {
+    var body = JSON.stringify({ model: 'claude-opus-4-5', max_tokens: 1500, messages: [{ role: 'user', content: blocks.concat([{ type: 'text', text: prompt }]) }] });
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://api.anthropic.com/v1/messages', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('x-api-key', key);
+    xhr.setRequestHeader('anthropic-version', '2023-06-01');
+    xhr.setRequestHeader('anthropic-dangerous-direct-browser-access', 'true');
+    xhr.onload = function() {
+        if (xhr.status !== 200) { onError('API error ' + xhr.status); return; }
+        var data;
+        try { data = JSON.parse(xhr.responseText); } catch(e) { onError('Parse error.'); return; }
+        if (!data.content || !data.content[0] || !data.content[0].text) { onError('Bad response.'); return; }
+        onSuccess(data.content[0].text.trim());
+    };
+    xhr.onerror = function() { onError('Network error.'); };
+    xhr.send(body);
+}
+
+function parseJSON(text) {
+    try { return JSON.parse(text); } catch(e) {
+        var m = text.match(/\{[\s\S]*\}/);
+        if (m) { try { return JSON.parse(m[0]); } catch(e2) {} }
+        return null;
+    }
+}
+
+function parseBullets(text) {
+    if (!text) return [];
+    var lines = text.split('\n');
+    var sections = []; var current = null; var i;
+    for (i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (!line) continue;
+        var m1 = line.match(/^\*\*(.+?)\*\*:?\s*$/);
+        var m2 = line.match(/^\*\*(.+?):\*\*\s*(.*)/);
+        if (m1) { current = { cat: m1[1].trim(), bullets: [] }; sections.push(current); }
+        else if (m2) { current = { cat: m2[1].trim(), bullets: [] }; sections.push(current); if (m2[2]) { var parts = m2[2].split('|'); var j; for (j = 0; j < parts.length; j++) { var b = parts[j].trim(); if (b) current.bullets.push(b); } } }
+        else if ((line.charAt(0) === '-') && current) { var bullet = line.substring(1).trim(); if (bullet) current.bullets.push(bullet); }
+    }
+    var out = []; for (i = 0; i < sections.length; i++) { if (sections[i].bullets.length) out.push(sections[i]); }
+    return out;
+}
+
+function renderBullets(sections) {
+    var block = document.createElement('div');
+    block.className = 'bullet-block';
+    var i;
+    for (i = 0; i < sections.length; i++) {
+        var catEl = document.createElement('span');
+        catEl.className = 'bullet-cat';
+        catEl.innerHTML = esc(sections[i].cat);
+        block.appendChild(catEl);
+        var j;
+        for (j = 0; j < sections[i].bullets.length; j++) {
+            var item = document.createElement('span');
+            item.className = 'bullet-item';
+            item.innerHTML = esc(sections[i].bullets[j]);
+            block.appendChild(item);
+        }
+    }
+    return block;
+}
+
+function getPlatformInfo(name) {
+    var n = (name || '').toLowerCase();
+    if (n.indexOf('tinder') !== -1) return { emoji: '🔥', cls: 'pb-tinder' };
+    if (n.indexOf('bumble') !== -1) return { emoji: '🐝', cls: 'pb-bumble' };
+    if (n.indexOf('hinge') !== -1) return { emoji: '💘', cls: 'pb-hinge' };
+    if (n.indexOf('match') !== -1) return { emoji: '💙', cls: 'pb-match' };
+    return { emoji: '💫', cls: 'pb-unknown' };
+}
 
 function makeFileInput(id, accept, isMultiple, fn) {
     var inp = document.createElement('input');
@@ -693,225 +1164,12 @@ function makeFileInput(id, accept, isMultiple, fn) {
     return inp;
 }
 
-function makeIconCell(emoji, label, fn) {
-    var cell = document.createElement('div');
-    cell.className = 'card-icon-cell';
-    var btn = document.createElement('button');
-    btn.className = 'card-icon-btn';
-    btn.innerHTML = '<span class="ie">' + emoji + '</span>' + label;
-    btn.onclick = fn;
-    cell.appendChild(btn);
-    return cell;
-}
-
-function render() {
-    var area = document.getElementById('profilesArea');
-    area.innerHTML = '';
-    if (!profiles.length) {
-        var empty = document.createElement('div');
-        empty.className = 'box';
-        empty.style.cssText = 'text-align:center;color:#bf360c;padding:30px;';
-        empty.innerHTML = 'No profiles yet. Add your first one above.';
-        area.appendChild(empty);
-        return;
-    }
-    var i;
-    for (i = 0; i < profiles.length; i++) {
-        var p = profiles[i];
-        var pid = p.id;
-        var card = document.createElement('div');
-        card.className = 'pcard';
-
-        var photoWrap = document.createElement('div');
-        if (p.photo) {
-            photoWrap.className = 'pcard-photo-wrap';
-            var mainImg = document.createElement('img');
-            mainImg.src = p.photo;
-            mainImg.onclick = (function(src) { return function() { openLightbox(src); }; })(p.photo);
-            photoWrap.appendChild(mainImg);
-            if (p.platform) {
-                var pinfo = platformInfo(p.platform);
-                var badge = document.createElement('div');
-                badge.className = 'platform-badge ' + pinfo.cls;
-                badge.innerHTML = pinfo.emoji;
-                photoWrap.appendChild(badge);
-            }
-        } else {
-            photoWrap.className = 'pcard-photo-empty';
-            photoWrap.innerHTML = (p.name && p.name !== 'Unknown') ? p.name.charAt(0) : '?';
-        }
-        card.appendChild(photoWrap);
-
-        var body = document.createElement('div');
-        body.className = 'pcard-body';
-
-        var nameEl = document.createElement('span');
-        nameEl.className = 'pname';
-        nameEl.innerHTML = esc(p.name);
-        body.appendChild(nameEl);
-        if (p.age) {
-            var ageEl = document.createElement('span');
-            ageEl.className = 'page';
-            ageEl.innerHTML = esc(p.age);
-            body.appendChild(ageEl);
-        }
-        if (p.location) {
-            var locEl = document.createElement('div');
-            locEl.className = 'ploc';
-            locEl.innerHTML = '📍 ' + esc(p.location);
-            body.appendChild(locEl);
-        }
-
-        var cardStatus = document.createElement('div');
-        cardStatus.className = 'statusmsg';
-        cardStatus.id = 'cardStatus' + pid;
-        body.appendChild(cardStatus);
-
-        body.appendChild(makeFileInput('moreInfo' + pid, 'image/*', true, (function(id) { return function() { addMoreProfile(id); }; })(pid)));
-        body.appendChild(makeFileInput('morePhoto' + pid, 'image/*', false, (function(id) { return function() { addPhotoToProfile(id); }; })(pid)));
-        body.appendChild(makeFileInput('moreComm' + pid, 'image/*', true, (function(id) { return function() { addCommToProfile(id); }; })(pid)));
-
-        var iconTable = document.createElement('div');
-        iconTable.className = 'card-icon-row';
-        iconTable.appendChild(makeIconCell('👤', 'Add Info', (function(id) { return function() { document.getElementById('moreInfo' + id).click(); }; })(pid)));
-        iconTable.appendChild(makeIconCell('📷', 'Add Photo', (function(id) { return function() { document.getElementById('morePhoto' + id).click(); }; })(pid)));
-        iconTable.appendChild(makeIconCell('💬', 'Add Msgs', (function(id) { return function() { document.getElementById('moreComm' + id).click(); }; })(pid)));
-        iconTable.appendChild(makeIconCell('✏️', 'Edit', (function(id) { return function() { openEdit(id); }; })(pid)));
-        body.appendChild(iconTable);
-
-        var s1 = document.createElement('div');
-        s1.className = 'card-section-hdr';
-        s1.innerHTML = '👤  Profile Info';
-        body.appendChild(s1);
-
-        if (p.bio) {
-            var bioSections = parseBullets(p.bio);
-            if (bioSections.length) {
-                body.appendChild(renderBullets(bioSections));
-            } else {
-                var bioEl = document.createElement('div');
-                bioEl.style.cssText = 'font-size:14px;line-height:1.5;margin:8px 0;';
-                bioEl.innerHTML = esc(p.bio);
-                body.appendChild(bioEl);
-            }
-        }
-
-        var nlbl = document.createElement('div');
-        nlbl.style.cssText = 'font-size:11px;color:#bf360c;text-transform:uppercase;margin:12px 0 4px;';
-        nlbl.innerHTML = 'Private Notes';
-        body.appendChild(nlbl);
-
-        var ta = document.createElement('textarea');
-        ta.className = 'ntarea';
-        ta.id = 'nt' + pid;
-        ta.placeholder = 'Private notes...';
-        ta.value = p.notes || '';
-        body.appendChild(ta);
-
-        var micBtn = document.createElement('button');
-        micBtn.className = 'btnmic';
-        micBtn.innerHTML = '🎤  Speak to Add Notes';
-        micBtn.onclick = (function(id) { return function() { startVoice(id); }; })(pid);
-        body.appendChild(micBtn);
-
-        var saveNBtn = document.createElement('button');
-        saveNBtn.className = 'btnsoft';
-        saveNBtn.innerHTML = 'Save Notes';
-        saveNBtn.onclick = (function(id) { return function() { saveN(id); }; })(pid);
-        body.appendChild(saveNBtn);
-
-        var s2 = document.createElement('div');
-        s2.className = 'card-section-hdr';
-        s2.innerHTML = '📷  Photos';
-        body.appendChild(s2);
-
-        var photoGrid = document.createElement('div');
-        photoGrid.className = 'photogrid';
-        var photos = p.photos || (p.photo ? [p.photo] : []);
-        var j;
-        for (j = 0; j < photos.length; j++) {
-            var gi = document.createElement('img');
-            gi.className = 'pgrid-img';
-            gi.src = photos[j];
-            gi.onclick = (function(src, id) {
-                return function() {
-                    if (confirm('Set as main photo?')) { setMainPhoto(id, src); }
-                    else { openLightbox(src); }
-                };
-            })(photos[j], pid);
-            photoGrid.appendChild(gi);
-        }
-        body.appendChild(photoGrid);
-
-        var s3 = document.createElement('div');
-        s3.className = 'card-section-hdr';
-        s3.innerHTML = '💬  Communications';
-        body.appendChild(s3);
-
-        if (p.comm) {
-            var commSections = parseBullets(p.comm);
-            if (commSections.length) {
-                body.appendChild(renderBullets(commSections));
-            } else {
-                var commRaw = document.createElement('div');
-                commRaw.style.cssText = 'font-size:14px;line-height:1.5;margin:8px 0;';
-                commRaw.innerHTML = esc(p.comm);
-                body.appendChild(commRaw);
-            }
-        }
-
-        var editCommLbl = document.createElement('div');
-        editCommLbl.style.cssText = 'font-size:11px;color:#bf360c;text-transform:uppercase;margin:10px 0 4px;';
-        editCommLbl.innerHTML = 'Edit Summary';
-        body.appendChild(editCommLbl);
-
-        var commTa = document.createElement('textarea');
-        commTa.className = 'ntarea';
-        commTa.id = 'comm' + pid;
-        commTa.placeholder = 'Edit communications summary...';
-        commTa.value = p.comm || '';
-        body.appendChild(commTa);
-
-        var saveCommBtn = document.createElement('button');
-        saveCommBtn.className = 'btnsoft';
-        saveCommBtn.innerHTML = 'Save Summary';
-        saveCommBtn.onclick = (function(id) { return function() { saveComm(id); }; })(pid);
-        body.appendChild(saveCommBtn);
-
-        var commScreens = p.commScreenshots || [];
-        if (commScreens.length) {
-            var cslbl = document.createElement('div');
-            cslbl.style.cssText = 'font-size:11px;color:#bf360c;text-transform:uppercase;margin:12px 0 4px;';
-            cslbl.innerHTML = 'Message Screenshots';
-            body.appendChild(cslbl);
-            var thumbRowEl = document.createElement('div');
-            thumbRowEl.className = 'comm-thumb-row';
-            var k;
-            for (k = 0; k < commScreens.length; k++) {
-                var cimg = document.createElement('img');
-                cimg.className = 'comm-thumb';
-                cimg.src = commScreens[k];
-                cimg.onclick = (function(src) { return function() { openLightbox(src); }; })(commScreens[k]);
-                thumbRowEl.appendChild(cimg);
-            }
-            body.appendChild(thumbRowEl);
-        }
-
-        var delBtn = document.createElement('button');
-        delBtn.className = 'btndel';
-        delBtn.innerHTML = 'Delete Profile';
-        delBtn.onclick = (function(id) { return function() { delP(id); }; })(pid);
-        body.appendChild(delBtn);
-
-        card.appendChild(body);
-        area.appendChild(card);
-    }
-}
+function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'block'; }
+function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; document.getElementById('lightbox-img').src = ''; }
 
 function showMsg(id, cls, msg) {
     var el = document.getElementById(id); if (!el) return;
-    el.className = 'statusmsg ' + cls;
-    el.innerHTML = msg;
+    el.className = 'statusmsg ' + cls; el.innerHTML = msg;
 }
 
 function esc(s) {
