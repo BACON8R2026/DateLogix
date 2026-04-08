@@ -101,6 +101,7 @@ hr { border: none; border-top: 1px solid #ffccaa; margin: 16px 0; }
 <input type="password" id="sAK" placeholder="sk-ant-...">
 <button class="btnmain" onclick="saveKey()">Save / Update Key</button>
 <div class="statusmsg" id="keyMsg"></div>
+<button class="btndel" onclick="clearStorage()" style="margin-top:8px;">🗑 Clear All Storage</button>
 </div>
 
 <div class="box">
@@ -166,6 +167,16 @@ function compressImage(dataUrl, callback) {
     img.src = dataUrl;
 }
 
+function clearStorage() {
+    if (!confirm('This will delete ALL profiles and photos. Are you sure?')) return;
+    localStorage.clear();
+    profiles = [];
+    currentPhotoData = '';
+    pendingCommScreenshots = [];
+    render();
+    alert('Storage cleared. You can now add profiles again.');
+}
+
 function boot() {
     var raw = localStorage.getItem('dlP');
     profiles = [];
@@ -181,7 +192,33 @@ function boot() {
 }
 
 function sp() {
-    try { localStorage.setItem('dlP', JSON.stringify(profiles)); } catch(e) { alert('Storage error: ' + e.message); }
+    try {
+        localStorage.setItem('dlP', JSON.stringify(profiles));
+    } catch(e) {
+        try {
+            var stripped = [];
+            var i;
+            for (i = 0; i < profiles.length; i++) {
+                var p = {};
+                var key;
+                for (key in profiles[i]) {
+                    if (profiles[i].hasOwnProperty(key)) p[key] = profiles[i][key];
+                }
+                if (p.photo && p.photo.length > 50000) p.photo = '';
+                if (p.photos) p.photos = [];
+                if (p.commScreenshots) p.commScreenshots = [];
+                stripped.push(p);
+            }
+            localStorage.setItem('dlP', JSON.stringify(stripped));
+            showMsg('addMsg', 'ok', 'Profile saved (photos skipped - storage full). Use Clear Storage button below to reset.');
+        } catch(e2) {
+            localStorage.clear();
+            localStorage.setItem('dlP', JSON.stringify([]));
+            profiles = [];
+            alert('Storage was full and has been cleared. Please re-add your profiles.');
+            render();
+        }
+    }
 }
 
 function saveKey() {
